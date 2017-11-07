@@ -1,0 +1,153 @@
+// TODO: Put your plugin's LESS here, have it generated to ../css.
+@import "variables.less";
+
+@highlighter: lighten(@notquiteBlack,10);
+
+body {
+    background-color: @darkish;
+    color: @notquiteWhite;
+    font-weight: 400;
+  }
+  
+  a {
+    color: @greyple;
+  }
+
+  a:hover {
+      color: lighten(@greyple, 20)
+  }
+  
+  .octoprint-container .tab-content h1 {
+    color: #FFFFFF;
+  }
+
+  .octoprint-container .tab-content {
+      border: none;
+  }
+  
+  .accordion-group {
+      border: none;
+  }
+
+  .accordion {
+      background-color: @notquiteBlack;
+      -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+      box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+  }
+
+  .nav-tabs>li>a {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+  }
+
+  .nav-tabs>.active>a, .nav-tabs>.active>a:hover {
+      background-color: @notquiteBlack;
+      color: #fff;
+      border: none;
+  }
+
+  .nav-tabs>li>a:hover {
+      background-color: lighten(@notquiteBlack, 10);
+      border: none;
+  }
+  
+  h1, h2, h3, h4 {
+    color: #FFFFFF
+  }
+  
+  .btn {
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-image: none;
+    border: none;
+    background-color: @greyple;
+    color: #fff;
+    font-weight: 400;
+    text-shadow: none;
+  }
+
+  .btn btn-primary, .btn-primary[disabled] {
+    background-color: #7289DA;
+  }
+  .btn-primary {
+    background-color: #7289DA;
+  }
+
+  .btn.disabled {
+      background-color: @blurple;
+  }
+
+  textarea, input[type] {
+      background-color: @lighterish;
+      border:none;
+      color: @notquiteWhite;
+  }
+
+  i {
+      color: @notquiteWhite !important;
+  }
+
+
+  #navbar .navbar-inner {
+      background-color: @notquiteBlack;
+      border: none;
+      background-image: none;
+  }
+
+  .navbar .nav>li>a:hover {
+    background-color: lighten(@notquiteBlack, 10);
+    border: none;
+    background-image: none;
+}
+
+#navbar .navbar-inner .nav>li>a:hover {
+    background-color: lighten(@notquiteBlack, 10);
+    border: none;
+}
+
+#navbar .navbar-inner .brand, #navbar .navbar-inner .nav>li>a {
+    color: #fff;
+}
+
+.dropdown-menu {
+    background: @notquiteBlack;
+}
+
+.dropdown-menu li>a {
+    color: @notquiteWhite;
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu li:hover {
+    color: @notquiteWhite;
+    background-color: @highlighter;
+}
+
+
+/*general table hover colour*/
+#files .gcode_files .entry:hover,
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+	background-color: lighten(@notquiteBlack, 10);
+}
+
+.legend > table {
+    color: @notquiteWhite !important;
+}
+
+.progress {
+    background: @lighterish;
+}
+
+.table-bordered {
+    border-color: @lighterish;
+    border: none;
+    & th,td {
+        border-color: @lighterish;
+        border-left:none;
+        border-right: none;
+    }
+}
