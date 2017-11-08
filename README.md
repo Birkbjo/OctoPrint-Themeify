@@ -1,7 +1,7 @@
 # OctoPrint-Themeify
 
-Change the looks of OctoPrint!
-Currently supports a beautiful Dark Theme inspired by Discord's color palette, more configuration and themes are planned.
+A small [OctoPrint](https://github.com/foosel/OctoPrint) plugin to change the looks of OctoPrint!
+Currently supports a beautiful Dark Theme inspired by Discord's color palette. More configuration and themes are planned.
 
 ## Setup
 
