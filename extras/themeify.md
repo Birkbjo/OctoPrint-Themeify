@@ -2,10 +2,10 @@
 layout: plugin
 
 id: themeify
-title: OctoPrint-Themeify
+title: Themeify
 description: Beautiful themes for octoprint
 author: Birk Johansson
-license: MIT
+license: AGPLv3
 
 date: 2017-11-11
 
@@ -20,11 +20,11 @@ tags:
 - styling
 
 screenshots:
-- url: ./discorded_ss.png
+- url: /assets/img/plugins/themeify/discorded_ss.png
   alt: Discorded theme
   caption: Discorded theme
 
-featuredimage: ./discorded_ss.png
+featuredimage: /assets/img/plugins/themeify/discorded_ss.png
 
 compatibility:
 
@@ -39,5 +39,6 @@ compatibility:
 
 ---
 
-**TODO**: Longer description of your plugin, configuration examples etc. This part will be visible on the page at
-http://plugins.octoprint.org/plugin/themeify/
+A small [OctoPrint](https://github.com/foosel/OctoPrint) plugin to change the looks of OctoPrint!
+Currently supports a beautiful Dark Theme inspired by Discord's color [palette](https://discordapp.com/branding). More configuration and themes are planned.
+
