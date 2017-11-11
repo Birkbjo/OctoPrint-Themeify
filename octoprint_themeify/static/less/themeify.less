@@ -364,3 +364,8 @@ legend {
     border-top-color: @notquiteWhite;
     border-bottom-color: @notquiteWhite;
 }
+
+input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly] {
+    background-color: darken(@lighterish,5);
+    color: darken(@notquiteWhite, 10);
+}

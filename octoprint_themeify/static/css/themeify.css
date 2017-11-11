@@ -350,3 +350,12 @@ legend {
   border-top-color: #dadadc;
   border-bottom-color: #dadadc;
 }
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  background-color: #595e68;
+  color: #c0c0c3;
+}
