@@ -130,7 +130,22 @@ input[type="search"],
 input[type="text"],
 input[type="number"],
 .input-append .add-on,
-.input-prepend .add-on {
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
   background-color: #656b76;
   border: none;
   color: #e7e7e8;
