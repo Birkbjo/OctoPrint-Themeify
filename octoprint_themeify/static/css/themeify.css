@@ -374,3 +374,7 @@ textarea[readonly] {
   background-color: #595e68;
   color: #c0c0c3;
 }
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  background: #000;
+}
