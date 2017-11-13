@@ -18,6 +18,26 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
             js=["js/themeify.js"]
 	)
 
+    def get_update_information(self):
+		# Define the configuration for your plugin to use with the Software Update
+		# Plugin here. See https://github.com/foosel/OctoPrint/wiki/Plugin:-Software-Update
+		# for details.
+		return dict(
+			themeify=dict(
+				displayName="Themeify",
+				displayVersion=self._plugin_version,
+
+				# version check: github repository
+				type="github_release",
+				user="birkbjo",
+				repo="OctoPrint-Themeify",
+				current=self._plugin_version,
+
+				# update method: pip
+				pip="https://github.com/birkbjo/OctoPrint-Themeify/archive/{target_version}.zip"
+			)
+		)
+
 __plugin_name__ = "Themeify"
 
 def __plugin_load__():
