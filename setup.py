@@ -16,7 +16,7 @@ plugin_author_email = "birkbjo@gmail.com"
 
 plugin_url = "https://github.com/birkbjo/OctoPrint-Themeify"
 
-plugin_license = "MIT"
+plugin_license = "AGPLv3"
 
 plugin_requires = []
 

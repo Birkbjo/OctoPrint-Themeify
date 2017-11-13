@@ -19,4 +19,12 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
 	)
 
 __plugin_name__ = "Themeify"
-__plugin_implementation__ = ThemeifyPlugin()
+
+def __plugin_load__():
+	global __plugin_implementation__
+	__plugin_implementation__ = ThemeifyPlugin()
+
+	global __plugin_hooks__
+	__plugin_hooks__ = {
+		"octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
+	}
