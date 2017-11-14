@@ -8,8 +8,8 @@ Currently supports a beautiful Dark Theme inspired by Discord's color [palette](
 
 ## Setup
 
-Until this plugin is merged into the central plugin-repository, install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
-by manually entering this URL:
+Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager) by searching for "Themify", or
+manually enter this URL:
 
     https://github.com/birkbjo/OctoPrint-Themeify/archive/master.zip
 
