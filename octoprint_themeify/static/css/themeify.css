@@ -135,7 +135,6 @@
 .themeify input[type="number"],
 .themeify .input-append .add-on,
 .themeify textarea,
-.themeify input[type="text"],
 .themeify input[type="password"],
 .themeify input[type="datetime"],
 .themeify input[type="datetime-local"],
@@ -178,6 +177,12 @@
 .themeify .input-prepend .add-on {
   padding-bottom: 6px;
 }
+.themeify .input-prepend .add-on.add-on-limited {
+  background-color: #656b76;
+  color: #e7e7e8;
+  border: none;
+  text-shadow: none;
+}
 .themeify .slider .slider-selection {
   background: #7289DA;
 }
@@ -187,17 +192,23 @@
 }
 .themeify .octoprint-container .accordion-heading [class*=" icon-"],
 .themeify table td.settings_printerProfiles_profiles_action a,
-.themeify table th.settings_printerProfiles_profiles_action a {
+.themeify table th.settings_printerProfiles_profiles_action a,
+.themeify table th.settings_plugin_plugin_manager_plugins_actions a,
+.themeify table td.settings_plugin_plugin_manager_plugins_actions a {
   color: #dadadc;
 }
 .themeify .octoprint-container .accordion-heading [class*=" icon-"]:hover,
 .themeify table td.settings_printerProfiles_profiles_action a:hover,
-.themeify table th.settings_printerProfiles_profiles_action a:hover {
+.themeify table th.settings_printerProfiles_profiles_action a:hover,
+.themeify table th.settings_plugin_plugin_manager_plugins_actions a:hover,
+.themeify table td.settings_plugin_plugin_manager_plugins_actions a:hover {
   color: #fff;
 }
 .themeify .octoprint-container .accordion-heading [class*=" icon-"].disabled,
 .themeify table td.settings_printerProfiles_profiles_action a.disabled,
-.themeify table th.settings_printerProfiles_profiles_action a.disabled {
+.themeify table th.settings_printerProfiles_profiles_action a.disabled,
+.themeify table th.settings_plugin_plugin_manager_plugins_actions a.disabled,
+.themeify table td.settings_plugin_plugin_manager_plugins_actions a.disabled {
   color: #595e68;
 }
 .themeify .icon-sd-black-14 {
@@ -388,4 +399,12 @@
 .themeify .modal-backdrop,
 .themeify .modal-backdrop.fade.in {
   background: #000;
+}
+.themeify .alert h1,
+.themeify .alert h2,
+.themeify .alert h3,
+.themeify .alert h4,
+.themeify .alert h5,
+.themeify .alert h6 {
+  color: inherit;
 }

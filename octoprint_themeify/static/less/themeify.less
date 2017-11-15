@@ -135,7 +135,7 @@
         }
     }
 
-    select, textarea, input[type="search"],input[type="text"], input[type="number"], .input-append .add-on, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    select, textarea, input[type="search"],input[type="text"], input[type="number"], .input-append .add-on, textarea, input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
         background-color: @lighterish;
         border:none;
         color: lighten(@notquiteWhite,5);
@@ -149,6 +149,13 @@
     .input-append .add-on, .input-prepend .add-on {
         padding-bottom: 6px;
     }
+    //upload archive field
+    .input-prepend .add-on.add-on-limited {
+        background-color: @lighterish;
+        color: lighten(@notquiteWhite, 5);
+        border: none;
+        text-shadow: none;
+    }
 
     .slider .slider-selection {
         background: @blurple;
@@ -158,7 +165,7 @@
         }
     }
 
-    .octoprint-container .accordion-heading [class*=" icon-"], table td.settings_printerProfiles_profiles_action a, table th.settings_printerProfiles_profiles_action a {
+    .octoprint-container .accordion-heading [class*=" icon-"], table td.settings_printerProfiles_profiles_action a, table th.settings_printerProfiles_profiles_action a, table th.settings_plugin_plugin_manager_plugins_actions a, table td.settings_plugin_plugin_manager_plugins_actions a {
         color: @notquiteWhite;
         &:hover {
             color: #fff;
@@ -167,13 +174,11 @@
             color: darken(@lighterish,5);
         }
     }
-    //table td.settings_printerProfiles_profiles_action a.disabled, table th.settings_printerProfiles_profiles_action a.disabled
 
     .icon-sd-black-14 {
         background-image: url(../img/ic_sd_card_white_18dp_1x.png);
         background-image: url(../img/ic_sd_card_white_18px.svg);
         background-position: 0 0px;
-        //background-size: cover;
         margin-top: 1px;
         width: 15px;
         height: 17px;
@@ -378,5 +383,11 @@
 
     .modal-backdrop, .modal-backdrop.fade.in {
         background: #000;
+    }
+
+    .alert {
+        h1, h2, h3, h4, h5, h6 {
+            color: inherit;
+        }
     }
 }
