@@ -15,7 +15,8 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
     def get_assets(self):
         return dict(
             less=["less/themeify.less"],
-            css=["css/themeify.css"]
+            css=["css/themeify.css"],
+            js=["js/themeify.js"]
         )
 
     def get_update_information(self):
@@ -37,7 +38,6 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
                 pip="https://github.com/birkbjo/OctoPrint-Themeify/archive/{target_version}.zip"
             )
         )
-
 
 __plugin_name__ = "Themeify"
 
