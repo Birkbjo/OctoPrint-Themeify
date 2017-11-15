@@ -1,4 +1,5 @@
 .themeify {
+  /* Settings dialog icons */
   /*general table hover colour*/
   /* Now non-bordered :) */
 }
@@ -190,25 +191,49 @@
 .themeify .slider .slider-selection:active {
   background-color: #5e78d5;
 }
-.themeify .octoprint-container .accordion-heading [class*=" icon-"],
-.themeify table td.settings_printerProfiles_profiles_action a,
-.themeify table th.settings_printerProfiles_profiles_action a,
-.themeify table th.settings_plugin_plugin_manager_plugins_actions a,
-.themeify table td.settings_plugin_plugin_manager_plugins_actions a {
+.themeify .octoprint-container .accordion-heading [class*=" icon-"] {
   color: #dadadc;
 }
-.themeify .octoprint-container .accordion-heading [class*=" icon-"]:hover,
-.themeify table td.settings_printerProfiles_profiles_action a:hover,
-.themeify table th.settings_printerProfiles_profiles_action a:hover,
-.themeify table th.settings_plugin_plugin_manager_plugins_actions a:hover,
-.themeify table td.settings_plugin_plugin_manager_plugins_actions a:hover {
+.themeify .octoprint-container .accordion-heading [class*=" icon-"]:hover {
   color: #fff;
 }
-.themeify .octoprint-container .accordion-heading [class*=" icon-"].disabled,
-.themeify table td.settings_printerProfiles_profiles_action a.disabled,
-.themeify table th.settings_printerProfiles_profiles_action a.disabled,
-.themeify table th.settings_plugin_plugin_manager_plugins_actions a.disabled,
-.themeify table td.settings_plugin_plugin_manager_plugins_actions a.disabled {
+.themeify .octoprint-container .accordion-heading [class*=" icon-"].disabled {
+  color: #595e68;
+}
+.themeify td.settings_printerProfiles_profiles_action a,
+.themeify th.settings_printerProfiles_profiles_action a,
+.themeify td.settings_plugin_plugin_manager_plugins_actions a,
+.themeify th.settings_plugin_plugin_manager_plugins_actions a,
+.themeify td.settings_plugin_announcements_channels_actions a,
+.themeify th.settings_plugin_announcements_channels_actions a,
+.themeify td.settings_logs_action a,
+.themeify th.settings_logs_action a,
+.themeify td.settings_users_actions a,
+.themeify th.settings_users_actions a {
+  color: #dadadc;
+}
+.themeify td.settings_printerProfiles_profiles_action a:hover,
+.themeify th.settings_printerProfiles_profiles_action a:hover,
+.themeify td.settings_plugin_plugin_manager_plugins_actions a:hover,
+.themeify th.settings_plugin_plugin_manager_plugins_actions a:hover,
+.themeify td.settings_plugin_announcements_channels_actions a:hover,
+.themeify th.settings_plugin_announcements_channels_actions a:hover,
+.themeify td.settings_logs_action a:hover,
+.themeify th.settings_logs_action a:hover,
+.themeify td.settings_users_actions a:hover,
+.themeify th.settings_users_actions a:hover {
+  color: #fff;
+}
+.themeify td.settings_printerProfiles_profiles_action a.disabled,
+.themeify th.settings_printerProfiles_profiles_action a.disabled,
+.themeify td.settings_plugin_plugin_manager_plugins_actions a.disabled,
+.themeify th.settings_plugin_plugin_manager_plugins_actions a.disabled,
+.themeify td.settings_plugin_announcements_channels_actions a.disabled,
+.themeify th.settings_plugin_announcements_channels_actions a.disabled,
+.themeify td.settings_logs_action a.disabled,
+.themeify th.settings_logs_action a.disabled,
+.themeify td.settings_users_actions a.disabled,
+.themeify th.settings_users_actions a.disabled {
   color: #595e68;
 }
 .themeify .icon-sd-black-14 {

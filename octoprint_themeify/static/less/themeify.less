@@ -165,7 +165,7 @@
         }
     }
 
-    .octoprint-container .accordion-heading [class*=" icon-"], table td.settings_printerProfiles_profiles_action a, table th.settings_printerProfiles_profiles_action a, table th.settings_plugin_plugin_manager_plugins_actions a, table td.settings_plugin_plugin_manager_plugins_actions a {
+    .octoprint-container .accordion-heading [class*=" icon-"] {
         color: @notquiteWhite;
         &:hover {
             color: #fff;
@@ -173,6 +173,25 @@
         &.disabled {
             color: darken(@lighterish,5);
         }
+    }
+
+    /* Settings dialog icons */
+    td, th {
+            &.settings_printerProfiles_profiles_action,
+            &.settings_plugin_plugin_manager_plugins_actions,
+            &.settings_plugin_announcements_channels_actions,
+            &.settings_logs_action,
+            &.settings_users_actions {
+                a {
+                    color: @notquiteWhite;
+                    &:hover {
+                        color: #fff;
+                    }
+                    &.disabled {
+                        color: darken(@lighterish,5);
+                    }
+                }
+            }
     }
 
     .icon-sd-black-14 {
