@@ -1,0 +1,22 @@
+@import "themeify.less";
+@import "material_ui_light.less";
+
+//@themes: .discorded(), material_ui_light;
+/*
+.for-each(@theme in @themes) {
+    .@{name} {
+       // .@{name}();
+      // .discorded();
+       .@{name}();
+    }
+} */
+
+.themeify {
+   &.discorded {
+       .discorded();
+   }
+   &.material_ui_light {
+       .material_ui_light();
+   }
+     
+}

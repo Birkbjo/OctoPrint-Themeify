@@ -14,10 +14,37 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
 
     def get_assets(self):
         return dict(
-            less=["less/themeify.less"],
+            less=["less/base.less"],
             css=["css/themeify.css"],
             js=["js/themeify.js"]
         )
+    
+    def get_settings_defaults(self):
+        return dict(
+            enabled = True,
+            enableCustomization = False,
+            theme = 'discorded',
+            color = {
+                'navbar_inner': None,
+            },
+            customRules = {
+                0: dict(
+                    selector = 'navbar-inner',
+                    rule = "background-color",
+                    value = "red"
+                )
+            }
+        )
+
+   # def on_settings_save(self, data):
+   #     self._logger.log(data)
+   #     octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
+
+
+    def get_template_configs(self):
+        return [
+            dict(type="settings", custom_bindings=True)
+        ]
 
     def get_update_information(self):
         # Define the configuration for your plugin to use with the Software Update

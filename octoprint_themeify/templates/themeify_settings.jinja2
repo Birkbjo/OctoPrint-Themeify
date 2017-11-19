@@ -1,0 +1,65 @@
+<form class="form-horizontal">
+    <h4>General</h4>
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                <label class="checkbox">
+                <input type="checkbox" data-bind="checked: ownSettings.enabled">Enabled
+            </label>
+            </div>
+            <div class="controls">
+                <label class="checkbox">
+                <input type="checkbox" data-bind="checked: ownSettings.enableCustomization"> Enable customization
+            </label>
+            </div>
+        
+        </div>
+        <div class="control-group">
+            <label class="control-label">Theme</label>
+            <div class="controls">
+                <select data-bind="value: ownSettings.theme">
+                    <option value="discorded">Discorded</option>
+                    <option value="material_ui_light">Material UI light</option>
+                </select>
+            </div>
+        </div>
+
+    </fieldset>
+     <h4>Customization</h4>
+     <fieldset>
+        <div class="control-group" data-bind="css: { disabled: !ownSettings.enableCustomization }">
+            <label class="control-label">Navbar</label>
+            <div class="controls">
+                <input type="color" class="input-mini" data-bind="value: ownSettings.color.navbar_inner">
+                <input type="text" class="input-mini" data-bind="value: ownSettings.color.navbar_inner">
+            </div>
+        </div>
+        </fieldset>
+        <div>
+            <div>
+                <small>
+                    <a href="#" class="muted" onclick="$(this).children().toggleClass('fa-caret-right fa-caret-down').parent().parent().parent().next().slideToggle('fast')"><i class="fa fa-caret-right"></i> Advanced options</a>
+                </small>
+            </div>
+            <div class="hide" style="display: none;">
+                <h5>Custom style</h5>
+                <div data-bind="foreach: customRules()">
+                    <div class="control-group">
+                        <label class="control-label">Style selector</label>
+                        <div class="controls">
+                                <input type="text" value="Selector"  data-bind="value: selector">
+                                <input type="text" value="Selector"  data-bind="value: rule">
+                                <input type="color" class="input-mini"  data-bind="value: value">
+                                
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="control">
+                        <button class="btn" data-bind="click: addNewCustomRule">New</button>
+                </div>
+            </div>
+        </div>
+   
+</form>
