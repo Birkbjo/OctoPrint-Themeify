@@ -68,7 +68,6 @@ $(function() {
             });
             self.onRuleToggle = self.onRuleToggle;
             self.enable();
-            getThemeify = self.ownSettings;
 
             self.updateColors();
             self._updateCustomRules();
