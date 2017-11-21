@@ -101,7 +101,7 @@ $(function() {
             }
         };
 
-        self._applyRule = function(rule, builtIn = false, isNonImportant) {
+        self._applyRule = function(rule, builtIn = false) {
             var elem = $(rule.selector());
             var old = elem.css(rule.rule());
             if (builtIn) {
@@ -117,10 +117,9 @@ $(function() {
                     old
                 });
             }
-            $(rule.selector()).style(
+            $(rule.selector()).css(
                 rule.rule(),
-                rule.value(),
-                isNonImportant ? "" : "important"
+                rule.value()
             );
         };
 
@@ -219,15 +218,15 @@ $(function() {
         };
 
         self._removeCustomStyles = function() {
-            self.customizedElements.map(elem => elem.elem.style(elem.rule, ""));
+            self.customizedElements.map(elem => elem.elem.css(elem.rule, ""));
         };
 
         self._removeBuiltInStyles = function() {
-            self.builtInElements.map(elem => elem.elem.style(elem.rule, ""));
+            self.builtInElements.map(elem => elem.elem.css(elem.rule, ""));
         };
 
         self._removeCustomStylesByRule = function(rule) {
-            $(rule.selector()).style(rule.rule(), "");
+            $(rule.selector()).css(rule.rule(), "");
         };
 
         self.onRuleToggle = function(rule) {
