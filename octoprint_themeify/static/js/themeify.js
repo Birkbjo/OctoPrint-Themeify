@@ -67,7 +67,6 @@ $(function() {
                 rateLimit: 50
             });
             self.onRuleToggle = self.onRuleToggle;
-            console.log(self.ownSettings);
             self.enable();
             getThemeify = self.ownSettings;
 
