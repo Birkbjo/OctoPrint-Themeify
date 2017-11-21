@@ -1,62 +1,62 @@
-.themeify {
+.themeify.discorded {
   /* Settings dialog icons */
   /*general table hover colour*/
   /* Now non-bordered :) */
 }
-.themeify body {
+.themeify.discorded body {
   background-color: #36393f;
   color: #dadadc;
   font-weight: 400;
 }
-.themeify a {
+.themeify.discorded a {
   color: #99AAB5;
 }
-.themeify a:hover {
+.themeify.discorded a:hover {
   color: #d4dbe0;
 }
-.themeify .octoprint-container .tab-content h1 {
+.themeify.discorded .octoprint-container .tab-content h1 {
   color: #FFFFFF;
 }
-.themeify .octoprint-container .tab-content {
+.themeify.discorded .octoprint-container .tab-content {
   border: none;
 }
-.themeify .accordion-group {
+.themeify.discorded .accordion-group {
   border: none;
 }
-.themeify .accordion {
+.themeify.discorded .accordion {
   background-color: #2f3136;
   -webkit-box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
 }
-.themeify .octoprint-container .accordion-heading .accordion-heading-button a {
+.themeify.discorded .octoprint-container .accordion-heading .accordion-heading-button a {
   color: inherit;
 }
-.themeify .nav-tabs > li > a {
+.themeify.discorded .nav-tabs > li > a {
   -webkit-border-radius: 0;
   border-radius: 0;
 }
-.themeify .nav-tabs > .active > a,
-.themeify .nav-tabs > .active > a:hover {
+.themeify.discorded .nav-tabs > .active > a,
+.themeify.discorded .nav-tabs > .active > a:hover {
   background-color: #2f3136;
   color: #fff;
   border: none;
 }
-.themeify .nav-pills > .active > a,
-.themeify .nav-pills > .active > a:hover {
+.themeify.discorded .nav-pills > .active > a,
+.themeify.discorded .nav-pills > .active > a:hover {
   background-color: #7289DA;
 }
-.themeify .nav-tabs > li > a:hover {
+.themeify.discorded .nav-tabs > li > a:hover {
   background-color: #474a51;
   border: none;
 }
-.themeify h1,
-.themeify h2,
-.themeify h3,
-.themeify h4 {
+.themeify.discorded h1,
+.themeify.discorded h2,
+.themeify.discorded h3,
+.themeify.discorded h4 {
   color: #FFFFFF;
 }
-.themeify .btn {
+.themeify.discorded .btn {
   border-radius: 3px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -70,173 +70,185 @@
   font-weight: 400;
   text-shadow: none;
 }
-.themeify .btn:hover {
+.themeify.discorded .btn:hover {
   color: #fff;
   background-color: #474a51;
 }
-.themeify .btn:focus {
+.themeify.discorded .btn:focus {
   border-color: rgba(255, 255, 255, 0.7);
   background-color: #474a51;
   outline-color: #dadadc;
   outline-width: 2px;
   color: #fff;
 }
-.themeify .btn:active {
+.themeify.discorded .btn:active {
   background-color: #5e626d;
 }
-.themeify .btn.active {
+.themeify.discorded .btn.active {
   background-color: #5e626d;
   border: 1px solid rgba(255, 255, 255, 0.85);
   color: #fff;
 }
-.themeify .btn btn-primary,
-.themeify .btn-primary[disabled] {
+.themeify.discorded .btn btn-primary,
+.themeify.discorded .btn-primary[disabled] {
   background-color: #7289DA;
 }
-.themeify .btn-primary {
+.themeify.discorded .btn-primary {
   background-color: #7289DA;
   border: none;
 }
-.themeify .btn-primary:hover {
+.themeify.discorded .btn-primary:hover {
   background-color: #5e78d5;
 }
-.themeify .btn-primary:active,
-.themeify .btn-primary:focus {
+.themeify.discorded .btn-primary:active,
+.themeify.discorded .btn-primary:focus {
   background-color: #526ed2;
 }
-.themeify .btn-primary.disabled,
-.themeify .btn-primary[disabled] {
+.themeify.discorded .btn-primary.disabled,
+.themeify.discorded .btn-primary[disabled] {
   background-color: #5e78d5;
 }
-.themeify .btn-group.open .btn-primary.dropdown-toggle {
+.themeify.discorded .btn-group.open .btn-primary.dropdown-toggle {
   box-shadow: none;
   background-color: #4a67cf;
 }
-.themeify .btn-group.open .btn.dropdown-toggle {
+.themeify.discorded .btn-group.open .btn.dropdown-toggle {
   background: #36393f;
 }
-.themeify .btn-group.open .btn.dropdown-toggle:active,
-.themeify .btn-group.open .btn.dropdown-toggle:focus {
+.themeify.discorded .btn-group.open .btn.dropdown-toggle:active,
+.themeify.discorded .btn-group.open .btn.dropdown-toggle:focus {
   background: #36393f;
   color: #fff;
 }
-.themeify .btn.disabled,
-.themeify .btn[disabled] {
+.themeify.discorded .btn.disabled,
+.themeify.discorded .btn[disabled] {
   background-color: #595e68;
   color: #cdcdd0;
 }
-.themeify .btn.disabled:hover,
-.themeify .btn[disabled]:hover {
+.themeify.discorded .btn.disabled:hover,
+.themeify.discorded .btn[disabled]:hover {
   color: #cdcdd0;
 }
-.themeify select,
-.themeify textarea,
-.themeify input[type="search"],
-.themeify input[type="text"],
-.themeify input[type="number"],
-.themeify .input-append .add-on,
-.themeify textarea,
-.themeify input[type="password"],
-.themeify input[type="datetime"],
-.themeify input[type="datetime-local"],
-.themeify input[type="date"],
-.themeify input[type="month"],
-.themeify input[type="time"],
-.themeify input[type="week"],
-.themeify input[type="number"],
-.themeify input[type="email"],
-.themeify input[type="url"],
-.themeify input[type="search"],
-.themeify input[type="tel"],
-.themeify input[type="color"],
-.themeify .uneditable-input {
+.themeify.discorded select,
+.themeify.discorded textarea,
+.themeify.discorded input[type="search"],
+.themeify.discorded input[type="text"],
+.themeify.discorded input[type="number"],
+.themeify.discorded .input-append .add-on,
+.themeify.discorded textarea,
+.themeify.discorded input[type="password"],
+.themeify.discorded input[type="datetime"],
+.themeify.discorded input[type="datetime-local"],
+.themeify.discorded input[type="date"],
+.themeify.discorded input[type="month"],
+.themeify.discorded input[type="time"],
+.themeify.discorded input[type="week"],
+.themeify.discorded input[type="number"],
+.themeify.discorded input[type="email"],
+.themeify.discorded input[type="url"],
+.themeify.discorded input[type="search"],
+.themeify.discorded input[type="tel"],
+.themeify.discorded input[type="color"],
+.themeify.discorded .uneditable-input {
   background-color: #656b76;
   border: none;
   color: #e7e7e8;
   text-shadow: none;
   padding-bottom: 6px;
 }
-.themeify textarea:focus,
-.themeify input[type="text"]:focus,
-.themeify input[type="password"]:focus,
-.themeify input[type="datetime"]:focus,
-.themeify input[type="datetime-local"]:focus,
-.themeify input[type="date"]:focus,
-.themeify input[type="month"]:focus,
-.themeify input[type="time"]:focus,
-.themeify input[type="week"]:focus,
-.themeify input[type="number"]:focus,
-.themeify input[type="email"]:focus,
-.themeify input[type="url"]:focus,
-.themeify input[type="search"]:focus,
-.themeify input[type="tel"]:focus,
-.themeify input[type="color"]:focus,
-.themeify .uneditable-input:focus {
+.themeify.discorded textarea:focus,
+.themeify.discorded input[type="text"]:focus,
+.themeify.discorded input[type="password"]:focus,
+.themeify.discorded input[type="datetime"]:focus,
+.themeify.discorded input[type="datetime-local"]:focus,
+.themeify.discorded input[type="date"]:focus,
+.themeify.discorded input[type="month"]:focus,
+.themeify.discorded input[type="time"]:focus,
+.themeify.discorded input[type="week"]:focus,
+.themeify.discorded input[type="number"]:focus,
+.themeify.discorded input[type="email"]:focus,
+.themeify.discorded input[type="url"]:focus,
+.themeify.discorded input[type="search"]:focus,
+.themeify.discorded input[type="tel"]:focus,
+.themeify.discorded input[type="color"]:focus,
+.themeify.discorded .uneditable-input:focus {
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 8px rgba(255, 255, 255, 0.5);
 }
-.themeify .input-append .add-on,
-.themeify .input-prepend .add-on {
+.themeify.discorded .input-append .add-on,
+.themeify.discorded .input-prepend .add-on {
   padding-bottom: 6px;
 }
-.themeify .input-prepend .add-on.add-on-limited {
+.themeify.discorded .input-prepend .add-on.add-on-limited {
   background-color: #656b76;
   color: #e7e7e8;
   border: none;
   text-shadow: none;
 }
-.themeify .slider .slider-selection {
+.themeify.discorded .slider .slider-selection {
   background: #7289DA;
 }
-.themeify .slider .slider-selection:hover,
-.themeify .slider .slider-selection:active {
+.themeify.discorded .slider .slider-selection:hover,
+.themeify.discorded .slider .slider-selection:active {
   background-color: #5e78d5;
 }
-.themeify .octoprint-container .accordion-heading [class*=" icon-"] {
+.themeify.discorded .octoprint-container .accordion-heading [class*=" icon-"] {
   color: #dadadc;
 }
-.themeify .octoprint-container .accordion-heading [class*=" icon-"]:hover {
+.themeify.discorded .octoprint-container .accordion-heading [class*=" icon-"]:hover {
   color: #fff;
 }
-.themeify .octoprint-container .accordion-heading [class*=" icon-"].disabled {
+.themeify.discorded .octoprint-container .accordion-heading [class*=" icon-"].disabled {
   color: #595e68;
 }
-.themeify td.settings_printerProfiles_profiles_action a,
-.themeify th.settings_printerProfiles_profiles_action a,
-.themeify td.settings_plugin_plugin_manager_plugins_actions a,
-.themeify th.settings_plugin_plugin_manager_plugins_actions a,
-.themeify td.settings_plugin_announcements_channels_actions a,
-.themeify th.settings_plugin_announcements_channels_actions a,
-.themeify td.settings_logs_action a,
-.themeify th.settings_logs_action a,
-.themeify td.settings_users_actions a,
-.themeify th.settings_users_actions a {
+.themeify.discorded td.settings_printerProfiles_profiles_action a,
+.themeify.discorded th.settings_printerProfiles_profiles_action a,
+.themeify.discorded td.settings_plugin_plugin_manager_plugins_actions a,
+.themeify.discorded th.settings_plugin_plugin_manager_plugins_actions a,
+.themeify.discorded td.settings_plugin_announcements_channels_actions a,
+.themeify.discorded th.settings_plugin_announcements_channels_actions a,
+.themeify.discorded td.settings_logs_action a,
+.themeify.discorded th.settings_logs_action a,
+.themeify.discorded td.settings_users_actions a,
+.themeify.discorded th.settings_users_actions a {
   color: #dadadc;
 }
-.themeify td.settings_printerProfiles_profiles_action a:hover,
-.themeify th.settings_printerProfiles_profiles_action a:hover,
-.themeify td.settings_plugin_plugin_manager_plugins_actions a:hover,
-.themeify th.settings_plugin_plugin_manager_plugins_actions a:hover,
-.themeify td.settings_plugin_announcements_channels_actions a:hover,
-.themeify th.settings_plugin_announcements_channels_actions a:hover,
-.themeify td.settings_logs_action a:hover,
-.themeify th.settings_logs_action a:hover,
-.themeify td.settings_users_actions a:hover,
-.themeify th.settings_users_actions a:hover {
+.themeify.discorded td.settings_printerProfiles_profiles_action a:hover,
+.themeify.discorded th.settings_printerProfiles_profiles_action a:hover,
+.themeify.discorded td.settings_plugin_plugin_manager_plugins_actions a:hover,
+.themeify.discorded th.settings_plugin_plugin_manager_plugins_actions a:hover,
+.themeify.discorded td.settings_plugin_announcements_channels_actions a:hover,
+.themeify.discorded th.settings_plugin_announcements_channels_actions a:hover,
+.themeify.discorded td.settings_logs_action a:hover,
+.themeify.discorded th.settings_logs_action a:hover,
+.themeify.discorded td.settings_users_actions a:hover,
+.themeify.discorded th.settings_users_actions a:hover {
   color: #fff;
 }
-.themeify td.settings_printerProfiles_profiles_action a.disabled,
-.themeify th.settings_printerProfiles_profiles_action a.disabled,
-.themeify td.settings_plugin_plugin_manager_plugins_actions a.disabled,
-.themeify th.settings_plugin_plugin_manager_plugins_actions a.disabled,
-.themeify td.settings_plugin_announcements_channels_actions a.disabled,
-.themeify th.settings_plugin_announcements_channels_actions a.disabled,
-.themeify td.settings_logs_action a.disabled,
-.themeify th.settings_logs_action a.disabled,
-.themeify td.settings_users_actions a.disabled,
-.themeify th.settings_users_actions a.disabled {
+.themeify.discorded td.settings_printerProfiles_profiles_action a.disabled,
+.themeify.discorded th.settings_printerProfiles_profiles_action a.disabled,
+.themeify.discorded td.settings_plugin_plugin_manager_plugins_actions a.disabled,
+.themeify.discorded th.settings_plugin_plugin_manager_plugins_actions a.disabled,
+.themeify.discorded td.settings_plugin_announcements_channels_actions a.disabled,
+.themeify.discorded th.settings_plugin_announcements_channels_actions a.disabled,
+.themeify.discorded td.settings_logs_action a.disabled,
+.themeify.discorded th.settings_logs_action a.disabled,
+.themeify.discorded td.settings_users_actions a.disabled,
+.themeify.discorded th.settings_users_actions a.disabled {
   color: #595e68;
 }
-.themeify .icon-sd-black-14 {
+.themeify.discorded td i,
+.themeify.discorded th i {
+  color: #dadadc;
+}
+.themeify.discorded td i:hover,
+.themeify.discorded th i:hover {
+  color: #fff;
+}
+.themeify.discorded td i.disabled,
+.themeify.discorded th i.disabled {
+  color: #595e68;
+}
+.themeify.discorded .icon-sd-black-14 {
   background-image: url(../img/ic_sd_card_white_18dp_1x.png);
   background-image: url(../img/ic_sd_card_white_18px.svg);
   background-position: 0 0px;
@@ -246,190 +258,421 @@
   filter: hue-rotate(240deg) saturate(2.77777778%) brightness(85.88235294%);
   transform: rotateY(180deg);
 }
-.themeify .progress .bar {
+.themeify.discorded .progress .bar {
   background: #7289DA;
 }
-.themeify #navbar .navbar-inner {
+.themeify.discorded #navbar .navbar-inner {
   background-color: #2f3136;
   border: none;
   background-image: none;
 }
-.themeify #navbar .navbar-inner .nav > li.dropdown.open > .dropdown-toggle,
-.themeify #navbar .navbar-inner .nav > li.dropdown.active > .dropdown-toggle,
-.themeify #navbar .navbar-inner .nav > li.dropdown.open.active > .dropdown-toggle {
+.themeify.discorded #navbar .navbar-inner .nav > li.dropdown.open > .dropdown-toggle,
+.themeify.discorded #navbar .navbar-inner .nav > li.dropdown.active > .dropdown-toggle,
+.themeify.discorded #navbar .navbar-inner .nav > li.dropdown.open.active > .dropdown-toggle {
   background: #2d2f33;
   border-bottom: 1px solid #dadadc;
   color: #fff;
 }
-.themeify #navbar .navbar-inner .nav > li > a:hover {
+.themeify.discorded #navbar .navbar-inner .nav > li > a:hover {
   color: #fff;
   background: #474a51;
 }
-.themeify #navbar .navbar-inner .brand,
-.themeify #navbar .navbar-inner .nav > li > a {
+.themeify.discorded #navbar .navbar-inner .brand,
+.themeify.discorded #navbar .navbar-inner .nav > li > a {
   color: #fff;
 }
-.themeify .dropdown-menu {
+.themeify.discorded .dropdown-menu {
   background: #2f3136;
 }
-.themeify .dropdown-menu li > a {
+.themeify.discorded .dropdown-menu li > a {
   color: #dadadc;
 }
-.themeify .dropdown-menu li > a:hover,
-.themeify .dropdown-menu li > a:focus {
+.themeify.discorded .dropdown-menu li > a:hover,
+.themeify.discorded .dropdown-menu li > a:focus {
   background: #474a51;
   outline: none;
 }
-.themeify #files .gcode_files .entry:hover,
-.themeify .table-hover tbody tr:hover td,
-.themeify .table-hover tbody tr:hover th {
+.themeify.discorded #files .gcode_files .entry:hover,
+.themeify.discorded .table-hover tbody tr:hover td,
+.themeify.discorded .table-hover tbody tr:hover th {
   background-color: #474a51;
 }
-.themeify .legend > table {
+.themeify.discorded .legend > table {
   color: #dadadc !important;
 }
-.themeify .progress {
+.themeify.discorded .progress {
   background: #656b76;
 }
-.themeify .table-bordered,
-.themeify .table-striped {
+.themeify.discorded .table-bordered,
+.themeify.discorded .table-striped {
   border-color: #656b76;
   border: none;
 }
-.themeify .table-bordered th,
-.themeify .table-striped th,
-.themeify .table-bordered td,
-.themeify .table-striped td {
+.themeify.discorded .table-bordered th,
+.themeify.discorded .table-striped th,
+.themeify.discorded .table-bordered td,
+.themeify.discorded .table-striped td {
   border-color: #656b76;
   border-left: none;
   border-right: none;
 }
-.themeify .table-striped tbody > tr:nth-child(odd) > td,
-.themeify .table-striped tbody th {
+.themeify.discorded .table-striped tbody > tr:nth-child(odd) > td,
+.themeify.discorded .table-striped tbody th {
   background-color: #36393f;
 }
-.themeify .modal {
+.themeify.discorded .modal {
   background-color: #36393f;
 }
-.themeify .modal-body {
+.themeify.discorded .modal-body {
   border: none;
 }
-.themeify .modal-footer,
-.themeify .modal-header {
+.themeify.discorded .modal-footer,
+.themeify.discorded .modal-header {
   background-color: #2f3136;
   border: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.themeify .nav-list > li > a {
+.themeify.discorded .nav-list > li > a {
   text-shadow: none;
 }
-.themeify .nav-list > li > a:hover {
+.themeify.discorded .nav-list > li > a:hover {
   color: #fff;
   background: #474a51;
 }
-.themeify .nav-list .nav-header {
+.themeify.discorded .nav-list .nav-header {
   text-shadow: none;
 }
-.themeify .nav-list > .active > a {
+.themeify.discorded .nav-list > .active > a {
   background-color: #2f3136;
 }
-.themeify .nav-list > .active > a:hover {
+.themeify.discorded .nav-list > .active > a:hover {
   background-color: #2f3136;
 }
-.themeify .close {
+.themeify.discorded .close {
   color: #fff;
   text-shadow: none;
 }
-.themeify .help-inline,
-.themeify .help-block {
+.themeify.discorded .help-inline,
+.themeify.discorded .help-block {
   color: #b3b3b7;
 }
-.themeify code {
+.themeify.discorded code {
   background-color: #656b76;
   border: none;
 }
-.themeify .label,
-.themeify .badge {
+.themeify.discorded .label,
+.themeify.discorded .badge {
   background-color: #656b76;
   color: #dadadc;
   text-shadow: none;
 }
-.themeify .scrollable::-webkit-scrollbar,
-.themeify .pre-scrollable::-webkit-scrollbar,
-.themeify body::-webkit-scrollbar {
+.themeify.discorded .scrollable::-webkit-scrollbar,
+.themeify.discorded .pre-scrollable::-webkit-scrollbar,
+.themeify.discorded body::-webkit-scrollbar {
   background-color: #36393f;
 }
-.themeify .scrollable::-webkit-scrollbar-thumb,
-.themeify .pre-scrollable::-webkit-scrollbar-thumb,
-.themeify body::-webkit-scrollbar-thumb {
+.themeify.discorded .scrollable::-webkit-scrollbar-thumb,
+.themeify.discorded .pre-scrollable::-webkit-scrollbar-thumb,
+.themeify.discorded body::-webkit-scrollbar-thumb {
   background-color: #2a2d31;
   border-radius: 25px;
 }
-.themeify .scrollable::-webkit-scrollbar-track,
-.themeify .pre-scrollable::-webkit-scrollbar-track,
-.themeify body::-webkit-scrollbar-track {
+.themeify.discorded .scrollable::-webkit-scrollbar-track,
+.themeify.discorded .pre-scrollable::-webkit-scrollbar-track,
+.themeify.discorded body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(47, 49, 54, 0.5);
 }
-.themeify legend {
+.themeify.discorded legend {
   color: inherit;
 }
-.themeify .hero-unit {
+.themeify.discorded .hero-unit {
   background-color: #36393f;
 }
-.themeify .footer ul li a {
+.themeify.discorded .footer ul li a {
   color: #999;
 }
-.themeify .flot-text {
+.themeify.discorded .flot-text {
   color: #dadadc !important;
 }
-.themeify #terminal-output {
+.themeify.discorded #terminal-output {
   background-color: #656b76;
   color: #dadadc;
 }
-.themeify .pagination-mini ul > li > a {
+.themeify.discorded .pagination-mini ul > li > a {
   background-color: #36393f;
   color: #dadadc;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.themeify .pagination-mini ul > li > a:hover {
+.themeify.discorded .pagination-mini ul > li > a:hover {
   color: #fff;
   background: #474a51;
   border: 1px solid rgba(255, 255, 255, 0.7);
 }
-.themeify .pagination-mini ul > li > a:focus {
+.themeify.discorded .pagination-mini ul > li > a:focus {
   outline: none;
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
-.themeify .pagination ul > li > a:hover,
-.themeify .pagination ul > .active > a {
+.themeify.discorded .pagination ul > li > a:hover,
+.themeify.discorded .pagination ul > .active > a {
   background-color: #2f3136;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.85);
 }
-.themeify .nav .dropdown-toggle .caret {
+.themeify.discorded .nav .dropdown-toggle .caret {
   border-top-color: #dadadc;
   border-bottom-color: #dadadc;
 }
-.themeify input[disabled],
-.themeify select[disabled],
-.themeify textarea[disabled],
-.themeify input[readonly],
-.themeify select[readonly],
-.themeify textarea[readonly] {
+.themeify.discorded input[disabled],
+.themeify.discorded select[disabled],
+.themeify.discorded textarea[disabled],
+.themeify.discorded input[readonly],
+.themeify.discorded select[readonly],
+.themeify.discorded textarea[readonly] {
   background-color: #595e68;
   color: #c0c0c3;
 }
-.themeify .modal-backdrop,
-.themeify .modal-backdrop.fade.in {
+.themeify.discorded .modal-backdrop,
+.themeify.discorded .modal-backdrop.fade.in {
   background: #000;
 }
-.themeify .alert h1,
-.themeify .alert h2,
-.themeify .alert h3,
-.themeify .alert h4,
-.themeify .alert h5,
-.themeify .alert h6 {
+.themeify.discorded .alert h1,
+.themeify.discorded .alert h2,
+.themeify.discorded .alert h3,
+.themeify.discorded .alert h4,
+.themeify.discorded .alert h5,
+.themeify.discorded .alert h6 {
   color: inherit;
+}
+.themeify.material_ui_light .btn {
+  background: white;
+  filter: brightness(1);
+  border-radius: 3px;
+}
+.themeify.material_ui_light .btn,
+.themeify.material_ui_light .btn:focus,
+.themeify.material_ui_light .btn:hover {
+  transition: filter 0.2s ease, background-color 0.2s ease;
+}
+.themeify.material_ui_light .btn.active,
+.themeify.material_ui_light .btn.disabled,
+.themeify.material_ui_light .btn:active,
+.themeify.material_ui_light .btn:focus,
+.themeify.material_ui_light .btn:hover,
+.themeify.material_ui_light .btn[disabled] {
+  filter: brightness(0.9);
+}
+.themeify.material_ui_light .btn,
+.themeify.material_ui_light .btn.active,
+.themeify.material_ui_light .btn:active,
+.themeify.material_ui_light .btn-group {
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.47);
+}
+.themeify.material_ui_light .btn-group .btn {
+  box-shadow: none;
+}
+.themeify.material_ui_light .dropdown-backdrop {
+  display: none;
+}
+.themeify.material_ui_light .btn-group > .btn + .dropdown-backdrop + .dropdown-toggle,
+.themeify.material_ui_light .btn-group > .btn + .dropdown-toggle {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.themeify.material_ui_light .progress {
+  background: rgba(0, 0, 0, 0.07);
+  box-shadow: none;
+}
+.themeify.material_ui_light .progress .bar {
+  background: #2196F3;
+  box-shadow: none;
+  border: 0;
+}
+.themeify.material_ui_light .btn,
+.themeify.material_ui_light .input-append .add-on,
+.themeify.material_ui_light .input-prepend .add-on,
+.themeify.material_ui_light textarea,
+.themeify.material_ui_light input[type="text"],
+.themeify.material_ui_light input[type="password"],
+.themeify.material_ui_light input[type="datetime"],
+.themeify.material_ui_light input[type="datetime-local"],
+.themeify.material_ui_light input[type="date"],
+.themeify.material_ui_light input[type="month"],
+.themeify.material_ui_light input[type="time"],
+.themeify.material_ui_light input[type="week"],
+.themeify.material_ui_light input[type="number"],
+.themeify.material_ui_light input[type="email"],
+.themeify.material_ui_light input[type="url"],
+.themeify.material_ui_light input[type="search"],
+.themeify.material_ui_light input[type="tel"],
+.themeify.material_ui_light input[type="color"],
+.themeify.material_ui_light .uneditable-input,
+.themeify.material_ui_light textarea:focus,
+.themeify.material_ui_light input[type="text"]:focus,
+.themeify.material_ui_light input[type="password"]:focus,
+.themeify.material_ui_light input[type="datetime"]:focus,
+.themeify.material_ui_light input[type="datetime-local"]:focus,
+.themeify.material_ui_light input[type="date"]:focus,
+.themeify.material_ui_light input[type="month"]:focus,
+.themeify.material_ui_light input[type="time"]:focus,
+.themeify.material_ui_light input[type="week"]:focus,
+.themeify.material_ui_light input[type="number"]:focus,
+.themeify.material_ui_light input[type="email"]:focus,
+.themeify.material_ui_light input[type="url"]:focus,
+.themeify.material_ui_light input[type="search"]:focus,
+.themeify.material_ui_light input[type="tel"]:focus,
+.themeify.material_ui_light input[type="color"]:focus,
+.themeify.material_ui_light .uneditable-input:focus {
+  text-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.31);
+}
+.themeify.material_ui_light .btn-primary,
+.themeify.material_ui_light .btn-primary.active,
+.themeify.material_ui_light .btn-primary.disabled,
+.themeify.material_ui_light .btn-primary:active,
+.themeify.material_ui_light .btn-primary:focus,
+.themeify.material_ui_light .btn-primary:hover,
+.themeify.material_ui_light .btn-primary[disabled] {
+  color: #fff;
+  background-color: #2196F3;
+}
+.themeify.material_ui_light .btn-danger,
+.themeify.material_ui_light .btn-danger.active,
+.themeify.material_ui_light .btn-danger.disabled,
+.themeify.material_ui_light .btn-danger:active,
+.themeify.material_ui_light .btn-danger:focus,
+.themeify.material_ui_light .btn-danger:hover,
+.themeify.material_ui_light .btn-danger[disabled] {
+  background-color: #F44336;
+}
+.themeify.material_ui_light .btn-warning,
+.themeify.material_ui_light .btn-warning.active,
+.themeify.material_ui_light .btn-warning.disabled,
+.themeify.material_ui_light .btn-warning:active,
+.themeify.material_ui_light .btn-warning:focus,
+.themeify.material_ui_light .btn-warning:hover,
+.themeify.material_ui_light .btn-warning[disabled] {
+  background-color: #FF9800;
+}
+.themeify.material_ui_light .dropdown-menu li > a:hover,
+.themeify.material_ui_light .dropdown-menu li > a:focus,
+.themeify.material_ui_light .dropdown-submenu:hover > a {
+  background: #2196F3;
+}
+.themeify.material_ui_light .dropdown-menu {
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  border-radius: 3px;
+}
+.themeify.material_ui_light .accordion-group {
+  border: 1px solid #e9e9e9;
+  border-radius: 4px;
+}
+.themeify.material_ui_light .tab-content {
+  border-radius: 0 0 4px 4px;
+}
+.themeify.material_ui_light .accordion-group,
+.themeify.material_ui_light .tab-content {
+  box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.32);
+  background: white;
+  margin-bottom: 10px;
+}
+.themeify.material_ui_light textarea:focus,
+.themeify.material_ui_light input[type="text"]:focus,
+.themeify.material_ui_light input[type="password"]:focus,
+.themeify.material_ui_light input[type="datetime"]:focus,
+.themeify.material_ui_light input[type="datetime-local"]:focus,
+.themeify.material_ui_light input[type="date"]:focus,
+.themeify.material_ui_light input[type="month"]:focus,
+.themeify.material_ui_light input[type="time"]:focus,
+.themeify.material_ui_light input[type="week"]:focus,
+.themeify.material_ui_light input[type="number"]:focus,
+.themeify.material_ui_light input[type="email"]:focus,
+.themeify.material_ui_light input[type="url"]:focus,
+.themeify.material_ui_light input[type="search"]:focus,
+.themeify.material_ui_light input[type="tel"]:focus,
+.themeify.material_ui_light input[type="color"]:focus,
+.themeify.material_ui_light .uneditable-input:focus {
+  background: white;
+  box-shadow: none !important;
+  border-color: #2196F3;
+}
+.themeify.material_ui_light .slider .slider-track {
+  box-shadow: none;
+}
+.themeify.material_ui_light .slider .slider-selection {
+  background: #2196F3;
+  border: none;
+  box-shadow: none;
+}
+.themeify.material_ui_light .nav > li > a {
+  color: inherit;
+}
+.themeify.material_ui_light .legendColorBox > div {
+  border-radius: 50%;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.themeify.material_ui_light .legendColorBox > div > div {
+  border-radius: 50%;
+  width: 0px !important;
+  height: 0px !important;
+  padding: 0 !important;
+}
+.themeify.material_ui_light #navbar .navbar-inner {
+  background-image: none !important;
+  box-shadow: 0px 0px 15px black !important;
+  border: none !important;
+}
+.themeify.material_ui_light #navbar .navbar-inner .nav > li > a:hover {
+  background: rgba(128, 128, 128, 0.5) !important;
+}
+.themeify.material_ui_light #navbar .navbar-inner .brand,
+.themeify.material_ui_light #navbar .navbar-inner .nav > li > a {
+  text-shadow: none !important;
+}
+.themeify.material_ui_light .navbar .brand {
+  text-shadow: none !important;
+}
+.themeify.material_ui_light #navbar .navbar-inner .nav > li.dropdown.active > .dropdown-toggle,
+.themeify.material_ui_light #navbar .navbar-inner .nav > li.dropdown.open.active > .dropdown-toggle,
+.themeify.material_ui_light #navbar .navbar-inner .nav > li.dropdown.open > .dropdown-toggle {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+.themeify.material_ui_light .modal.fade {
+  box-shadow: 0 30px 50px -30px rgba(0, 0, 0, 0.76) !important;
+  border: 0 !important;
+}
+.themeify.material_ui_light .nav-list > .active > a,
+.themeify.material_ui_light .nav-list > .active > a:hover {
+  background-color: #2196F3;
+}
+.themeify.material_ui_light .modal-footer {
+  border: 0;
+}
+.themeify.material_ui_light textarea,
+.themeify.material_ui_light input[type="text"],
+.themeify.material_ui_light input[type="password"],
+.themeify.material_ui_light input[type="datetime"],
+.themeify.material_ui_light input[type="datetime-local"],
+.themeify.material_ui_light input[type="date"],
+.themeify.material_ui_light input[type="month"],
+.themeify.material_ui_light input[type="time"],
+.themeify.material_ui_light input[type="week"],
+.themeify.material_ui_light input[type="number"],
+.themeify.material_ui_light input[type="email"],
+.themeify.material_ui_light input[type="url"],
+.themeify.material_ui_light input[type="search"],
+.themeify.material_ui_light input[type="tel"],
+.themeify.material_ui_light input[type="color"],
+.themeify.material_ui_light .uneditable-input {
+  box-shadow: none;
+}
+.themeify.material_ui_light .modal-backdrop,
+.themeify.material_ui_light .modal-backdrop.fade.in {
+  background: black;
+}
+.themeify.material_ui_light #temperature-graph {
+  background-image: none !important;
 }

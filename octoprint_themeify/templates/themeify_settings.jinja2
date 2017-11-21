@@ -5,15 +5,15 @@
             <label class="control-label"></label>
             <div class="controls">
                 <label class="checkbox">
-                <input type="checkbox" data-bind="checked: ownSettings.enabled">Enabled
-            </label>
+                    <input type="checkbox" data-bind="checked: ownSettings.enabled">Enabled
+                </label>
             </div>
             <div class="controls">
                 <label class="checkbox">
-                <input type="checkbox" data-bind="checked: ownSettings.enableCustomization"> Enable customization
-            </label>
+                    <input type="checkbox" data-bind="checked: ownSettings.enableCustomization"> Enable customization
+                </label>
             </div>
-        
+
         </div>
         <div class="control-group">
             <label class="control-label">Theme</label>
@@ -26,40 +26,78 @@
         </div>
 
     </fieldset>
-     <h4>Customization</h4>
-     <fieldset>
-        <div class="control-group" data-bind="css: { disabled: !ownSettings.enableCustomization }">
-            <label class="control-label">Navbar</label>
-            <div class="controls">
-                <input type="color" class="input-mini" data-bind="value: ownSettings.color.navbar_inner">
-                <input type="text" class="input-mini" data-bind="value: ownSettings.color.navbar_inner">
+
+    <div data-bind="css: { disabled: !ownSettings.enableCustomization() }">
+        <h4>Customization</h4>
+        <div data-bind="foreach: ownSettings.color">
+            <div class="control-group">
+                <label class="control-label">Navbar</label>
+                <div class="controls">
+                    <input type="color" class="input-mini" data-bind="value: value">
+                    <input type="text" class="input-mini" data-bind="value: value">
+                    <i data-bind="attr: { class: enabled() ? 'fa fa-check-square-o' : 'fa fa-square-o' }, click: $parent.onRuleToggle"></i>
+                </div>
             </div>
         </div>
-        </fieldset>
+    </div>
+    <div>
         <div>
-            <div>
-                <small>
-                    <a href="#" class="muted" onclick="$(this).children().toggleClass('fa-caret-right fa-caret-down').parent().parent().parent().next().slideToggle('fast')"><i class="fa fa-caret-right"></i> Advanced options</a>
-                </small>
-            </div>
-            <div class="hide" style="display: none;">
-                <h5>Custom style</h5>
-                <div data-bind="foreach: customRules()">
-                    <div class="control-group">
-                        <label class="control-label">Style selector</label>
-                        <div class="controls">
-                                <input type="text" value="Selector"  data-bind="value: selector">
-                                <input type="text" value="Selector"  data-bind="value: rule">
-                                <input type="color" class="input-mini"  data-bind="value: value">
-                                
-                        </div>
-                        
-                    </div>
-                </div>
+            <small>
+                <a href="#" class="muted" onclick="$(this).children().toggleClass('fa-caret-right fa-caret-down').parent().parent().parent().next().slideToggle('fast')">
+                    <i class="fa fa-caret-right"></i> Advanced options</a>
+            </small>
+        </div>
+        <div class="hide" style="display: none;" data-bind="css: { disabled: !ownSettings.enableCustomization() }">
+            <h5>Custom style</h5>
+            <div style="margin-left: 25px">
+                <table class="table table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>
+                                Selector
+                            </th>
+                            <th>
+                                CSS-Rule
+                            </th>
+                            <th>
+                                Color Picker
+                            </th>
+                            <th>
+                                Value
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="control-group" data-bind="foreach: customRules">
+                        <tr>
+                            <td>
+                                <input type="text" value="Selector" data-bind="value: selector">
+                            </td>
+                            <td>
+                                <input type="text" value="Selector" data-bind="value: rule">
+                            </td>
+                            <td>
+                                <input type="color" class="input-mini" data-bind="value: value">
+                            </td>
+                            <td>
+                                <input type="text" class="input-mini" data-bind="value: value">
+                            </td>
+                            <td>
+                                <i data-bind="attr: { class: enabled() ? 'fa fa-check-square-o' : 'fa fa-square-o' }, click: $parent.onRuleToggle"></i>
+                                <i class="fa fa-trash-o" data-bind="css: { disabled: !$parent.ruleIsDeleteable($data) }, click: $parent.onCustomRuleDelete"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="control">
-                        <button class="btn" data-bind="click: addNewCustomRule">New</button>
+                    <button class="btn" data-bind="click: addNewCustomRule">New</button>
                 </div>
             </div>
         </div>
-   
+
+    </div>
+
+
 </form>
