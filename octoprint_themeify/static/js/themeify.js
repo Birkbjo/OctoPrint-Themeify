@@ -35,6 +35,9 @@ $(function() {
             if (htmlId && htmlId == "touch") {
                 $("html").removeClass(self.classId);
             }
+
+            self.updateColors();
+            self._updateCustomRules();
         };
 
         self.enable = function() {
@@ -69,8 +72,6 @@ $(function() {
             self.onRuleToggle = self.onRuleToggle;
             self.enable();
 
-            self.updateColors();
-            self._updateCustomRules();
             self._copyOwnSettings();
         };
 
