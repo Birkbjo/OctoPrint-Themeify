@@ -6,7 +6,7 @@ plugin_package = "octoprint_themeify"
 
 plugin_name = "Themeify"
 
-plugin_version = "1.0.0"
+plugin_version = "1.0.1"
 
 plugin_description = """Beautiful themes for octoprint"""
 
