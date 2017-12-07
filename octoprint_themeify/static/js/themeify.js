@@ -4,7 +4,7 @@
  * Author: Birk Johansson
  * License: MIT
  */
-
+import "../less/base.less"
 $(function() {
     function ThemeifyViewModel(parameters) {
         var self = this;
@@ -174,7 +174,7 @@ $(function() {
 
         self.onThemeChange = function(newVal) {
             var prev = oldVal("theme");
-            var hasClass = function(clazz) {
+            var hasClass = (clazz) => {
                 return $("html").hasClass(clazz);
             };
             if (!hasClass(newVal)) {

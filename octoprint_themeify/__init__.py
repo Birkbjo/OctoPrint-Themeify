@@ -16,7 +16,7 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
         return dict(
             less=["less/base.less"],
             css=["css/themeify.css", "css/includes.css"],
-            js=["js/themeify.js"]
+            js=["js/themeify.min.js"]
         )
 
     def get_settings_defaults(self):

@@ -174,13 +174,9 @@
             }
         }
 
-        /* Settings dialog icons */
+        /* Settings dialog-table icons */
         td, th {
-                &.settings_printerProfiles_profiles_action,
-                &.settings_plugin_plugin_manager_plugins_actions,
-                &.settings_plugin_announcements_channels_actions,
-                &.settings_logs_action,
-                &.settings_users_actions {
+                &[class^="settings_"] {
                     a {
                         color: @notquiteWhite;
                         &:hover {
