@@ -1,4 +1,8 @@
 {
+    "name": "Themeify",
+    "version": "1.0.0",
+    "description": "A plugin to change the looks of OctoPrint",
+    "license": "AGPL-3.0",
     "scripts": {
         "build": "webpack -p",
         "clean": "rm -r octoprint_themeify/static/dist",

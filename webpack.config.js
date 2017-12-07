@@ -6,7 +6,7 @@ const staticPath = path.resolve(__dirname, "octoprint_themeify/static");
 module.exports = {
     entry: [
         path.join(staticPath, "js", "themeify.js"),
-        "./octoprint_themeify/static/less/base.less"
+        path.join(staticPath, "less", "base.less")
     ],
     output: {
         filename: "themeify.min.js",
