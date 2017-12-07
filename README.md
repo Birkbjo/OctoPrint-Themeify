@@ -19,3 +19,33 @@ manually enter this URL:
 
 
 If you don't see the styled header bar, go into Settings -> Appeareance and set Color to "default" and uncheck "Transparent Color".
+
+## Contribute
+
+Contributions are always welcome, especially new themes!
+
+The Javascript and Less are compiled and bundled with webpack.
+The reason for this is to be able to use new JS features and have one place to build both the less and JS.
+
+### Getting started
+
+```bash
+git clone https://github.com/Birkbjo/OctoPrint-Themeify.git
+```
+
+```bash
+yarn install && yarn build
+```
+
+Start hacking! 
+
+If you have setup `stylesheet: less` in your `config.yaml` you can edit the less-files and reload the page without re-building for each change.
+
+#### Build
+
+Build javascript and css:
+```bash
+yarn build
+```
+
+

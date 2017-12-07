@@ -2,13 +2,15 @@ const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const jsPath = path.resolve(__dirname, "octoprint_themeify/static/js");
-
+const staticPath = path.resolve(__dirname, "octoprint_themeify/static");
 module.exports = {
-    entry: "./octoprint_themeify/static/js/themeify.js",
+    entry: [
+        path.join(staticPath, "js", "themeify.js"),
+        "./octoprint_themeify/static/less/base.less"
+    ],
     output: {
         filename: "themeify.min.js",
-        path: jsPath
+        path: path.join(staticPath, "dist")
     },
     module: {
         rules: [
@@ -25,11 +27,10 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
                     use: [
                         {
                             loader: "css-loader",
-                            options: {url: false, minimize: true}
+                            options: { url: false, minimize: true }
                         },
                         {
                             loader: "less-loader"
@@ -41,9 +42,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({ minimize: true, comments: false }),
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            comments: false
+        }),
         new ExtractTextPlugin({
-            filename: "../css/themeify.css",
+            filename: "../dist/themeify.min.css",
             disable: false,
             allChunks: true
         })

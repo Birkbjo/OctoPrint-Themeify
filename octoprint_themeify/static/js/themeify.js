@@ -4,13 +4,12 @@
  * Author: Birk Johansson
  * License: MIT
  */
-import "../less/base.less"
+
 $(function() {
     function ThemeifyViewModel(parameters) {
         var self = this;
         self.classId = "themeify";
-        self.system = parameters[0];
-        self.settings = parameters[1];
+        self.settings = parameters[0];
 
         self.ownSettings = {};
         self.customRules = [];
@@ -116,10 +115,7 @@ $(function() {
                     old
                 });
             }
-            $(rule.selector()).css(
-                rule.rule(),
-                rule.value()
-            );
+            $(rule.selector()).css(rule.rule(), rule.value());
         };
 
         self.clone = function(obj) {
@@ -174,7 +170,7 @@ $(function() {
 
         self.onThemeChange = function(newVal) {
             var prev = oldVal("theme");
-            var hasClass = (clazz) => {
+            var hasClass = clazz => {
                 return $("html").hasClass(clazz);
             };
             if (!hasClass(newVal)) {
@@ -307,12 +303,7 @@ $(function() {
 
     OCTOPRINT_VIEWMODELS.push([
         ThemeifyViewModel,
-        // e.g. loginStateViewModel, settingsViewModel, ...
-        [
-            "systemViewModel",
-            "settingsViewModel" /* "loginStateViewModel", "settingsViewModel" */
-        ],
-        // e.g. #settings_plugin_themeify, #tab_plugin_themeify, ...
+        ["settingsViewModel"],
         ["#settings_plugin_themeify"]
     ]);
 });
