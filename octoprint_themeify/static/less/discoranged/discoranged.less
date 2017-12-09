@@ -263,7 +263,7 @@
             background-image: none;
 
             .nav {
-                >li.dropdown.open>.dropdown-toggle, >li.dropdown.active>.dropdown-toggle, >li.dropdown.open.active>.dropdown-toggle {
+                >li.dropdown.open>.dropdown-toggle, >li.dropdown.active>.dropdown-toggle, >li.dropdown.open.active>.dropdown-toggle, >li.dropdown-menu:before {
                     background: darken(@notquiteBlack, 1);
                     // border-bottom: 1px solid @notquiteBlack;
                     color: @orange;
@@ -283,10 +283,10 @@
 				}
             }
         }
-
+		
         .dropdown-menu {
             background: @notquiteBlack;
-
+			
             li > a {
                 color: @notquiteWhite;
             &:hover, &:focus {
