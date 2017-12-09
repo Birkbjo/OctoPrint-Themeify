@@ -178,10 +178,19 @@
             text-shadow: none;
         }
 
-        .slider .slider-selection, .slider .slider-handle {
+        .slider .slider-selection {
 			background-image: none;
             background-color: @blurple;
             border-color: darken(@blurple, 5);
+            &:hover, &:active {
+                background-color: @blurple;
+            }
+        }
+		
+		.slider .slider-handle {
+			background-image: none;
+            background-color: @blurple;
+            border: 1px solid darken(@blurple, 5);
             &:hover, &:active {
                 background-color: @blurple;
             }
