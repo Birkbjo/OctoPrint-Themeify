@@ -267,18 +267,21 @@
                     background: darken(@notquiteBlack, 1);
                     // border-bottom: 1px solid @notquiteBlack;
                     color: @orange;
+				}
+				> li > a:hover {
+					color: @orange;
+					background: @highlighter;
+				}	
+				> ul > .dropdown-menu {					
 					border: 1px solid @orange;
-            }
-            > li > a:hover {
-                color: @orange;
-                background: @highlighter;
-            }	
-			> li > .dropdown-menu:after {
-				border-bottom-color: @notquiteBlack;
-			}
-			> li > .dropdown-menu:before {
-				border-bottom-color: @orange;
-			}
+				
+					> li > .dropdown-menu:after {
+						border-bottom-color: @notquiteBlack;
+					}
+					> li > .dropdown-menu:before {
+						border-bottom-color: @orange;
+					}
+				}
             }
             & .brand, .nav > li > a {
                 color: @orange;
