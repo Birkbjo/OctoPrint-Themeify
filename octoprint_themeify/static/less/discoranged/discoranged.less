@@ -186,7 +186,16 @@
             }
         }
 		
+		.slider .slider-handle {
+			background-image: none;
+            background-color: @darkish;
+            &:hover, &:active {
+                background-color: darken(@darkish, 5);
+            }			
+		}
+		
 		.slider .slider-track {
+			background-image: none;
 			border: none;
 			background-color: @lighterish;
 		}
