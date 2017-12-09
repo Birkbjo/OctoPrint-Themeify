@@ -263,7 +263,7 @@
             background-image: none;
 
             .nav {
-                >li.dropdown.open>.dropdown-toggle, >li.dropdown.active>.dropdown-toggle, >li.dropdown.open.active>.dropdown-toggle, >li.dropdown-menu:before {
+                >li.dropdown.open>.dropdown-toggle, >li.dropdown.active>.dropdown-toggle, >li.dropdown.open.active>.dropdown-toggle {
                     background: darken(@notquiteBlack, 1);
                     // border-bottom: 1px solid @notquiteBlack;
                     color: @orange;
@@ -271,9 +271,11 @@
             > li > a:hover {
                 color: @orange;
                 background: @highlighter;
+            }	
+			> li > .dropdown-menu:after {
+				border-bottom-color: @notquiteBlack;
+			}
             }
-            }
-
             & .brand, .nav > li > a {
                 color: @orange;
 				text-shadow: none;
@@ -283,7 +285,7 @@
 				}
             }
         }
-		
+
         .dropdown-menu {
             background: @notquiteBlack;
 			
