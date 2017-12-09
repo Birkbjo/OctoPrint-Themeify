@@ -178,9 +178,8 @@
             text-shadow: none;
         }
 
-        .slider .slider-selection {
-            background: @blurple;
-
+        .slider .slider-selection, .slider .slider-handle {
+            background-color: @blurple;
             &:hover, &:active {
                 background-color: darken(@blurple, 5);
             }
@@ -188,6 +187,7 @@
 		
 		.slider .slider-track {
 			border: none;
+			background-color: @lighterish;
 		}
 
         .octoprint-container .accordion-heading [class*=" icon-"] {
@@ -372,7 +372,7 @@
         }
 
         .scrollable::-webkit-scrollbar-thumb,.pre-scrollable::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb{
-            background-color: darken(@blurple,5);
+            background-color: @notquiteBlack;
             border-radius: 25px;
         }
 
