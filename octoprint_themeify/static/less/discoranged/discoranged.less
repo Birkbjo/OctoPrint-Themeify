@@ -28,6 +28,7 @@
             -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
             -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
             box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+			padding: 15px 15px;
         }
         
         .accordion-group {
@@ -86,12 +87,13 @@
             color: #fff;
             font-weight: 400;
             text-shadow: none;
+			outline: none;
             &:hover {
                 color: #fff;
                 background-color: @highlighter;
             }
             &:focus {
-                border-color: rgba(255,255,255,0.7);
+                // border-color: rgba(255,255,255,0.7);
                 background-color: @highlighter;
             // box-shadow: none;
                 // outline-color: @notquiteWhite;
@@ -173,6 +175,10 @@
                 background-color: darken(@blurple, 5);
             }
         }
+		
+		.slider .slider-track {
+			border: none;
+		}
 
         .octoprint-container .accordion-heading [class*=" icon-"] {
             color: @notquiteWhite;
