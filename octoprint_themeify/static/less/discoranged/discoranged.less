@@ -271,7 +271,13 @@
 				> li > a:hover {
 					color: @orange;
 					background: @highlighter;
-				}	
+				}
+				> li > .dropdown-menu:before{
+					border-bottom-color: @orange;
+				}
+				> li > .dropdown-menu:after{
+					border-bottom-color: @notquiteBlack;
+				}
             }
             & .brand, .nav > li > a {
                 color: @orange;
@@ -286,13 +292,6 @@
         .dropdown-menu {
             background: @notquiteBlack;
 			border: 1px solid @orange;
-			
-			&:before{
-				border-bottom-color: @orange;
-			}
-			&:after{
-				border-bottom-color: @notquiteBlack;
-			}
 			
             li > a {
                 color: @notquiteWhite;
