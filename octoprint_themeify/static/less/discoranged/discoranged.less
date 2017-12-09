@@ -46,6 +46,7 @@
 			color: @blurple;
             &:hover, &:focus, &:active {
                 color: darken(@blurple, 8);
+				text-decoration: none;
             }
 			
 		}
@@ -191,7 +192,7 @@
         .octoprint-container .accordion-heading [class*=" icon-"] {
             color: @blurple;
             &:hover {
-                color: #fff;
+                color: darken(@blurple, 8);
             }
             &.disabled {
                 color: darken(@lighterish,5);
