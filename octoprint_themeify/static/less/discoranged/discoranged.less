@@ -46,7 +46,7 @@
         }
 		
 		.nav-tabs {
-            border: none;			
+            border: 1px solid @darkish;
 		}
 
         .nav-tabs>li>a {
@@ -57,10 +57,8 @@
         .nav-tabs>.active>a, .nav-tabs>.active>a:hover {
             background-color: @notquiteBlack;
             color: #fff;
-            border: none;
-            -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
-            box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+            border: 1px solid @notquiteBlack;
+			border-right: 1px solid #000;
         }
         .nav-pills>.active>a, .nav-pills>.active>a:hover {
             background-color: @blurple;
@@ -108,14 +106,14 @@
         }
         .btn.active {
             background-color: lighten(@highlighter, 10);
-            border: 1px solid rgba(255,255,255,0.85);
+            // border: 1px solid rgba(255,255,255,0.85);
             color: #fff;
         }
         .btn btn-primary, .btn-primary[disabled] {
-            background-color: #FC8003;
+            background-color: @blurple;
         }
         .btn-primary {
-            background-color: #FC8003;
+            background-color: @blurple;
             border: none;
             &:hover {
                 background-color: darken(@blurple, 5);
