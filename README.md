@@ -29,9 +29,14 @@ The reason for this is to be able to use new JS features and have one place to b
 
 ### Getting started
 
+Get NodeJS: https://nodejs.org/en/
+
+Clone the repo:
 ```bash
 git clone https://github.com/Birkbjo/OctoPrint-Themeify.git
 ```
+
+Use npm install or [install yarn](https://yarnpkg.com/lang/en/docs/install/#windows-tab)
 
 ```bash
 yarn install && yarn build
