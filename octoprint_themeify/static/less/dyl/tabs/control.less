@@ -1,0 +1,97 @@
+#control {
+	// display: flex;
+
+	&.active {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	#webcam_container {
+		flex-basis: 940px;
+		margin: 0 1rem 2rem 0;
+	}
+
+	> .jog-panel {
+		flex-grow: 1;
+
+		float: none;
+
+		h1 {
+			display: block;
+			margin: 0 0 1rem;
+			padding: 0.5rem;
+
+			border-bottom: 0;
+			background-color: @colorBackground;
+
+			font-weight: 700;
+			font-size: 1rem;
+			font-family: @fontTitle;
+			line-height: 1.2;
+			text-transform: uppercase;
+			color: @colorPrimaryText;
+		}
+	}
+
+	> .jog-panel:first-child {
+		display: flex;
+		flex-wrap: wrap;
+		flex-basis: 20rem;
+	}
+
+	#control-jog-z,
+	#control-jog-xy {
+		float: none;
+		margin-bottom: 2rem;
+
+		button {
+			padding: 1.5rem;
+		}
+	}
+
+	.distance {
+		// flex-basis: 10rem;
+		margin-bottom: 0.25rem;
+		width: 100%;
+		flex-grow: 1;
+		display: flex;
+
+		.btn-group {
+			display: flex;
+			margin-right: 1rem;
+			width: 100%;
+		}
+
+		button {
+			display: flex;
+			justify-content: center;
+			padding: 0.5rem;
+
+			text-align: center;
+			font-weight: 400;
+
+			&.active {
+				background-color: @colorPrimary;
+
+				color: #FFF;
+				font-weight: 700;
+			}
+		}
+	}
+
+	#control-jog-feedrate {
+		width: 100%;
+
+		.slider {
+			margin-bottom: 1rem;
+		}
+
+		.btn-block {
+			width: 100% !important;
+		}
+	}
+
+	.control-box {
+		display: flex;
+	}
+}

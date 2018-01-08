@@ -1,0 +1,119 @@
+.accordion-group {
+	border: 0;
+	border-radius: 0;
+
+	.matShadow(1);
+
+	&:not(:last-of-type) {
+		margin-bottom: 1rem;
+	}
+
+	.accordion-heading {
+		display: flex;
+		// align-items: center;
+		border-radius: 0;
+
+		background-color: @colorSecondaryLight;
+
+		color: @colorSecondaryText;
+
+		> a {
+			display: flex;
+			align-items: center;
+			padding: 0.5rem 1rem;
+			width: 100%;
+
+			font-size: 0.8rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			color: @colorSecondaryText;
+
+			.fa {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 0.5rem;
+				padding-top: 2px;
+				height: 1em;
+				width: 1.4rem;
+
+				transition: all 0.1s ease-in-out;
+				color: @colorSecondaryDark;
+				// text-align: center;
+				font-size: 1.2rem;
+				vertical-align: middle;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			&.collapsed {
+				padding: 0.125rem 1rem;
+
+				.fa {
+					font-size: 0.8rem;
+					color: lighten(@colorSecondaryDark, 6%);
+				}
+
+				~ div {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.accordion-heading-button {
+		display: flex;
+		float: none;
+	}
+
+	.accordion-heading-button [class*=" icon-"],
+	.accordion-heading-button [class^=icon-],
+	.accordion-heading-button > a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem;
+
+		font-size: 1rem;
+		line-height: 1.2rem;
+		text-align: center;
+		color: #222;
+
+		border-radius: 0;
+		background-position: 50% 60%;
+		box-shadow: none;
+
+		.icon-sd-black-14 {
+			padding-left: 0;
+		}
+	}
+
+	.accordion-body {
+		background-color: #FFF;
+	}
+
+	.accordion-inner {
+		padding: 0.5rem 1rem 1rem;
+
+		border-top: 0;
+	}
+}
+
+.accordion-inner {
+	font-size: 0.9rem;
+	font-weight: 300;
+
+	color: @colorPrimaryText;
+
+	label {
+		margin-bottom: 0;
+
+		font-weight: 300;
+
+		&:last-of-type {
+			margin-bottom: 0.5rem;
+		}
+	}
+}

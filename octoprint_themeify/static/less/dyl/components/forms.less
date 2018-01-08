@@ -1,0 +1,158 @@
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	height: auto;
+
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+
+	font-family: @fontBody;
+	background-color: #FFF;
+	padding: 0.325rem;
+
+	.matShadow(1);
+
+	&[disabled] {
+		background-color: @colorBackground;
+		box-shadow: none;
+	}
+}
+
+.input-prepend,
+.input-append,
+.input-prepend.input-append {
+	display: inline-flex;
+	margin-bottom: 0.25rem;
+	transition: all 0.2s ease-in-out;
+	.matShadow(1);
+
+	&:hover {
+		.matShadow(2);
+	}
+
+	select,
+	textarea,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	.uneditable-input {
+		flex-grow: 1;
+		box-shadow: none;
+	}
+
+	input[type="number"] {
+		min-width: 50px;
+	}
+
+	.btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		margin: 0;
+		padding: 0;
+		width: 2rem;
+
+		text-align: center;
+
+		border-radius: 0;
+		box-shadow: none;
+		border: 0;
+
+		.fa {
+			margin: 0;
+		}
+	}
+
+	.add-on {
+		flex-grow: 1;
+		padding: 0.25rem 0.5rem;
+		height: auto;
+
+		border: 0;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		color: #666;
+		background-color: @colorBackground;
+	}
+
+	.btn.add-on {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+}
+
+.progress {
+	display: flex;
+	margin: 1rem 0;
+	height: 2rem;
+
+	background-color: red;
+
+	border-radius: 0;
+	box-shadow: none;
+
+	.progress-text-back,
+	.progress-text-front {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+
+		font-size: 0.9rem;
+		font-weight: 700;
+		text-shadow: none;
+	}
+
+	.bar {
+		background: @colorPrimary;
+	}
+}
+
+.slider {
+	border-radius: 0;
+	border: 0;
+
+	.slider-track {
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+
+		transition: box-shadow 0.2s ease-in-out;
+
+		&:hover {
+			.matShadow(1);
+		}
+	}
+
+	.slider-selection {
+		background: @colorPrimary;
+		border-radius: 0;
+	}
+}
