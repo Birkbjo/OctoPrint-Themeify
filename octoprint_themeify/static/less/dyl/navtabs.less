@@ -1,0 +1,63 @@
+.nav-tabs {
+	display: flex;
+
+	// border-left: 1px solid @colorBorder;
+	box-shadow: -1px 0 0 @colorBorder, 1px 0 0 @colorBorder;
+
+	> li:not(.dropdown) {
+		flex-grow: 1;
+		flex-basis: 8rem;
+
+		display: flex;
+
+		border-top: 1px solid @colorBorder;
+		border-bottom: 1px solid fade(@colorBorder, 50%);
+
+		&:not(:last-of-type) {
+			border-right: 1px solid @colorBorder;
+		}
+
+		> a {
+			display: flex;
+			justify-content: center;
+			margin: 0;
+			padding: 0.5rem 1rem;
+			width: 100%;
+
+			border-radius: 0;
+			border: 0;
+
+			background-color: darken(@colorBackground, 3%);
+			color: #AAA;
+
+			// color: @colorPrimaryDark;
+			font-size: 0.8rem;
+			font-weight: 700;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		&.active {
+			border-bottom: 1px solid #FFF;
+
+			> a {
+				color: #222;
+
+				background-color: #FFF;
+			}
+		}
+	}
+}
+
+.octoprint-container .tab-content {
+	margin-bottom: 1.5rem;
+}
+.tab-content {
+
+	background-color: #FFF;
+
+	border-radius: 0;
+	border: 0;
+
+	.matShadow(1);
+}

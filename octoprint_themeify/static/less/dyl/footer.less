@@ -1,0 +1,48 @@
+.octoprint-container > .footer {
+	position: relative;
+
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+
+	background: @colorPrimaryDark;
+
+	color: rgba(255,255,255, 0.8);
+
+	&::before,
+	&::after {
+		position: absolute;
+		top: 0;
+
+		display: block;
+		height: 100%;
+		// width: calc(~"50vw - 477px");
+		width: 50vw;
+
+		content: "";
+		background-color: @colorPrimaryDark;
+	}
+
+	&::before {
+		left: 100%;
+	}
+
+	&::after {
+		right: 100%;
+	}
+
+	#footer_version,
+	#footer_links {
+		float: none;
+		margin: 0;
+	}
+
+	.muted,
+	a {
+		color: rgba(255,255,255, 0.8);
+
+		&:hover {
+			color: #FFF;
+		}
+	}
+}
