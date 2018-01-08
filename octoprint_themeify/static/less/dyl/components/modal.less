@@ -1,0 +1,136 @@
+.modal-backdrop {
+	background: #222;
+}
+
+.modal {
+	border-radius: 0;
+	border: 0;
+
+	.matShadow(2);
+
+	.modal-header {
+		background-color: @colorSecondary;
+		border-bottom: 0;
+
+		color: @colorSecondaryText;
+	}
+
+	.modal-body {
+		padding: 0;
+
+		> p {
+			padding: 0 1rem;
+		}
+
+		.full-sized-box {
+			padding: 0;
+
+			.tab-content > .tab-pane,
+			.pill-content > .pill-pane {
+				padding: 1rem 1rem 1rem 0;
+			}
+		}
+
+		a {
+			color: @colorSecondary;
+		}
+
+		table th,
+		table td {
+			vertical-align: middle;
+		}
+	}
+
+	.modal-footer {
+		margin-bottom: 0;
+		padding: 1rem;
+
+		text-align: right;
+
+		border-top: 0;
+		border-radius: 0;
+		box-shadow: none;
+		background-color: @colorBackground;
+	}
+
+	table td.settings_users_actions,
+	table th.settings_users_actions,
+	table td.settings_printerProfiles_profiles_action,
+	table th.settings_printerProfiles_profiles_action {
+		width: auto;
+
+		a {
+			display: inline-block;
+			padding: 0.25rem 0.625rem;
+
+			font-size: 1.2rem;
+		}
+	}
+
+	.tab-content {
+		box-shadow: none;
+	}
+}
+
+#settings_printerProfiles_editDialog,
+#usersettings_dialog {
+	.tab-content {
+		padding: 0 1rem;
+	}
+}
+
+.nav-pills {
+	background-color: @colorSecondaryLight;
+
+	> li:not(.dropdown) {
+
+		> a {
+			margin: 0;
+			padding: 0.5rem 1rem;
+
+			border-radius: 0;
+
+			color: @colorSecondaryText;
+			font-size: 0.8rem;
+			text-transform: uppercase;
+
+			&:hover {
+				color: @colorPrimaryText;
+			}
+		}
+
+		&.active > a,
+		&.active > a:hover {
+			color: @colorPrimaryText;
+			background-color: #FFF;
+		}
+	}
+}
+
+.nav-list {
+	.nav-header {
+		background-color: @colorBackground;
+	}
+
+	li > a {
+		padding: 0.5rem 1rem;
+
+		color: @colorSecondaryDark;
+
+		&:hover {
+			background-color: fade(@colorSecondaryLight, 50%);
+
+			color: @colorSecondaryDark;
+		}
+	}
+
+	> .active > a,
+	> .active > a:hover {
+		// padding: 0.5rem 1rem;
+
+		color: @colorSecondaryText;
+		text-shadow: none;
+
+		background-color: @colorSecondaryLight;
+	}
+}

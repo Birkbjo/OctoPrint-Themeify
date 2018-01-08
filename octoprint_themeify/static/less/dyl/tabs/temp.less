@@ -1,0 +1,26 @@
+#temp {
+
+	.table.table-bordered {
+
+		th {
+			padding: 0.25rem 0.5rem;
+
+			font-size: 0.8rem;
+			text-transform: uppercase;
+
+			background-color: @colorBackground;
+		}
+	}
+
+	.form-inline {
+		display: flex;
+		justify-content: center;
+
+		> div {
+
+			&:not(:last-of-type) {
+				margin-right: 1rem;
+			}
+		}
+	}
+}
