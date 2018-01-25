@@ -197,10 +197,14 @@
 	}
 
 	.icon-sd-black-14 {
-		background: url(../img/icon-sd-light-14.png) 0 3px no-repeat!important;
-		width: 11px;
+		background-image: url(../../img/ic_sd_card_white_18dp_1x.png);
+		background-image: url(../../img/ic_sd_card_white_18px.svg);
+		background-position: 0 0px;
+		margin-top: 1px;
+		width: 15px;
 		height: 17px;
-		display: inline-block!important;
+		filter: hue-rotate(unit(hue(@almostNotWhite),deg)) saturate(saturation(@almostNotWhite)) brightness(lightness(@almostNotWhite));
+		transform: rotateY(180deg);
 	}
 
 	.progress {
