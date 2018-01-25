@@ -1,0 +1,44 @@
+@import "variables.less";
+@import "mixins.less";
+
+.dyl() {
+
+
+body {
+	background-color: @colorBackground;
+
+	color: @colorPrimaryText;
+	font-family: @fontBody;
+	font-size: 16px;
+
+	overflow-x: hidden;
+
+	box-sizing: border-box;
+
+	* {
+		box-sizing: inherit;
+	}
+}
+
+a {
+	color: @colorPrimary;
+
+	transition: all 0.15s ease-in-out;
+}
+
+@import "navbar.less";
+@import "navtabs.less";
+
+@import "components/modal.less";
+@import "components/buttons.less";
+@import "components/forms.less";
+@import "components/dropdown.less";
+
+@import "sidebar.less";
+@import "files.less";
+@import "footer.less";
+
+@import "tabs/temp.less";
+@import "tabs/control.less";
+
+}

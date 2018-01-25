@@ -1,0 +1,92 @@
+.btn {
+	margin: 0 0 0.25rem;
+	padding: 0.25rem 0.5rem;
+	height: auto;
+
+	background-image: none;
+
+	border: 0;
+	border-radius: 0;
+
+	.matShadow(1);
+
+	background-color: @colorBackgroundDark;
+
+	color: @colorPrimaryText;
+	text-shadow: none;
+	font-weight: 300;
+	font-family: @fontBody;
+
+	transition: all 0.1s ease-in-out;
+
+	&:hover {
+		background-color: darken(@colorBackgroundDark, 8%);
+
+		.matShadow(2);
+	}
+
+	&.disabled,
+	&[disabled] {
+		box-shadow: none;
+	}
+
+	.fa {
+		// margin-right: 0.25rem;
+
+		color: darken(@colorBackgroundDark, 30%);
+	}
+}
+
+.btn-primary {
+	.btn;
+
+	background-color: @colorSecondary;
+
+	color: @colorSecondaryText;
+	text-shadow: 0 1px 0 fade(@colorSecondaryLight, 50%);
+
+	&:hover {
+		background-color: lighten(@colorSecondary, 12%);
+	}
+
+	.fa {
+		color: @colorSecondaryDark;
+	}
+}
+
+.btn-danger {
+	background-color: @colorError;
+
+	color: #FFF;
+	// text-shadow: 0 1px 0 fade(@colorSecondaryLight, 50%);
+
+	&:hover {
+		background-color: @colorErrorDark;
+	}
+
+	.fa {
+		color: rgba(255,255,255, 0.7);
+	}
+}
+
+
+.btn-group.open .btn-primary.dropdown-toggle {
+	background-color: @colorSecondaryDark;
+
+	.caret {
+		border-top-color: @colorSecondaryLight;
+		border-bottom-color: @colorSecondaryLight;
+	}
+}
+
+
+.dropdown-menu li > a,
+.dropdown-menu li > a,
+.dropdown-submenu > a {
+	color: @colorSecondaryText;
+
+	&:hover {
+		background: @colorSecondaryLight;
+		color: @colorSecondaryDark;
+	}
+}

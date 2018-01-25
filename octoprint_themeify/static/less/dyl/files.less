@@ -1,0 +1,65 @@
+#files .form-search {
+	display: block;
+	margin: 0 0 0.5rem !important;
+
+	input {
+		width: 100%;
+	}
+}
+
+#files .gcode_files {
+	// border: 1px solid blue;
+
+	.entry {
+		margin: 0 0 0.5rem;
+		padding: 0 0 1.5rem;
+
+		line-height: 1.4;
+
+		background-color: lighten(@colorBackground, 1%);
+		border: 0;
+
+		&.folder {
+			padding: 0;
+
+			border-left: 0.5rem solid @colorBackgroundDark;
+		}
+
+		&.back {
+			padding: 0 1rem;
+			background-color: #FFF;
+
+			&:hover {
+				background-color: fade(@colorSecondary, 10%);
+				// color: @colorSecondaryText;
+			}
+		}
+
+		.title {
+			margin: 0 0 0.125rem;
+			padding: 0.25rem 0.5rem 0.125rem;
+
+			background-color: @colorBackgroundDark;
+			transition: background 0.1s ease-in-out;
+			// border-bottom: 1px solid @colorBorder;
+
+			&:hover {
+				background-color: darken(@colorBackgroundDark, 5%);
+			}
+		}
+
+		.internal,
+		.uploaded,
+		.size,
+		.additionalInfo {
+			padding: 0.125rem 0.5rem;
+		}
+
+		.additionalInfo {
+			margin-left: 0.5rem;
+			padding-left: 0.25rem;
+			margin-bottom: 1rem;
+			border-left: 0.25rem solid @colorBackgroundDark;
+		}
+	}
+}

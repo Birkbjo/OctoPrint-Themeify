@@ -1,0 +1,116 @@
+#navbar {
+	position: sticky;
+	z-index: 1001;
+	top: 0;
+
+	&.navbar-fixed-top .navbar-inner,
+	&.navbar-static-top .navbar-inner {
+		// .matShadow(1);
+		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+		border-width: 0;
+	}
+
+	.navbar-inner {
+		min-height: 0;
+
+		background: @colorPrimary;
+
+		// border: 1px solid red;
+
+		.container {
+			display: flex;
+			justify-content: space-between;
+
+			// border: 1px solid blue;
+
+			&::before,
+			&::after {
+				display: none;
+			}
+
+			.nav-collapse {
+				display: flex;
+			}
+		}
+
+		.brand {
+			margin-left: 0;
+			padding: 0.6rem 1rem 0.4rem;
+			color: @colorPrimaryText;
+			text-shadow: none;
+
+			&:hover {
+				background: @colorPrimaryDark;
+			}
+
+			span {
+				padding-left: 0;
+				height: 24px;
+				max-width: 250px;
+				overflow: hidden;
+
+				background: none !important;
+
+				color: #FFF;
+				font-size: 1.6rem;
+				font-weight: 300;
+				text-shadow: 0 1px 0 fade(@colorPrimaryDark, 50%);
+				text-overflow: ellipsis;
+				vertical-align: top;
+				white-space: nowrap;
+				line-height: 20px;
+			}
+		}
+
+		ul.pull-right {
+			display: flex;
+		}
+
+		ul.pull-right > li {
+			display: flex;
+
+			&.open {
+				> a {
+					background: @colorPrimaryDark;
+				}
+
+				&#navbar_login > a .caret {
+					border-bottom-color: @colorPrimary;
+					border-top-color: @colorPrimary;
+				}
+			}
+
+			> a {
+				padding: 0.6rem 1rem 0.4rem;
+
+				color: #FFF;
+				font-weight: 300;
+				font-size: 1rem;
+				text-shadow: 0 1px 0 fade(@colorPrimaryDark, 50%);
+
+				&:hover {
+					background: @colorPrimaryDark;
+				}
+			}
+		}
+
+		#navbar_login {
+			.fa {
+				margin-right: 0.25rem;
+			}
+
+			.caret {
+				margin-top: 9px;
+				transition: all 0.15s ease-in-out;
+
+				border-bottom-color: @colorPrimaryDark;
+				border-top-color: @colorPrimaryDark;
+			}
+
+			&:hover .caret {
+				border-bottom-color: @colorPrimary;
+				border-top-color: @colorPrimary;
+			}
+		}
+	}
+}
