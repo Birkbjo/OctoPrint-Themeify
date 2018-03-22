@@ -485,7 +485,7 @@
         opacity: 1;
       }
 
-      &[disabled], &.disabled {
+      &[disabled], &.disabled, .disabled & {
         background-color: #40454A;
         color: #232629;
         opacity: .5;
@@ -687,6 +687,15 @@
         background-color: #40454A;
         color: #fff;
         opacity: 0.7;
+        pointer-events:none;
+      }
+    }
+    .disabled {
+      input, textarea, select, .input-mini {
+        background-color: #40454A;
+        color: #fff;
+        opacity: 0.7;
+        pointer-events:none;
       }
     }
     select {
