@@ -72,6 +72,15 @@
             font: inherit;
             a {
               font: inherit;
+
+              &#psucontrol_indicator {
+                &.off i {
+                  color: #fff;
+                  opacity: 0.5;
+                  text-shadow: none;
+                }
+              }
+
               .caret {
                 border-top-color: #fff;
               }
@@ -139,12 +148,33 @@
         }
         &.red {
           background-color: #AA2A29;
+
+          &#psucontrol_indicator {
+            &.off i {
+              color: rgba(0,0,0,0.5);
+              text-shadow: none;
+            }
+          }
         }
         &.blue {
           background-color: #276ABB;
+
+          &#psucontrol_indicator {
+            &.off i {
+              color: rgba(0,0,0,0.5);
+              text-shadow: none;
+            }
+          }
         }
         &.green {
           background-color: #088E37;
+
+          &#psucontrol_indicator {
+            &.off i {
+              color: rgba(0,0,0,0.5);
+              text-shadow: none;
+            }
+          }
         }
       }
 
@@ -767,7 +797,8 @@
 
         .legend {
           table {
-            top: 6px;
+            top: 16px;
+            left: 41px !important;
             bottom: auto !important;
             tbody tr td {
               padding: 4px 0;
@@ -886,7 +917,6 @@
       -webkit-filter: invert(100%);
       filter: invert(100%);
     }
-
     #settings_plugin_pluginmanager_workingdialog_output {
       .call {
         color: #fff;
