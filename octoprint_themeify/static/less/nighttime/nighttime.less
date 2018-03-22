@@ -119,6 +119,23 @@
 
         &.transparent {
           background-color: transparent;
+
+          ul.nav li {
+
+            & > a {
+              color: #fff;
+              text-shadow: none;
+
+              &:hover {
+                background: none rgba(0,0,0,0.1);
+              }
+            }
+
+            &.open > a, &.active > a {
+              opacity: 1;
+              background: none rgba(0,0,0,0.1);
+            }
+          }
         }
         &.red {
           background-color: #AA2A29;
@@ -453,48 +470,46 @@
       }
     }
 
-    .modal-scrollable {
-      .modal {
-        overflow: hidden;
-        background-color: #34383C;
+    .modal, .hero-unit {
+      overflow: hidden;
+      background-color: #34383C;
+      border: 0;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 3px 0 30px 0 rgba(0,0,0,0.2);
+
+      .modal-header {
+        background-color: #40454A;
         border: 0;
-        box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 3px 0 30px 0 rgba(0,0,0,0.2);
+        padding: 20px;
 
-        .modal-header {
-          background-color: #40454A;
+        .close {
           border: 0;
-          padding: 20px;
+          background: none #40454A;
+          text-shadow: none;
+          box-shadow: none;
+          text-decoration: none;
+          border-radius: 2px;
+          color: #fff;
+          opacity: 0.7;
+          padding: 4px 16px 12px 16px;
+          margin: 0;
 
-          .close {
-            border: 0;
-            background: none #40454A;
-            text-shadow: none;
-            box-shadow: none;
-            text-decoration: none;
-            border-radius: 2px;
-            color: #fff;
-            opacity: 0.7;
-            padding: 4px 16px 12px 16px;
-            margin: 0;
-
-            &:hover {
-              opacity: 1;
-            }
+          &:hover {
+            opacity: 1;
           }
         }
-        .modal-footer {
-          background-color: #34383C;
-          box-shadow: none;
-          border: 0;
-          padding: 20px;
-        }
-        .modal-body {
-          padding: 20px;
-        }
+      }
+      .modal-footer {
+        background-color: #34383C;
+        box-shadow: none;
+        border: 0;
+        padding: 20px;
+      }
+      .modal-body {
+        padding: 20px;
       }
     }
 
-    .modal-backdrop {
+    .modal-backdrop, #offline_overlay_background, #reloadui_overlay_background {
       background-color: #232629;
     }
 
@@ -870,5 +885,15 @@
     .icon-sd-black-14, #settings_api canvas {
       -webkit-filter: invert(100%);
       filter: invert(100%);
+    }
+
+    #settings_plugin_pluginmanager_workingdialog_output {
+      .call {
+        color: #fff;
+      }
+
+      .stdout {
+        color: #fff;
+      }
     }
 }
