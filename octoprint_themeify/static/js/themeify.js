@@ -346,10 +346,10 @@ $(function() {
           if (
               self.ownSettings.enabled() &&
               $.attr("html", "class") != self.classId &&
-              $("html").attr("id") !== "touch" &&
-              self.ownSettings.enableAutoswitch()
+              $("html").attr("id") !== "touch"
           ) {
             if (
+              self.ownSettings.enableAutoswitch() &&
               (currentTime >= self.ownSettings.nightTimeStart() ||
               currentTime < self.ownSettings.nightTimeEnd()) &&
               !$("html").hasClass(self.ownSettings.nightTheme())
@@ -358,8 +358,9 @@ $(function() {
                   .addClass(self.ownSettings.nightTheme())
                   .removeClass(self.ownSettings.theme());
             } else if (
+              (!self.ownSettings.enableAutoswitch() ||
               !(currentTime >= self.ownSettings.nightTimeStart() ||
-              currentTime < self.ownSettings.nightTimeEnd()) &&
+              currentTime < self.ownSettings.nightTimeEnd())) &&
               !$("html").hasClass(self.ownSettings.theme())
             ){
               $("html")
