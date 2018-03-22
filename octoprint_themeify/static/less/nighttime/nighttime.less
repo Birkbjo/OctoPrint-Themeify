@@ -93,7 +93,7 @@
             }
             &.open > a, &.active > a {
               opacity: 1;
-              background: none rgba(0,0,0,0.1);
+              background: none rgba(0,0,0,0.1) !important;
             }
           }
 
@@ -392,17 +392,27 @@
                     color: #fff;
                     font-weight: normal;
 
-                    &.text-success {
+                    &.text-info, &.text-success, &.text-warning, &.text-error {
                       &::before {
                         display: block;
                         float: left;
                         content: '';
-                        background-color: #00CE48;
+                        background-color: rgba(255,255,255,0.3);
                         margin: 5px 10px 5px 0;
                         height: 9px;
                         width: 9px;
                         border-radius: 5px;
                       }
+                    }
+
+                    &.text-success::before {
+                      background-color: #00CE48;
+                    }
+                    &.text-warning::before {
+                      background-color: #D6B41A;
+                    }
+                    &.text-error::before {
+                      background-color: #AA2A29;
                     }
                   }
 
