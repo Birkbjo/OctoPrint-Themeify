@@ -36,6 +36,7 @@ $(function() {
                 $("html").removeClass(self.classId);
             }
 
+            self._timer();
             self.updateColors();
             self._updateCustomRules();
         };
@@ -334,10 +335,15 @@ $(function() {
         };
 
         self._timer = function () {
-          if ( self.ownSettings.enabled() && self.ownSettings.enableAutoswitch() ) {
-            self._autoCheck();
-            setTimeout(function() {self._timer}, 1000 * 60 * 60);
+          var d = new Date(),
+              h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours() + 1, 0, 0, 0),
+              e = h - d;
+              
+          if (e > 100) {
+            setTimeout(function() {self._timer();}, e);
           }
+
+          self._autoCheck();
         };
 
         self._autoCheck = function() {
