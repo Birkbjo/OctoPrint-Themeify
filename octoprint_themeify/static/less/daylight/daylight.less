@@ -53,7 +53,7 @@
           li {
             font: inherit;
 
-            &>a {
+            > a {
               padding: 16px 15px;
               text-shadow: none;
               color: #1F1F22;
@@ -128,7 +128,7 @@
 
           ul.nav li {
 
-            & > a {
+            > a {
               color: #1F1F22;
               text-shadow: none;
 
@@ -143,8 +143,8 @@
             }
           }
         }
-        &.red {
-          background-color: #AA2A29;
+
+        &.red, &.blue, &.green, &.black {
           color: #fff;
 
           a, ul.nav li > a {
@@ -161,44 +161,25 @@
               text-shadow: none;
             }
           }
+        }
+
+        &.red {
+          background-color: #FF2825;
         }
         &.blue {
-          background-color: #276ABB;
-          color: #fff;
-
-          a, ul.nav li > a {
-            color: #fff;
-
-            .caret {
-              border-top-color: #fff;
-            }
-          }
-
-          &#psucontrol_indicator {
-            &.off i {
-              color: rgba(0,0,0,0.5);
-              text-shadow: none;
-            }
-          }
+          background-color: #0073FF;
         }
         &.green {
-          background-color: #088E37;
-          color: #fff;
-
-          a, ul.nav li > a {
-            color: #fff;
-
-            .caret {
-              border-top-color: #fff;
-            }
-          }
-          &#psucontrol_indicator {
-            &.off i {
-              color: rgba(0,0,0,0.5);
-              text-shadow: none;
-            }
-          }
+          background-color: #00CE48;
         }
+        &.black {
+          background-color: #1F1F22;
+        }
+        &.white {
+          background-color: #fff;
+        }
+
+
       }
 
       #navbar_login {
@@ -207,7 +188,7 @@
             input[type="text"], input[type="password"] {
               width: 100%;
             }
-            & > a {
+            > a {
               margin-bottom: 0;
               border-bottom-left-radius: 0;
               border-bottom-right-radius: 0;
@@ -231,11 +212,12 @@
       border: 0;
       box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 3px 0 30px 0 rgba(0,0,0,0.2);
       padding: 10px 20px;
+      color: #1F1F22;
 
       li {
         padding: 4px 0;
-        &>a, &>a:hover {
-          color: #1F1F22;
+        > a, > a:hover {
+          color: #1F1F22 !important;
           background: none !important;
           text-decoration: underline !important;
           display: inline;
@@ -246,7 +228,7 @@
             margin-right: 4px;
           }
         }
-        &>a:hover {
+        > a:hover {
           text-decoration: none !important;
         }
         &.divider {
@@ -256,6 +238,25 @@
           margin: 10px 0;
         }
       }
+    }
+    .text-info, .text-success, .text-warning, .text-error {
+      text-shadow: none;
+    }
+
+    .text-info {
+
+    }
+
+    .text-success {
+      color: #00CE48;
+    }
+
+    .text-warning {
+      color: #D6B41A;
+    }
+
+    .text-error {
+      color: #FF2825;
     }
 
     .octoprint-container {
@@ -373,6 +374,10 @@
 
               > span {
                 opacity: 0.6;
+
+                &.text-info, &.text-success, &.text-warning, &.text-error {
+                    opacity: 1;
+                }
               }
 
               strong {
@@ -434,6 +439,8 @@
                     font-weight: normal;
 
                     &.text-info, &.text-success, &.text-warning, &.text-error {
+                      color: #1F1F22;
+
                       &::before {
                         display: block;
                         float: left;
@@ -450,10 +457,10 @@
                       background-color: #00CE48;
                     }
                     &.text-warning::before {
-                      background-color: #D6B41A;
+                      background-color: #FF9F00;
                     }
                     &.text-error::before {
-                      background-color: #AA2A29;
+                      background-color: #FF2825;
                     }
                   }
 
@@ -530,6 +537,10 @@
         color: #fff;
         background-color: #0073FF;
         border-color: #005AC7;
+
+        .caret {
+          border-top-color: #fff;
+        }
       }
       &.btn-danger {
         color: #D00000;
@@ -850,7 +861,7 @@
               padding: 4px 0;
 
               &.legendColorBox {
-                & > div {
+                > div {
                   border: 0 !important;
                   padding: 0 !important;
                   border-radius: 2px;
