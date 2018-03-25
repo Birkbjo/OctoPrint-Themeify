@@ -21,7 +21,8 @@ $(function() {
         //holds subscriptions, so that they can be removed later
         self.configSubscriptions = {
             enabled: "",
-            theme: ""
+            theme: "",
+            nightTheme: ""
         };
 
         var oldVal = function(key) {
@@ -35,19 +36,30 @@ $(function() {
                 $("html").removeClass(self.classId);
             }
 
+            self._timer();
             self.updateColors();
             self._updateCustomRules();
         };
 
         self.enable = function() {
+            var currentTime = new Date().getHours();
+
             if (
                 self.ownSettings.enabled() &&
                 $.attr("html", "class") != self.classId &&
                 $("html").attr("id") !== "touch"
             ) {
-                $("html")
-                    .addClass(self.classId)
-                    .addClass(self.ownSettings.theme());
+                $("html").addClass(self.classId);
+
+                if (
+                  self.ownSettings.enableAutoswitch() &&
+                  (currentTime >= self.ownSettings.nightTimeStart() ||
+                  currentTime < self.ownSettings.nightTimeEnd())
+                ) {
+                    $("html").addClass(self.ownSettings.nightTheme());
+                } else {
+                    $("html").addClass(self.ownSettings.theme());
+                }
             }
         };
 
@@ -173,12 +185,47 @@ $(function() {
             var hasClass = clazz => {
                 return $("html").hasClass(clazz);
             };
-            if (!hasClass(newVal)) {
+            var currentTime = new Date().getHours();
+
+            if (
+              !hasClass(newVal) &&
+              !(currentTime >= self.ownSettings.nightTimeStart() ||
+              currentTime < self.ownSettings.nightTimeEnd())
+            ) {
                 $("html")
                     .addClass(newVal)
                     .removeClass(prev);
             }
 
+            self._copyOwnSettings();
+        };
+
+        self.onNightThemeChange = function(newVal) {
+            var prev = oldVal("nightTheme");
+            var hasClass = clazz => {
+                return $("html").hasClass(clazz);
+            };
+            var currentTime = new Date().getHours();
+
+            if (
+              !hasClass(newVal) &&
+              (currentTime >= self.ownSettings.nightTimeStart() ||
+              currentTime < self.ownSettings.nightTimeEnd())
+            ) {
+                $("html")
+                    .addClass(newVal)
+                    .removeClass(prev);
+            }
+
+            self._copyOwnSettings();
+        };
+
+        self.onNightTimeStartChange = function(newVal) {
+            self._autoCheck();
+            self._copyOwnSettings();
+        };
+        self.onNightTimeEndChange = function(newVal) {
+            self._autoCheck();
             self._copyOwnSettings();
         };
 
@@ -209,6 +256,11 @@ $(function() {
                 self._removeBuiltInStyles();
                 self._removeCustomStyles();
             }
+            self._copyOwnSettings();
+        };
+
+        self.onEnableAutoswitchChange = function(newVal) {
+            self._autoCheck();
             self._copyOwnSettings();
         };
 
@@ -282,6 +334,48 @@ $(function() {
             });
         };
 
+        self._timer = function () {
+          var d = new Date(),
+              h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours() + 1, 0, 0, 0),
+              e = h - d;
+              
+          if (e > 100) {
+            setTimeout(function() {self._timer();}, e);
+          }
+
+          self._autoCheck();
+        };
+
+        self._autoCheck = function() {
+          var currentTime = new Date().getHours();
+
+          if (
+              self.ownSettings.enabled() &&
+              $.attr("html", "class") != self.classId &&
+              $("html").attr("id") !== "touch"
+          ) {
+            if (
+              self.ownSettings.enableAutoswitch() &&
+              (currentTime >= self.ownSettings.nightTimeStart() ||
+              currentTime < self.ownSettings.nightTimeEnd()) &&
+              !$("html").hasClass(self.ownSettings.nightTheme())
+            ){
+              $("html")
+                  .addClass(self.ownSettings.nightTheme())
+                  .removeClass(self.ownSettings.theme());
+            } else if (
+              (!self.ownSettings.enableAutoswitch() ||
+              !(currentTime >= self.ownSettings.nightTimeStart() ||
+              currentTime < self.ownSettings.nightTimeEnd())) &&
+              !$("html").hasClass(self.ownSettings.theme())
+            ){
+              $("html")
+                  .addClass(self.ownSettings.theme())
+                  .removeClass(self.ownSettings.nightTheme());
+            }
+          }
+        };
+
         self.onSettingsHidden = function() {
             //Cleanup subscriptions
             Object.keys(self.configSubscriptions).map((key, i) => {
@@ -297,7 +391,11 @@ $(function() {
         self.configOnChangeMap = {
             enabled: self.onEnabledChange,
             theme: self.onThemeChange,
-            enableCustomization: self.onEnableCustomizationChange
+            nightTheme: self.onNightThemeChange,
+            nightTimeStart: self.onNightTimeStartChange,
+            nightTimeEnd: self.onNightTimeEndChange,
+            enableCustomization: self.onEnableCustomizationChange,
+            enableAutoswitch: self.onEnableAutoswitchChange
         };
     }
 
