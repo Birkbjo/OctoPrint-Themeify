@@ -8,7 +8,7 @@
 $(function() {
     function ThemeifyViewModel(parameters) {
         var self = this;
-        self.classId = "themeify";
+        self.classId = 'themeify';
         self.settings = parameters[0];
 
         self.ownSettings = {};
@@ -20,8 +20,8 @@ $(function() {
         self._ownSettingsPrev = {};
         //holds subscriptions, so that they can be removed later
         self.configSubscriptions = {
-            enabled: "",
-            theme: ""
+            enabled: '',
+            theme: '',
         };
 
         var oldVal = function(key) {
@@ -29,23 +29,34 @@ $(function() {
         };
 
         self.onStartupComplete = function() {
-            var htmlId = $("html").attr("id");
+            var htmlId = $('html').attr('id');
             //Remove styling if touch is enabled
-            if (htmlId && htmlId == "touch") {
-                $("html").removeClass(self.classId);
+            if (htmlId && htmlId == 'touch') {
+                $('html').removeClass(self.classId);
             }
 
             self.updateColors();
             self._updateCustomRules();
         };
 
+        self.enableBeforeLoaded = function() {
+            const localTheme = localStorage.getItem('theme');
+            if (localTheme) {
+                $('html')
+                    .addClass(self.classId)
+                    .addClass(localTheme);
+            }
+        };
+
         self.enable = function() {
             if (
                 self.ownSettings.enabled() &&
-                $.attr("html", "class") != self.classId &&
-                $("html").attr("id") !== "touch"
+                $.attr('html', 'class') != self.classId &&
+                $('html').attr('id') !== 'touch'
             ) {
-                $("html")
+                const theme = self.ownSettings.theme();
+                localStorage.setItem('theme', theme);
+                $('html')
                     .addClass(self.classId)
                     .addClass(self.ownSettings.theme());
             }
@@ -53,12 +64,12 @@ $(function() {
 
         self.addNewCustomRule = function() {
             var ruleObj = {
-                selector: ko.observable(""),
-                rule: ko.observable(""),
-                value: ko.observable(""),
-                enabled: ko.observable(true)
+                selector: ko.observable(''),
+                rule: ko.observable(''),
+                value: ko.observable(''),
+                enabled: ko.observable(true),
             };
-            self._subscribeToCustomRules(ruleObj, "customRules");
+            self._subscribeToCustomRules(ruleObj, 'customRules');
             self.ownSettings.customRules.push(ruleObj);
         };
 
@@ -66,7 +77,7 @@ $(function() {
             self.settings = self.settings.settings;
             self.ownSettings = self.settings.plugins.themeify;
             self.customRules = self.ownSettings.customRules.extend({
-                rateLimit: 50
+                rateLimit: 50,
             });
             self.onRuleToggle = self.onRuleToggle;
             self.enable();
@@ -106,13 +117,13 @@ $(function() {
                 self.builtInElements.push({
                     elem: elem,
                     rule: rule.rule(),
-                    old
+                    old,
                 });
             } else {
                 self.customizedElements.push({
                     elem: elem,
                     rule: rule.rule(),
-                    old
+                    old,
                 });
             }
             $(rule.selector()).css(rule.rule(), rule.value());
@@ -120,14 +131,14 @@ $(function() {
 
         self.clone = function(obj) {
             //get observable value
-            if (typeof obj == "function") {
+            if (typeof obj == 'function') {
                 return obj();
             }
 
             if (
                 obj === null ||
-                typeof obj !== "object" ||
-                "isActiveClone" in obj
+                typeof obj !== 'object' ||
+                'isActiveClone' in obj
             )
                 return obj;
 
@@ -136,9 +147,9 @@ $(function() {
 
             for (var key in obj) {
                 if (Object.prototype.hasOwnProperty.call(obj, key)) {
-                    obj["isActiveClone"] = null;
+                    obj['isActiveClone'] = null;
                     temp[key] = self.clone(obj[key]);
-                    delete obj["isActiveClone"];
+                    delete obj['isActiveClone'];
                 }
             }
 
@@ -169,12 +180,13 @@ $(function() {
         };
 
         self.onThemeChange = function(newVal) {
-            var prev = oldVal("theme");
+            var prev = oldVal('theme');
             var hasClass = clazz => {
-                return $("html").hasClass(clazz);
+                return $('html').hasClass(clazz);
             };
             if (!hasClass(newVal)) {
-                $("html")
+                localStorage.setItem('theme', newVal);
+                $('html')
                     .addClass(newVal)
                     .removeClass(prev);
             }
@@ -185,12 +197,12 @@ $(function() {
         self.onEnabledChange = function(newVal) {
             if (
                 newVal &&
-                $.attr("html", "class") != self.classId &&
-                $("html").attr("id") !== "touch"
+                $.attr('html', 'class') != self.classId &&
+                $('html').attr('id') !== 'touch'
             ) {
-                $("html").addClass(self.classId);
+                $('html').addClass(self.classId);
             } else {
-                $("html").removeClass(self.classId);
+                $('html').removeClass(self.classId);
                 self._removeCustomStyles();
             }
 
@@ -213,15 +225,15 @@ $(function() {
         };
 
         self._removeCustomStyles = function() {
-            self.customizedElements.map(elem => elem.elem.css(elem.rule, ""));
+            self.customizedElements.map(elem => elem.elem.css(elem.rule, ''));
         };
 
         self._removeBuiltInStyles = function() {
-            self.builtInElements.map(elem => elem.elem.css(elem.rule, ""));
+            self.builtInElements.map(elem => elem.elem.css(elem.rule, ''));
         };
 
         self._removeCustomStylesByRule = function(rule) {
-            $(rule.selector()).css(rule.rule(), "");
+            $(rule.selector()).css(rule.rule(), '');
         };
 
         self.onRuleToggle = function(rule) {
@@ -231,7 +243,7 @@ $(function() {
 
         self.ruleIsDeleteable = function(rule) {
             //deleteable if not exists
-            if (!rule.deletable || typeof rule.deletable !== "function") {
+            if (!rule.deletable || typeof rule.deletable !== 'function') {
                 return true;
             }
             return rule.deletable();
@@ -257,13 +269,13 @@ $(function() {
         self.onSettingsShown = function() {
             //subscribe to changes
             Object.keys(self.ownSettings).map((key, i) => {
-                if (key == "customRules") {
+                if (key == 'customRules') {
                     self.configSubscriptions[key] = [];
                     self.customRules().map((rule, i) => {
                         //subscribe to the attributes (selector, rule, value, enabled etc)
                         self._subscribeToCustomRules(rule, key);
                     });
-                } else if (key == "color") {
+                } else if (key == 'color') {
                     self.configSubscriptions[key] = [];
                     var subFunc = self.onColorChange;
                     //Loop rules
@@ -294,16 +306,20 @@ $(function() {
                 }
             });
         };
+        
+        //optimize "flicker" before theme is loaded
+        self.enableBeforeLoaded();
+
         self.configOnChangeMap = {
             enabled: self.onEnabledChange,
             theme: self.onThemeChange,
-            enableCustomization: self.onEnableCustomizationChange
+            enableCustomization: self.onEnableCustomizationChange,
         };
     }
-
+ 
     OCTOPRINT_VIEWMODELS.push([
         ThemeifyViewModel,
-        ["settingsViewModel"],
-        ["#settings_plugin_themeify"]
+        ['settingsViewModel'],
+        ['#settings_plugin_themeify'],
     ]);
 });
