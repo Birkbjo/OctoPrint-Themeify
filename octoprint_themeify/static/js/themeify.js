@@ -51,7 +51,6 @@ $(function() {
         self.enable = function() {
             if (
                 self.ownSettings.enabled() &&
-                $.attr('html', 'class') != self.classId &&
                 $('html').attr('id') !== 'touch'
             ) {
                 const theme = self.ownSettings.theme();
@@ -195,14 +194,15 @@ $(function() {
         };
 
         self.onEnabledChange = function(newVal) {
-            if (
-                newVal &&
-                $.attr('html', 'class') != self.classId &&
-                $('html').attr('id') !== 'touch'
-            ) {
-                $('html').addClass(self.classId);
+            if (newVal && $('html').attr('id') !== 'touch') {
+                const theme = self.ownSettings.theme();
+                $('html')
+                    .addClass(self.classId)
+                    .addClass(theme);
+                localStorage.setItem('theme', theme);
             } else {
                 $('html').removeClass(self.classId);
+                localStorage.setItem('theme', false);
                 self._removeCustomStyles();
             }
 
@@ -306,7 +306,7 @@ $(function() {
                 }
             });
         };
-        
+
         //optimize "flicker" before theme is loaded
         self.enableBeforeLoaded();
 
@@ -316,7 +316,7 @@ $(function() {
             enableCustomization: self.onEnableCustomizationChange,
         };
     }
- 
+
     OCTOPRINT_VIEWMODELS.push([
         ThemeifyViewModel,
         ['settingsViewModel'],
