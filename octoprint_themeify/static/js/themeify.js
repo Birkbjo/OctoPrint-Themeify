@@ -23,7 +23,8 @@ $(function() {
             enabled: '',
             theme: '',
         };
-
+        self.tabIcons = {};
+        self.oldTabContent = {};
         var oldVal = function(key) {
             return self._ownSettingsPrev[key];
         };
@@ -37,6 +38,38 @@ $(function() {
 
             self.updateColors();
             self._updateCustomRules();
+        };
+
+        self.setupIcons = function() {
+            self.tabIcons
+                .tabs()
+                .filter(tab => tab.domId() && tab.enabled())
+                .map((tab, i) => {
+                    const { domId, enabled, faIcon } = tab;
+                    const icon = $(`<i>`, { class: faIcon() });
+                    const elem$ = $(`${domId()} a`);
+                    if (elem$ && elem$.closest('ul').attr('id') === 'tabs') {
+                        self.oldTabContent[domId()] = $(`${domId()} a`).html();
+                        elem$.html(icon);
+                    } else {
+                        console.warn(
+                            `Themeify: Failed to add icon! ${domId()} is not a child of the tab-list!`
+                        );
+                    }
+                });
+        };
+
+        self.restoreTabs = function() {
+            self.tabIcons
+                .tabs()
+                .filter(tab => tab.domId())
+                .map((tab, i) => {
+                    const { domId, enabled, faIcon } = tab;
+                    const oldContent = self.oldTabContent[domId()];
+                    if (oldContent) {
+                        $(`${domId()} a`).html(oldContent);
+                    }
+                });
         };
 
         self.enableBeforeLoaded = function() {
@@ -68,8 +101,18 @@ $(function() {
                 value: ko.observable(''),
                 enabled: ko.observable(true),
             };
-            self._subscribeToCustomRules(ruleObj, 'customRules');
+            self._subscribeToDictValues(ruleObj, 'customRules');
             self.ownSettings.customRules.push(ruleObj);
+        };
+
+        self.addNewIcon = function() {
+            var icon = {
+                domId: ko.observable(''),
+                enabled: ko.observable(true),
+                faIcon: ko.observable(''),
+            };
+            self._subscribeToDictValues(icon, 'tabs');
+            self.tabIcons.tabs.push(icon);
         };
 
         self.onBeforeBinding = function() {
@@ -79,6 +122,15 @@ $(function() {
                 rateLimit: 50,
             });
             self.onRuleToggle = self.onRuleToggle;
+            self.tabIcons = {
+                enabled: self.ownSettings.tabs.enableIcons,
+                tabs: self.ownSettings.tabs.icons,
+            };
+
+            if (self.tabIcons.enabled()) {
+                self.setupIcons();
+            }
+
             self.enable();
 
             self._copyOwnSettings();
@@ -224,6 +276,23 @@ $(function() {
             self._copyOwnSettings();
         };
 
+        self.onIconsEnableChange = function(newVal) {
+            if (newVal) {
+                self.setupIcons();
+            } else {
+                self.restoreTabs();
+            }
+        };
+
+        self.onIconChange = function(icon, value, propKey) {
+            if (!self.tabIcons.enabled()) return;
+
+            if (propKey === 'enabled' && !value) {
+                self.restoreTabs();
+            }
+            self.setupIcons();
+        };
+
         self._removeCustomStyles = function() {
             self.customizedElements.map(elem => elem.elem.css(elem.rule, ''));
         };
@@ -256,13 +325,19 @@ $(function() {
             }
         };
 
-        self._subscribeToCustomRules = function(rule, key, subscribeFunc) {
+        self.onIconDelete = function(icon) {
+            self.restoreTabs();
+            self.tabIcons.tabs.remove(icon);
+            self.setupIcons();
+        };
+
+        self._subscribeToDictValues = function(dict, key, subscribeFunc) {
             var subFunc = subscribeFunc
-                ? subscribeFunc.bind(this, rule)
-                : self.onCustomRuleChange.bind(this, rule);
-            Object.keys(rule).map(ruleAttr => {
+                ? subscribeFunc.bind(this, dict)
+                : self.onCustomRuleChange.bind(this, dict);
+            Object.keys(dict).map(dictAttr => {
                 self.configSubscriptions[key].push(
-                    rule[ruleAttr].subscribe(subFunc)
+                    dict[dictAttr].subscribe(val => subFunc(val, dictAttr))
                 );
             });
         };
@@ -273,7 +348,7 @@ $(function() {
                     self.configSubscriptions[key] = [];
                     self.customRules().map((rule, i) => {
                         //subscribe to the attributes (selector, rule, value, enabled etc)
-                        self._subscribeToCustomRules(rule, key);
+                        self._subscribeToDictValues(rule, key);
                     });
                 } else if (key == 'color') {
                     self.configSubscriptions[key] = [];
@@ -281,9 +356,21 @@ $(function() {
                     //Loop rules
                     self.ownSettings.color().map((rule, i) => {
                         //subscribe to the attributes (selector, rule, value, enabled etc)
-                        self._subscribeToCustomRules(rule, key, subFunc);
+                        self._subscribeToDictValues(rule, key, subFunc);
+                    });
+                } else if (key == 'tabs') {
+                    const sub = (self.configSubscriptions[key] = []);
+                    const { enabled, tabs } = self.tabIcons;
+                    sub.push(enabled.subscribe(self.onIconsEnableChange));
+                    tabs().map((tab, i) => {
+                        self._subscribeToDictValues(
+                            tab,
+                            key,
+                            self.onIconChange
+                        );
                     });
                 } else {
+                    //Use the map for simple subscriptions
                     var onChangeFunc = self.configOnChangeMap[key]
                         ? self.configOnChangeMap[key]
                         : self.onChange.bind(this, key);

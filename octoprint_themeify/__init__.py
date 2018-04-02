@@ -41,7 +41,31 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
                     rule="background-color",
                     value="#2f3136",
                     enabled=False)
-            ]
+            ],
+            tabs=dict(
+                enableIcons=False,
+                icons=[
+                    dict(
+                        domId="#temp_link",
+                        enabled=True,
+                        faIcon="fa fa-line-chart"
+                    ),
+                    dict(
+                        domId="#control_link",
+                        enabled=True,
+                        faIcon="fa fa-gamepad",
+                    ),
+                    dict(
+                        domId="#gcode_link",
+                        enabled=True,
+                        faIcon="fa fa-object-ungroup"
+                    ),
+                    dict(
+                        domId="#term_link",
+                        enabled=True,
+                        faIcon="fa fa-terminal"
+                    )],
+            )
         )
 
    # def on_settings_save(self, data):
