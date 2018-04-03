@@ -49,6 +49,12 @@ octoprint dev plugin:install
 ```
 Start hacking! 
 
+If you edit the javascript, I advise to use
+```bash
+yarn watch
+```
+so that you do not need to build for every change.
+
 If you have setup `stylesheet: less` in your `config.yaml` you can edit the less-files and reload the page without re-building for each change.
 
 #### Build
@@ -57,5 +63,3 @@ Build javascript and css:
 ```bash
 yarn build
 ```
-
-
