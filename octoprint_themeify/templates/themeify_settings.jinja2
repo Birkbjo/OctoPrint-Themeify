@@ -107,7 +107,7 @@
             <h5>Custom Tab-icons</h5>
             <span class="help-block" style="padding-bottom: 10px">Here you can customize the icons in the tab-navigation. 
                 Use the selector to specify which DOM-element you want to edit.
-            See <a href="https://fontawesome.com/v4.7.0/icons/">here</a> for a list of FontAwesome-Classes to use.</span>
+            See <a target="_blank" href="https://fontawesome.com/v4.7.0/icons/">here</a> for a list of FontAwesome-Classes to use.</span>
             <div style="margin-left: 25px">
                 <table class="table table-striped table-condensed">
                     <thead>
@@ -118,6 +118,9 @@
                             <th>
                                 FontAwesome class
                             </th>
+                            <th>
+                                    Preview
+                                </th>
                             <th>
                                 Action
                             </th>
@@ -131,6 +134,9 @@
                             <td>
                                 <input type="text" value="Icon" data-bind="value: faIcon">
                             </td>
+                            <td>
+                                    <i class="fa fa-eye" data-bind="attr: { class: faIcon }"></i>
+                                </td>
                             <td>
                                 <i data-bind="attr: { class: enabled() ? 'fa fa-check-square-o' : 'fa fa-square-o' }, click: $parent.onRuleToggle"></i>
                                 <i class="fa fa-trash-o" data-bind="css: { disabled: !$parent.ruleIsDeleteable($data) }, click: $parent.onIconDelete"></i>
