@@ -26,7 +26,7 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
             theme='discorded',
             color=[dict(
                 selector='.navbar-inner',
-                rule="background-color",
+                rule="background",
                 value="#2f3136",
                 enabled=False,
                 deletable=False)],

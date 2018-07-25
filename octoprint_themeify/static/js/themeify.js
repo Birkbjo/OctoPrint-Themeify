@@ -255,21 +255,16 @@ $(function() {
             } else {
                 $('html').removeClass(self.classId);
                 localStorage.setItem('theme', false);
-                self._removeCustomStyles();
             }
 
             self._copyOwnSettings();
         };
 
         self.onEnableCustomizationChange = function(newVal) {
-            if (
-                newVal &&
-                self.ownSettings.enabled() &&
-                self.ownSettings.enableCustomization
-            ) {
+            if (newVal) {
                 self.updateColors();
                 self._updateCustomRules();
-            } else if (!newVal) {
+            } else {
                 self._removeBuiltInStyles();
                 self._removeCustomStyles();
             }
