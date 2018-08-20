@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const isProd = process.argv.indexOf("-p") > -1;
 const staticPath = path.resolve(__dirname, "octoprint_themeify/static");
 module.exports = {
     entry: [
@@ -12,6 +12,7 @@ module.exports = {
         filename: "themeify.min.js",
         path: path.join(staticPath, "dist")
     },
+    devtool: isProd ? 'false' : 'cheap-module-eval-source-map',
     module: {
         rules: [
             {

@@ -1,11 +1,11 @@
 # OctoPrint-Themeify
 
 A small [OctoPrint](https://github.com/foosel/OctoPrint) plugin to change the looks of OctoPrint!
-Currently features a beautiful Dark Theme inspired by Discord's color [palette](https://discordapp.com/branding), along with a light Material Design theme. 
+Currently features a beautiful Dark Theme inspired by Discord's color [palette](https://discordapp.com/branding), along with a handful of others thanks to the awesome contributors.
 
 Also features customization of individual elements. With the advanced-customization scheme you can modify the appearance to your heart's desire directly from the settings-dialog!
 
-Pull requests for new CSS-themes are appreciated!
+
 
 
 ![](extras/discorded_ss.png)
@@ -34,6 +34,7 @@ Get NodeJS: https://nodejs.org/en/
 Clone the repo:
 ```bash
 git clone https://github.com/Birkbjo/OctoPrint-Themeify.git
+cd OctoPrint-Themeify
 ```
 
 Use npm install or [install yarn](https://yarnpkg.com/lang/en/docs/install/#windows-tab)
@@ -42,7 +43,17 @@ Use npm install or [install yarn](https://yarnpkg.com/lang/en/docs/install/#wind
 yarn install && yarn build
 ```
 
+Install the plugin into your octoprint instance:
+```
+octoprint dev plugin:install
+```
 Start hacking! 
+
+If you edit the javascript, I advise to use
+```bash
+yarn watch
+```
+so that you do not need to build for every change.
 
 If you have setup `stylesheet: less` in your `config.yaml` you can edit the less-files and reload the page without re-building for each change.
 
@@ -52,5 +63,3 @@ Build javascript and css:
 ```bash
 yarn build
 ```
-
-

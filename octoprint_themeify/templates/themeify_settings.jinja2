@@ -5,7 +5,7 @@
             <label class="control-label"></label>
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" data-bind="checked: ownSettings.enabled">Enabled
+                    <input type="checkbox" data-bind="checked: ownSettings.enabled">Enable theme
                 </label>
             </div>
             <div class="controls">
@@ -13,70 +13,17 @@
                     <input type="checkbox" data-bind="checked: ownSettings.enableCustomization"> Enable customization
                 </label>
             </div>
+            <div class="controls">
+                <label class="checkbox">
+                    <input type="checkbox" data-bind="checked: tabIcons.enabled"> Enable Tab-icons
+                </label>
+            </div>
+
         </div>
         <div class="control-group">
             <label class="control-label">Theme</label>
             <div class="controls">
                 <select data-bind="value: ownSettings.theme">
-                    <option value="discorded">Discorded</option>
-                    <option value="material_ui_light">Material UI light</option>
-                    <option value="cyborg">Cyborg</option>
-                    <option value="discoranged">Discoranged</option>
-                    <option value="dyl">Dyl</option>
-                    <option value="daylight">Daylight</option>
-                    <option value="nighttime">Nighttime</option>
-                </select>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <label class="checkbox">
-                    <input type="checkbox" data-bind="checked: ownSettings.enableAutoswitch"> Automatically switch to a night theme
-                </label>
-            </div>
-        </div>
-        <div class="control-group" data-bind="css: { disabled: !ownSettings.enableAutoswitch() }">
-          <label class="control-label">From</label>
-          <div class="controls">
-              <select data-bind="value: ownSettings.nightTimeStart" data-bind="disable: !ownSettings.enableAutoswitch()">
-                  <option value="12">12pm</option>
-                  <option value="13">1pm</option>
-                  <option value="14">2pm</option>
-                  <option value="15">3pm</option>
-                  <option value="16">4pm</option>
-                  <option value="17">5pm</option>
-                  <option value="18">6pm</option>
-                  <option value="19">7pm</option>
-                  <option value="20">8pm</option>
-                  <option value="21">9pm</option>
-                  <option value="22">10pm</option>
-                  <option value="23">11pm</option>
-              </select>
-          </div>
-        </div>
-        <div class="control-group" data-bind="css: { disabled: !ownSettings.enableAutoswitch() }">
-          <label class="control-label">To</label>
-          <div class="controls">
-              <select data-bind="value: ownSettings.nightTimeEnd" data-bind="disable: !ownSettings.enableAutoswitch()">
-                  <option value="0">12am</option>
-                  <option value="1">1am</option>
-                  <option value="2">2am</option>
-                  <option value="3">3am</option>
-                  <option value="4">4am</option>
-                  <option value="5">5am</option>
-                  <option value="6">6am</option>
-                  <option value="7">7am</option>
-                  <option value="8">8am</option>
-                  <option value="9">9am</option>
-                  <option value="10">10am</option>
-                  <option value="11">11am</option>
-              </select>
-          </div>
-        </div>
-        <div class="control-group" data-bind="css: { disabled: !ownSettings.enableAutoswitch() }">
-            <label class="control-label">Night Theme</label>
-            <div class="controls">
-                <select data-bind="value: ownSettings.nightTheme" data-bind="disable: !ownSettings.enableAutoswitch()">
                     <option value="discorded">Discorded</option>
                     <option value="material_ui_light">Material UI light</option>
                     <option value="cyborg">Cyborg</option>
@@ -157,8 +104,51 @@
                     <button class="btn" data-bind="click: addNewCustomRule">New</button>
                 </div>
             </div>
+            <h5>Custom Tab-icons</h5>
+            <span class="help-block" style="padding-bottom: 10px">Here you can customize the icons in the tab-navigation. 
+                Use the selector to specify which DOM-element you want to edit.
+            See <a target="_blank" href="https://fontawesome.com/v4.7.0/icons/">here</a> for a list of FontAwesome-Classes to use.</span>
+            <div style="margin-left: 25px">
+                <table class="table table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>
+                                Selector
+                            </th>
+                            <th>
+                                FontAwesome class
+                            </th>
+                            <th>
+                                    Preview
+                                </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="control-group" data-bind="foreach: tabIcons.tabs">
+                        <tr>
+                            <td>
+                                <input type="text" value="Selector" data-bind="value: domId">
+                            </td>
+                            <td>
+                                <input type="text" value="Icon" data-bind="value: faIcon">
+                            </td>
+                            <td>
+                                    <i class="fa fa-eye" data-bind="attr: { class: faIcon }"></i>
+                                </td>
+                            <td>
+                                <i data-bind="attr: { class: enabled() ? 'fa fa-check-square-o' : 'fa fa-square-o' }, click: $parent.onRuleToggle"></i>
+                                <i class="fa fa-trash-o" data-bind="css: { disabled: !$parent.ruleIsDeleteable($data) }, click: $parent.onIconDelete"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="control">
+                        <button class="btn" data-bind="click: addNewIcon">New</button>
+                    </div>
+            </div>
         </div>
-
     </div>
 
 
