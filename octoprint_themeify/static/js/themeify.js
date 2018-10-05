@@ -4,7 +4,6 @@
  * Author: Birk Johansson
  * License: MIT
  */
-
 $(function() {
     function ThemeifyViewModel(parameters) {
         var self = this;
@@ -25,8 +24,40 @@ $(function() {
         };
         self.tabIcons = {};
         self.oldTabContent = {};
+
+        self.customStyleSheet = null;
+
         var oldVal = function(key) {
             return self._ownSettingsPrev[key];
+        };
+
+        function ruleObjectToCSSText({ selector, rule, value }) {
+            const text = `${selector()} { ${rule()}: ${value()} !important; }`;
+            console.log(text);
+            return text;
+        }
+
+        self.init = function() {
+            //optimize "flicker" before theme is loaded
+            self.initCustomStyleSheet();
+            self.enableBeforeLoaded();
+        };
+
+        self.initCustomStyleSheet = function() {
+            const styleSheet = document.createElement('style');
+            styleSheet.title = 'themeifyCustom';
+
+            const s = document.body.appendChild(styleSheet);
+            self.customStyleSheet = styleSheet;
+
+            //Get the stylesheet object, we start at the end since its most likely to be there
+            for (let i = document.styleSheets.length - 1; i > -1; i--) {
+                const s = document.styleSheets[i];
+                if (s.title === styleSheet.title) {
+                    self.customStyleSheet = s;
+                    break;
+                }
+            }
         };
 
         self.onStartupComplete = function() {
@@ -81,7 +112,7 @@ $(function() {
             }
         };
 
-        self.enable = function() {
+        self.enableTheming = function() {
             if (
                 self.ownSettings.enabled() &&
                 $('html').attr('id') !== 'touch'
@@ -131,7 +162,7 @@ $(function() {
                 self.setupIcons();
             }
 
-            self.enable();
+            self.enableTheming();
 
             self._copyOwnSettings();
         };
@@ -178,6 +209,27 @@ $(function() {
                 });
             }
             $(rule.selector()).css(rule.rule(), rule.value());
+        };
+
+        self._applyRule = function(rule, builtIn = false) {
+            var elem = $(rule.selector());
+            var old = elem.css(rule.rule());
+            if (builtIn) {
+                self.builtInElements.push({
+                    elem: elem,
+                    rule: rule.rule(),
+                    old,
+                });
+            } else {
+                self.customizedElements.push({
+                    elem: elem,
+                    rule: rule.rule(),
+                    old,
+                });
+            }
+            const cssText = ruleObjectToCSSText(rule);
+            self.customStyleSheet.insertRule(cssText);
+            // $(rule.selector()).css(rule.rule(), rule.value());
         };
 
         self.clone = function(obj) {
@@ -337,6 +389,9 @@ $(function() {
             });
         };
         self.onSettingsShown = function() {
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
             //subscribe to changes
             Object.keys(self.ownSettings).map((key, i) => {
                 if (key == 'customRules') {
@@ -389,19 +444,18 @@ $(function() {
             });
         };
 
-        //optimize "flicker" before theme is loaded
-        self.enableBeforeLoaded();
-
         self.configOnChangeMap = {
             enabled: self.onEnabledChange,
             theme: self.onThemeChange,
             enableCustomization: self.onEnableCustomizationChange,
         };
+
+        self.init();
     }
 
-    OCTOPRINT_VIEWMODELS.push([
-        ThemeifyViewModel,
-        ['settingsViewModel'],
-        ['#settings_plugin_themeify'],
-    ]);
+    OCTOPRINT_VIEWMODELS.push({
+        construct: ThemeifyViewModel,
+        dependencies: ['settingsViewModel'],
+        elements: ['#settings_plugin_themeify'],
+    });
 });
