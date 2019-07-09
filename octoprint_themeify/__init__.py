@@ -10,7 +10,7 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
                      octoprint.plugin.TemplatePlugin):
 
     def on_after_startup(self):
-        print "Themeify initialized."
+        self._logger.info("Themeify initialized.")
 
     def get_assets(self):
         return dict(
