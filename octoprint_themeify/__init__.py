@@ -99,7 +99,7 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
 
 
 __plugin_name__ = "Themeify"
-
+__plugin_pythoncompat__ = ">=2.7,<4"
 
 def __plugin_load__():
     global __plugin_implementation__
