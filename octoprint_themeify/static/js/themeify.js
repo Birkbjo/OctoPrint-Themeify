@@ -6,7 +6,20 @@
  */
 
 $(function() {
+
     function ThemeifyViewModel(parameters) {
+        ko.extenders.stripQuotes = function(target, opts) {
+            const result = ko.pureComputed({
+                read: target,
+                write: function(newVal) {
+                    const stripped = newVal.replace(/['"]+/g, '')
+                    target(stripped)
+                }
+            }).extend({ notify: 'always' });
+            result(target())
+            return result;
+        }
+
         var self = this;
         self.classId = 'themeify';
         self.settings = parameters[0];
@@ -96,8 +109,8 @@ $(function() {
 
         self.addNewCustomRule = function() {
             var ruleObj = {
-                selector: ko.observable(''),
-                rule: ko.observable(''),
+                selector: ko.observable('').extend({ stripQuotes: true}),
+                rule: ko.observable('').extend({ stripQuotes: true}),
                 value: ko.observable(''),
                 enabled: ko.observable(true),
             };
@@ -107,7 +120,7 @@ $(function() {
 
         self.addNewIcon = function() {
             var icon = {
-                domId: ko.observable(''),
+                domId: ko.observable('').extend({ stripQuotes: true}),
                 enabled: ko.observable(true),
                 faIcon: ko.observable(''),
             };
