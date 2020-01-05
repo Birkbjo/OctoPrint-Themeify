@@ -111,7 +111,7 @@ $(function() {
                 enabled: ko.observable(true),
                 faIcon: ko.observable(''),
             };
-            self._subscribeToDictValues(icon, 'tabs');
+            self._subscribeToDictValues(icon, 'tabs', self.onIconChange);
             self.tabIcons.tabs.push(icon);
         };
 
