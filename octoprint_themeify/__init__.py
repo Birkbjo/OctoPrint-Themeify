@@ -23,7 +23,11 @@ class ThemeifyPlugin(octoprint.plugin.StartupPlugin,
         return dict(
             enabled=True,
             enableCustomization=False,
+            enableAutoswitch=False,
             theme='discorded',
+            nightTheme='nighttime',
+            nightTimeStart=7,
+            nightTimeEnd=19,
             color=[dict(
                 selector='.navbar-inner',
                 rule="background",
