@@ -1,6 +1,6 @@
 {
     "name": "Themeify",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "A plugin to change the looks of OctoPrint",
     "license": "AGPL-3.0",
     "scripts": {
