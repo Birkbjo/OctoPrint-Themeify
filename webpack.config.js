@@ -12,7 +12,7 @@ module.exports = {
         filename: "themeify.min.js",
         path: path.join(staticPath, "dist")
     },
-    devtool: isProd ? 'false' : 'cheap-module-eval-source-map',
+    devtool: isProd ? 'false' : 'eval-cheap-module-source-map',
     module: {
         rules: [
             {

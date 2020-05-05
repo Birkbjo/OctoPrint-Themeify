@@ -95,7 +95,7 @@
                             </td>
                             <td>
                                 <i data-bind="attr: { class: enabled() ? 'fa fa-check-square-o' : 'fa fa-square-o' }, click: $parent.onRuleToggle"></i>
-                                <i class="fa fa-trash-o" data-bind="css: { disabled: !$parent.ruleIsDeleteable($data) }, click: $parent.onCustomRuleDelete"></i>
+                                <i class="fa fa-trash-o" data-bind="css: { disabled: !$parent.ruleIsDeleteable($data) }, click: $parent.onCustomRuleDelete.bind($data, $data, $index)"></i>
                             </td>
                         </tr>
                     </tbody>

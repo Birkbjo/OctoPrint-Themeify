@@ -1,3 +1,4 @@
+import RuleStyleSheet from './RuleStyleSheet'
 /*
  * View model for OctoPrint-Themeify
  *
@@ -12,53 +13,25 @@ $(function() {
 
         self.ownSettings = {};
         self.customRules = [];
-        //These hold the customized and built-in changed/overriden elements, respectively
-        self.customizedElements = [];
-        self.builtInElements = [];
 
         self._ownSettingsPrev = {};
+
         //holds subscriptions, so that they can be removed later
         self.configSubscriptions = {
             enabled: '',
             theme: '',
         };
+
         self.tabIcons = {};
         self.oldTabContent = {};
 
-        self.customStyleSheet = null;
-
-        var oldVal = function(key) {
-            return self._ownSettingsPrev[key];
-        };
-
-        function ruleObjectToCSSText({ selector, rule, value }) {
-            const text = `${selector()} { ${rule()}: ${value()} !important; }`;
-            console.log(text);
-            return text;
-        }
-
         self.init = function() {
+            self.customRuleStyleSheet = RuleStyleSheet.createStyleSheet('themeify-customStyleSheet', self.customRules)
+            self.builtInStyles = RuleStyleSheet.createStyleSheet('themeify-builtInStyleSheet', self.ownSettings.color)
             //optimize "flicker" before theme is loaded
-            self.initCustomStyleSheet();
             self.enableBeforeLoaded();
         };
 
-        self.initCustomStyleSheet = function() {
-            const styleSheet = document.createElement('style');
-            styleSheet.title = 'themeifyCustom';
-
-            const s = document.body.appendChild(styleSheet);
-            self.customStyleSheet = styleSheet;
-
-            //Get the stylesheet object, we start at the end since its most likely to be there
-            for (let i = document.styleSheets.length - 1; i > -1; i--) {
-                const s = document.styleSheets[i];
-                if (s.title === styleSheet.title) {
-                    self.customStyleSheet = s;
-                    break;
-                }
-            }
-        };
 
         self.onStartupComplete = function() {
             var htmlId = $('html').attr('id');
@@ -66,7 +39,7 @@ $(function() {
             if (htmlId && htmlId == 'touch') {
                 $('html').removeClass(self.classId);
             }
-
+            console.log(self)
             self.updateColors();
             self._updateCustomRules();
         };
@@ -103,6 +76,10 @@ $(function() {
                 });
         };
 
+        /**
+         * This is called before we have data, used to reduce 
+         * initializing time before theme is applied
+         */
         self.enableBeforeLoaded = function() {
             const localTheme = localStorage.getItem('theme');
             if (localTheme) {
@@ -127,13 +104,14 @@ $(function() {
 
         self.addNewCustomRule = function() {
             var ruleObj = {
-                selector: ko.observable(''),
-                rule: ko.observable(''),
+                selector: ko.observable('div'),
+                rule: ko.observable('color'),
                 value: ko.observable(''),
                 enabled: ko.observable(true),
             };
-            self._subscribeToDictValues(ruleObj, 'customRules');
+            self._subscribeToDictValues(ruleObj, 'customRules', self.customRules().length);
             self.ownSettings.customRules.push(ruleObj);
+            self.customRuleStyleSheet.addRule(ruleObj)
         };
 
         self.addNewIcon = function() {
@@ -157,18 +135,18 @@ $(function() {
                 enabled: self.ownSettings.tabs.enableIcons,
                 tabs: self.ownSettings.tabs.icons,
             };
-
+       
             if (self.tabIcons.enabled()) {
                 self.setupIcons();
             }
 
             self.enableTheming();
-
-            self._copyOwnSettings();
+            self.customRuleStyleSheet.initWithRules(self.customRules);
+            self.builtInStyles.initWithRules(self.ownSettings.color);
         };
 
         self.updateColors = function() {
-            self._removeBuiltInStyles();
+         //   self._removeBuiltInStyles();
             if (self.ownSettings.enableCustomization()) {
                 self.ownSettings
                     .color()
@@ -180,7 +158,7 @@ $(function() {
         };
 
         self._updateCustomRules = function() {
-            self._removeCustomStyles();
+         //   self._removeCustomStyles();
             self.updateColors();
             if (self.ownSettings.enableCustomization()) {
                 self.ownSettings
@@ -193,42 +171,12 @@ $(function() {
         };
 
         self._applyRule = function(rule, builtIn = false) {
-            var elem = $(rule.selector());
-            var old = elem.css(rule.rule());
-            if (builtIn) {
-                self.builtInElements.push({
-                    elem: elem,
-                    rule: rule.rule(),
-                    old,
-                });
-            } else {
-                self.customizedElements.push({
-                    elem: elem,
-                    rule: rule.rule(),
-                    old,
-                });
+         //   const cssText = ruleObjectToCSSText(rule);
+            if(!rule.selector() || !rule.rule()) {
+                return
             }
-            $(rule.selector()).css(rule.rule(), rule.value());
-        };
-
-        self._applyRule = function(rule, builtIn = false) {
-            var elem = $(rule.selector());
-            var old = elem.css(rule.rule());
-            if (builtIn) {
-                self.builtInElements.push({
-                    elem: elem,
-                    rule: rule.rule(),
-                    old,
-                });
-            } else {
-                self.customizedElements.push({
-                    elem: elem,
-                    rule: rule.rule(),
-                    old,
-                });
-            }
-            const cssText = ruleObjectToCSSText(rule);
-            self.customStyleSheet.insertRule(cssText);
+            //self.customStyleSheet.insertRule(cssText);
+        //    console.log(self.)
             // $(rule.selector()).css(rule.rule(), rule.value());
         };
 
@@ -265,25 +213,24 @@ $(function() {
             });
         };
 
-        self.onChange = function(settingKey, newVal) {
-            self.updateColors();
-            self._copyOwnSettings();
+        self.onColorChange = function(rule, valueChanged, index) {
+            console.log('color change', rule, index)
+            self.builtInStyles.updateRule(rule, index)
         };
 
-        self.onColorChange = function(elem, color) {
-            self.updateColors();
-            self._copyOwnSettings();
-        };
-
-        self.onCustomRuleChange = function(rule) {
-            self.updateColors();
+        self.onCustomRuleChange = function(rule, valueChanged, index) {
+            //self.updateColors();
+            console.log('rule change', rule, index)
             if (rule.rule() && rule.selector() && rule.value()) {
-                self._updateCustomRules();
+               // self._updateCustomRules();
+               self.customRuleStyleSheet.updateRule(rule, index)
+               //self.updateRuleStyleSheet(rule, index)
             }
+           // console.log()
         };
 
         self.onThemeChange = function(newVal) {
-            var prev = oldVal('theme');
+            const previousTheme = localStorage.getItem('theme')
             var hasClass = clazz => {
                 return $('html').hasClass(clazz);
             };
@@ -291,36 +238,27 @@ $(function() {
                 localStorage.setItem('theme', newVal);
                 $('html')
                     .addClass(newVal)
-                    .removeClass(prev);
+                    .removeClass(previousTheme);
             }
-
-            self._copyOwnSettings();
         };
 
         self.onEnabledChange = function(newVal) {
             if (newVal && $('html').attr('id') !== 'touch') {
-                const theme = self.ownSettings.theme();
-                $('html')
-                    .addClass(self.classId)
-                    .addClass(theme);
-                localStorage.setItem('theme', theme);
+                self.enableTheming();
             } else {
                 $('html').removeClass(self.classId);
                 localStorage.setItem('theme', false);
-            }
 
-            self._copyOwnSettings();
+                self.customRuleStyleSheet.disable()
+            }
         };
 
         self.onEnableCustomizationChange = function(newVal) {
             if (newVal) {
-                self.updateColors();
-                self._updateCustomRules();
+                self.customRuleStyleSheet.enable()
             } else {
-                self._removeBuiltInStyles();
-                self._removeCustomStyles();
+                self.customRuleStyleSheet.disable()
             }
-            self._copyOwnSettings();
         };
 
         self.onIconsEnableChange = function(newVal) {
@@ -331,25 +269,13 @@ $(function() {
             }
         };
 
-        self.onIconChange = function(icon, value, propKey) {
+        self.onIconChange = function(icon, value, i, propKey) {
             if (!self.tabIcons.enabled()) return;
 
             if (propKey === 'enabled' && !value) {
                 self.restoreTabs();
             }
             self.setupIcons();
-        };
-
-        self._removeCustomStyles = function() {
-            self.customizedElements.map(elem => elem.elem.css(elem.rule, ''));
-        };
-
-        self._removeBuiltInStyles = function() {
-            self.builtInElements.map(elem => elem.elem.css(elem.rule, ''));
-        };
-
-        self._removeCustomStylesByRule = function(rule) {
-            $(rule.selector()).css(rule.rule(), '');
         };
 
         self.onRuleToggle = function(rule) {
@@ -365,10 +291,11 @@ $(function() {
             return rule.deletable();
         };
 
-        self.onCustomRuleDelete = function(rule) {
+        self.onCustomRuleDelete = function(rule, index) {
             if (self.ruleIsDeleteable(rule)) {
+                self.customRuleStyleSheet.deleteRule(index())
                 self.customRules.remove(rule);
-                self._updateCustomRules();
+                //self._updateCustomRules();
             }
         };
 
@@ -378,27 +305,25 @@ $(function() {
             self.setupIcons();
         };
 
-        self._subscribeToDictValues = function(dict, key, subscribeFunc) {
+        self._subscribeToDictValues = function(dict, key, i, subscribeFunc) {
             var subFunc = subscribeFunc
                 ? subscribeFunc.bind(this, dict)
                 : self.onCustomRuleChange.bind(this, dict);
             Object.keys(dict).map(dictAttr => {
                 self.configSubscriptions[key].push(
-                    dict[dictAttr].subscribe(val => subFunc(val, dictAttr))
+                    dict[dictAttr].subscribe(val => subFunc(val,i, dictAttr))
                 );
             });
         };
         self.onSettingsShown = function() {
-            $('pre code').each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
             //subscribe to changes
-            Object.keys(self.ownSettings).map((key, i) => {
+            Object.keys(self.ownSettings).map((key) => {
                 if (key == 'customRules') {
                     self.configSubscriptions[key] = [];
                     self.customRules().map((rule, i) => {
+                        console.log('sub', i)
                         //subscribe to the attributes (selector, rule, value, enabled etc)
-                        self._subscribeToDictValues(rule, key);
+                        self._subscribeToDictValues(rule, key, i);
                     });
                 } else if (key == 'color') {
                     self.configSubscriptions[key] = [];
@@ -406,7 +331,7 @@ $(function() {
                     //Loop rules
                     self.ownSettings.color().map((rule, i) => {
                         //subscribe to the attributes (selector, rule, value, enabled etc)
-                        self._subscribeToDictValues(rule, key, subFunc);
+                        self._subscribeToDictValues(rule, key, i,subFunc);
                     });
                 } else if (key == 'tabs') {
                     const sub = (self.configSubscriptions[key] = []);
@@ -422,8 +347,6 @@ $(function() {
                 } else {
                     //Use the map for simple subscriptions
                     var onChangeFunc = self.configOnChangeMap[key]
-                        ? self.configOnChangeMap[key]
-                        : self.onChange.bind(this, key);
                     self.configSubscriptions[key] = self.ownSettings[
                         key
                     ].subscribe(onChangeFunc);
