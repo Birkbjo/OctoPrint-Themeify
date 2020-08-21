@@ -22,12 +22,11 @@
         }
 
         .octoprint-container .tab-content {
-            border: none;
-			border-color: @notquiteBlack;
+            border: none @notquiteBlack;
             background-color: @notquiteBlack;
-            -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
-            box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.75);
+            -moz-box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.75);
+            box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.75);
 			padding: 20px 15px;
         }
         
@@ -37,9 +36,9 @@
 
         .accordion {
             background-color: @notquiteBlack;
-            -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
-            box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.75);
+            -moz-box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.75);
+            box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.75);
         }
 		
 		.octoprint-container .accordion-heading a.accordion-toggle {
@@ -86,10 +85,6 @@
         
         .btn {
             border-radius: 3px;
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px;
-            border-bottom-right-radius: 3px;
-            border-bottom-left-radius: 3px;
             background-image: none;
             border: none;
             box-shadow: none;
@@ -121,7 +116,7 @@
             // border: 1px solid rgba(255,255,255,0.85);
             color: #fff;
         }
-        .btn btn-primary, .btn-primary[disabled] {
+        .btn .btn-primary, .btn-primary[disabled] {
             background-color: @orange;
         }
         .btn-primary {
@@ -162,7 +157,7 @@
             }
 		}
 
-        select, textarea, input[type="search"],input[type="text"], input[type="number"], .input-append .add-on, textarea, input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+        select, textarea, input[type="search"], input[type="text"], input[type="number"], .input-append .add-on, textarea, input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
             background-color: @lighterish;
             border:none;
             color: lighten(@notquiteWhite,5);
@@ -243,6 +238,7 @@
         }
 		
 		#settings_dialog_content .table td {
+            background-color: @notquiteBlack;
 			border-top: none;			
 		}
 		
@@ -253,7 +249,7 @@
         .icon-sd-black-14 {
             background-image: url(../../img/ic_sd_card_white_18dp_1x.png);
             background-image: url(../../img/ic_sd_card_white_18px.svg);
-            background-position: 0 0px;
+            background-position: 0 0;
             margin-top: 1px;
             width: 15px;
             height: 17px;
@@ -327,8 +323,7 @@
 
         /* Now non-bordered :) */ 
         .table-bordered, .table-striped {
-            border-color: @lighterish;
-            border: none;
+            border: none @lighterish;
             & th,td {
                 border-color: @lighterish;
                 border-left:none;
@@ -403,17 +398,32 @@
         }
 
 
-        .scrollable::-webkit-scrollbar, .pre-scrollable::-webkit-scrollbar,body::-webkit-scrollbar {
+        .scrollable::-webkit-scrollbar,
+        .pre-scrollable::-webkit-scrollbar,
+        body::-webkit-scrollbar,
+        .scroll-wrapper::-webkit-scrollbar,
+        #settings_plugin_pluginmanager_pluginlist::-webkit-scrollbar,
+        #settings_plugin_softwareupdate_updatelist::-webkit-scrollbar {
             background-color: @darkish;
 			border: none;
         }
 
-        .scrollable::-webkit-scrollbar-thumb,.pre-scrollable::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb{
+        .scrollable::-webkit-scrollbar-thumb,
+        .pre-scrollable::-webkit-scrollbar-thumb,
+        body::-webkit-scrollbar-thumb,
+        .scroll-wrapper::-webkit-scrollbar-thumb,
+        #settings_plugin_pluginmanager_pluginlist::-webkit-scrollbar-thumb,
+        #settings_plugin_softwareupdate_updatelist::-webkit-scrollbar-thumb {
             background-color: @notquiteBlack;
             border-radius: 25px;
         }
 
-        .scrollable::-webkit-scrollbar-track,.pre-scrollable::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+        .scrollable::-webkit-scrollbar-track,
+        .pre-scrollable::-webkit-scrollbar-track,
+        body::-webkit-scrollbar-track,
+        .scroll-wrapper::-webkit-scrollbar-track,
+        #settings_plugin_pluginmanager_pluginlist::-webkit-scrollbar-track,
+        #settings_plugin_softwareupdate_updatelist::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px fade(@notquiteBlack,50);
         }
 
