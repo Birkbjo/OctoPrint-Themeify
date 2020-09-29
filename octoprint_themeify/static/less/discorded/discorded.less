@@ -48,7 +48,7 @@
         .nav-tabs>.active>a, .nav-tabs>.active>a:hover {
             background-color: @notquiteBlack;
             color: #fff;
-            border: none;
+            border-bottom-color: transparent;
         }
         .nav-pills>.active>a, .nav-pills>.active>a:hover {
             background-color: @blurple;
@@ -56,7 +56,7 @@
 
         .nav-tabs>li>a:hover {
             background-color: lighten(@notquiteBlack, 10);
-            border: none;
+            border-bottom-color: transparent;
         }
         
         h1, h2, h3, h4 {
@@ -232,6 +232,7 @@
 
             & .brand, .nav > li > a {
                 color: #fff;
+                border-bottom: 1px solid transparent;
                 & .caret {
 					border-top-color: #fff;
 					border-bottom-color: #fff;
