@@ -14,15 +14,12 @@ class RuleStyleSheet {
     }
 
     initWithRules(rules = this.rules) {
-        //console.log(rules)
         this.rules = rules
         rules().forEach((ruleObj, i) => {
             if (ruleObj.enabled()) {
                 this.addRule(ruleObj, i);
             }
         });
-        console.log(this.styleSheet.cssRules)
-        console.log(this)
     }
 
     addRule(ruleObj, ruleIndex, sheetIndex = this.styleSheet.cssRules.length) {
@@ -49,11 +46,11 @@ class RuleStyleSheet {
     }
 
     disable() {
-        self.styleSheet.disabled = true
+        this.styleSheet.disabled = true
     }
 
     enable() {
-        self.styleSheet.disabled = false
+        this.styleSheet.disabled = false
     }
 
     updateRule(ruleObj, ruleIndex) {
