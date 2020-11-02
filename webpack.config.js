@@ -12,7 +12,7 @@ module.exports = {
         filename: "themeify.min.js",
         path: path.join(staticPath, "dist")
     },
-    devtool: isProd ? 'false' : 'eval-cheap-module-source-map',
+    devtool: isProd ? 'false' : 'inline-source-map',
     module: {
         rules: [
             {
@@ -44,7 +44,7 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
+            minimize: isProd,
             comments: false
         }),
         new ExtractTextPlugin({
