@@ -120,7 +120,6 @@ $(function() {
             };
             self._subscribeToDictValues(ruleObj, 'customRules', self.customRules().length);
             self.ownSettings.customRules.push(ruleObj);
-            self.customRuleStyleSheet.addRule(ruleObj)
         };
 
         self.addNewIcon = function() {
