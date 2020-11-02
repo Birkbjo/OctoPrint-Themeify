@@ -27,8 +27,6 @@ $(function() {
         self.ownSettings = {};
         self.customRules = [];
 
-        self._ownSettingsPrev = {};
-
         //holds subscriptions, so that they can be removed later
         self.configSubscriptions = {
             enabled: '',
@@ -53,8 +51,6 @@ $(function() {
                 $('html').removeClass(self.classId);
             }
             console.log(self)
-            self.updateColors();
-            self._updateCustomRules();
         };
 
         self.setupIcons = function() {
@@ -158,82 +154,13 @@ $(function() {
             self.builtInStyles.initWithRules(self.ownSettings.color);
         };
 
-        self.updateColors = function() {
-         //   self._removeBuiltInStyles();
-            if (self.ownSettings.enableCustomization()) {
-                self.ownSettings
-                    .color()
-                    .filter(rule => !!rule.enabled())
-                    .map((rule, i) => {
-                        self._applyRule(rule, true);
-                    });
-            }
-        };
-
-        self._updateCustomRules = function() {
-         //   self._removeCustomStyles();
-            self.updateColors();
-            if (self.ownSettings.enableCustomization()) {
-                self.ownSettings
-                    .customRules()
-                    .filter(rule => !!rule.enabled())
-                    .map(rule => {
-                        self._applyRule(rule);
-                    });
-            }
-        };
-
-        self._applyRule = function(rule, builtIn = false) {
-         //   const cssText = ruleObjectToCSSText(rule);
-            if(!rule.selector() || !rule.rule()) {
-                return
-            }
-            //self.customStyleSheet.insertRule(cssText);
-        //    console.log(self.)
-            // $(rule.selector()).css(rule.rule(), rule.value());
-        };
-
-        self.clone = function(obj) {
-            //get observable value
-            if (typeof obj == 'function') {
-                return obj();
-            }
-
-            if (
-                obj === null ||
-                typeof obj !== 'object' ||
-                'isActiveClone' in obj
-            )
-                return obj;
-
-            if (obj instanceof Date) var temp = new obj.constructor();
-            else var temp = obj.constructor();
-
-            for (var key in obj) {
-                if (Object.prototype.hasOwnProperty.call(obj, key)) {
-                    obj['isActiveClone'] = null;
-                    temp[key] = self.clone(obj[key]);
-                    delete obj['isActiveClone'];
-                }
-            }
-
-            return temp;
-        };
-
-        self._copyOwnSettings = function() {
-            Object.keys(self.ownSettings).forEach(function(key, i) {
-                self._ownSettingsPrev[key] = self.clone(self.ownSettings[key]);
-            });
-        };
-
         self.onColorChange = function(rule, valueChanged, index) {
             console.log('color change', rule, index)
             self.builtInStyles.updateRule(rule, index)
+            console.log(self.builtInStyles)
         };
 
         self.onCustomRuleChange = function(rule, valueChanged, index) {
-            //self.updateColors();
-            console.log('rule change', rule, index)
             if (rule.rule() && rule.selector() && rule.value()) {
                // self._updateCustomRules();
                self.customRuleStyleSheet.updateRule(rule, index)
