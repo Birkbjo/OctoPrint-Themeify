@@ -1,5 +1,5 @@
 function ruleObjectToCSSText({ selector, rule, value }) {
-    const text = `${selector()} { ${rule()}: ${value()} !important; }`;
+    const text = `.themeify ${selector()} { ${rule()}: ${value()} !important; }`;
     console.log(text);
     return text;
 }
@@ -82,7 +82,7 @@ class RuleStyleSheet {
     static createStyleSheet(name, rulesArray) {
         const styleSheet = document.createElement("style");
         styleSheet.title = name;
-        $("html").addClass(styleSheet.title);
+       
         const s = document.head.appendChild(styleSheet);
         return new RuleStyleSheet(styleSheet, rulesArray);
     }
