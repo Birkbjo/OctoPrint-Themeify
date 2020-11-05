@@ -170,22 +170,21 @@ $(function() {
 
         self.onThemeChange = function(newVal) {
             const previousTheme = localStorage.getItem('theme')
-            var hasClass = clazz => {
-                return $('html').hasClass(clazz);
-            };
-            if (!hasClass(newVal)) {
-                localStorage.setItem('theme', newVal);
-                $('html')
-                    .addClass(newVal)
-                    .removeClass(previousTheme);
-            }
+    
+            localStorage.setItem("theme", newVal);
+            $('html')
+                .addClass(newVal)
+                .removeClass(previousTheme);
+            
         };
 
         self.onEnabledChange = function(newVal) {
             if (newVal && $('html').attr('id') !== 'touch') {
                 self.enableTheming();
             } else {
+                const currTheme = localStorage.getItem('theme')
                 $('html').removeClass(self.classId);
+                $('html').removeClass(currTheme);
                 localStorage.setItem('theme', false);
 
                 self.customRuleStyleSheet.disable()
@@ -260,7 +259,6 @@ $(function() {
                 if (key == 'customRules') {
                     self.configSubscriptions[key] = [];
                     self.customRules().map((rule, i) => {
-                        console.log('sub', i)
                         //subscribe to the attributes (selector, rule, value, enabled etc)
                         self._subscribeToDictValues(rule, key, i);
                     });
@@ -314,7 +312,7 @@ $(function() {
 
         self.init();
     }
-
+    
     OCTOPRINT_VIEWMODELS.push({
         construct: ThemeifyViewModel,
         dependencies: ['settingsViewModel'],
