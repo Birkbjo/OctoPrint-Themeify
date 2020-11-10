@@ -7,7 +7,8 @@
         "build": "webpack --progress --mode production",
         "clean": "rm -r octoprint_themeify/static/dist",
         "clean-css": "rm octoprint_themeify/static/dist/themeify.min.css",
-        "release": "standard-version",
+        "prerelease": "yarn install && yarn build",
+        "release": "git add octoprint_themeify/static/dist/ && standard-version -a",
         "watch": "webpack --watch"
     },
     "devDependencies": {
