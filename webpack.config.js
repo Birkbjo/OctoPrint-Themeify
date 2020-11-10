@@ -40,4 +40,8 @@ module.exports = {
             filename: "themeify.min.css",
         }),
     ],
+    performance: {
+        maxAssetSize: 500000,
+        maxEntrypointSize: 500000
+      }
 };
