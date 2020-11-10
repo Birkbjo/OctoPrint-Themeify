@@ -1,10 +1,10 @@
+import RuleStyleSheet from './RuleStyleSheet'
 /*
  * View model for OctoPrint-Themeify
  *
  * Author: Birk Johansson
  * License: MIT
  */
-
 $(function() {
 
     function ThemeifyViewModel(parameters) {
@@ -26,21 +26,23 @@ $(function() {
 
         self.ownSettings = {};
         self.customRules = [];
-        //These hold the customized and built-in changed/overriden elements, respectively
-        self.customizedElements = [];
-        self.builtInElements = [];
 
-        self._ownSettingsPrev = {};
         //holds subscriptions, so that they can be removed later
         self.configSubscriptions = {
             enabled: '',
             theme: '',
         };
+
         self.tabIcons = {};
         self.oldTabContent = {};
-        var oldVal = function(key) {
-            return self._ownSettingsPrev[key];
+
+        self.init = function() {
+            self.customRuleStyleSheet = RuleStyleSheet.createStyleSheet('themeify-customStyleSheet', self.customRules)
+            self.builtInStyles = RuleStyleSheet.createStyleSheet('themeify-builtInStyleSheet', self.ownSettings.color)
+            //optimize "flicker" before theme is loaded
+            self.enableBeforeLoaded();
         };
+
 
         self.onStartupComplete = function() {
             var htmlId = $('html').attr('id');
@@ -48,9 +50,7 @@ $(function() {
             if (htmlId && htmlId == 'touch') {
                 $('html').removeClass(self.classId);
             }
-
-            self.updateColors();
-            self._updateCustomRules();
+            console.log(self)
         };
 
         self.setupIcons = function() {
@@ -85,6 +85,10 @@ $(function() {
                 });
         };
 
+        /**
+         * This is called before we have data, used to reduce 
+         * initializing time before theme is applied
+         */
         self.enableBeforeLoaded = function() {
             const localTheme = localStorage.getItem('theme');
             if (localTheme) {
@@ -94,7 +98,7 @@ $(function() {
             }
         };
 
-        self.enable = function() {
+        self.enableTheming = function() {
             if (
                 self.ownSettings.enabled() &&
                 $('html').attr('id') !== 'touch'
@@ -114,7 +118,7 @@ $(function() {
                 value: ko.observable(''),
                 enabled: ko.observable(true),
             };
-            self._subscribeToDictValues(ruleObj, 'customRules');
+            self._subscribeToDictValues(ruleObj, 'customRules', self.customRules().length);
             self.ownSettings.customRules.push(ruleObj);
         };
 
@@ -139,149 +143,60 @@ $(function() {
                 enabled: self.ownSettings.tabs.enableIcons,
                 tabs: self.ownSettings.tabs.icons,
             };
-
+       
             if (self.tabIcons.enabled()) {
                 self.setupIcons();
             }
 
-            self.enable();
-
-            self._copyOwnSettings();
+            self.enableTheming();
+            self.customRuleStyleSheet.initWithRules(self.customRules);
+            self.builtInStyles.initWithRules(self.ownSettings.color);
         };
 
-        self.updateColors = function() {
-            self._removeBuiltInStyles();
-            if (self.ownSettings.enableCustomization()) {
-                self.ownSettings
-                    .color()
-                    .filter(rule => !!rule.enabled())
-                    .map((rule, i) => {
-                        self._applyRule(rule, true);
-                    });
-            }
+        self.onColorChange = function(rule, valueChanged, index) {
+            console.log('color change', rule, index)
+            self.builtInStyles.updateRule(rule, index)
+            console.log(self.builtInStyles)
         };
 
-        self._updateCustomRules = function() {
-            self._removeCustomStyles();
-            self.updateColors();
-            if (self.ownSettings.enableCustomization()) {
-                self.ownSettings
-                    .customRules()
-                    .filter(rule => !!rule.enabled())
-                    .map(rule => {
-                        self._applyRule(rule);
-                    });
-            }
-        };
-
-        self._applyRule = function(rule, builtIn = false) {
-            var elem = $(rule.selector());
-            var old = elem.css(rule.rule());
-            if (builtIn) {
-                self.builtInElements.push({
-                    elem: elem,
-                    rule: rule.rule(),
-                    old,
-                });
-            } else {
-                self.customizedElements.push({
-                    elem: elem,
-                    rule: rule.rule(),
-                    old,
-                });
-            }
-            $(rule.selector()).css(rule.rule(), rule.value());
-        };
-
-        self.clone = function(obj) {
-            //get observable value
-            if (typeof obj == 'function') {
-                return obj();
-            }
-
-            if (
-                obj === null ||
-                typeof obj !== 'object' ||
-                'isActiveClone' in obj
-            )
-                return obj;
-
-            if (obj instanceof Date) var temp = new obj.constructor();
-            else var temp = obj.constructor();
-
-            for (var key in obj) {
-                if (Object.prototype.hasOwnProperty.call(obj, key)) {
-                    obj['isActiveClone'] = null;
-                    temp[key] = self.clone(obj[key]);
-                    delete obj['isActiveClone'];
-                }
-            }
-
-            return temp;
-        };
-
-        self._copyOwnSettings = function() {
-            Object.keys(self.ownSettings).forEach(function(key, i) {
-                self._ownSettingsPrev[key] = self.clone(self.ownSettings[key]);
-            });
-        };
-
-        self.onChange = function(settingKey, newVal) {
-            self.updateColors();
-            self._copyOwnSettings();
-        };
-
-        self.onColorChange = function(elem, color) {
-            self.updateColors();
-            self._copyOwnSettings();
-        };
-
-        self.onCustomRuleChange = function(rule) {
-            self.updateColors();
+        self.onCustomRuleChange = function(rule, valueChanged, index) {
             if (rule.rule() && rule.selector() && rule.value()) {
-                self._updateCustomRules();
+               // self._updateCustomRules();
+               self.customRuleStyleSheet.updateRule(rule, index)
+               //self.updateRuleStyleSheet(rule, index)
             }
+           // console.log()
         };
 
         self.onThemeChange = function(newVal) {
-            var prev = oldVal('theme');
-            var hasClass = clazz => {
-                return $('html').hasClass(clazz);
-            };
-            if (!hasClass(newVal)) {
-                localStorage.setItem('theme', newVal);
-                $('html')
-                    .addClass(newVal)
-                    .removeClass(prev);
-            }
-
-            self._copyOwnSettings();
+            const previousTheme = localStorage.getItem('theme')
+    
+            localStorage.setItem("theme", newVal);
+            $('html')
+                .addClass(newVal)
+                .removeClass(previousTheme);
+            
         };
 
         self.onEnabledChange = function(newVal) {
             if (newVal && $('html').attr('id') !== 'touch') {
-                const theme = self.ownSettings.theme();
-                $('html')
-                    .addClass(self.classId)
-                    .addClass(theme);
-                localStorage.setItem('theme', theme);
+                self.enableTheming();
             } else {
+                const currTheme = localStorage.getItem('theme')
                 $('html').removeClass(self.classId);
+                $('html').removeClass(currTheme);
                 localStorage.setItem('theme', false);
-            }
 
-            self._copyOwnSettings();
+                self.customRuleStyleSheet.disable()
+            }
         };
 
         self.onEnableCustomizationChange = function(newVal) {
             if (newVal) {
-                self.updateColors();
-                self._updateCustomRules();
+                self.customRuleStyleSheet.enable()
             } else {
-                self._removeBuiltInStyles();
-                self._removeCustomStyles();
+                self.customRuleStyleSheet.disable()
             }
-            self._copyOwnSettings();
         };
 
         self.onIconsEnableChange = function(newVal) {
@@ -292,25 +207,13 @@ $(function() {
             }
         };
 
-        self.onIconChange = function(icon, value, propKey) {
+        self.onIconChange = function(icon, value, i, propKey) {
             if (!self.tabIcons.enabled()) return;
 
             if (propKey === 'enabled' && !value) {
                 self.restoreTabs();
             }
             self.setupIcons();
-        };
-
-        self._removeCustomStyles = function() {
-            self.customizedElements.map(elem => elem.elem.css(elem.rule, ''));
-        };
-
-        self._removeBuiltInStyles = function() {
-            self.builtInElements.map(elem => elem.elem.css(elem.rule, ''));
-        };
-
-        self._removeCustomStylesByRule = function(rule) {
-            $(rule.selector()).css(rule.rule(), '');
         };
 
         self.onRuleToggle = function(rule) {
@@ -326,10 +229,11 @@ $(function() {
             return rule.deletable();
         };
 
-        self.onCustomRuleDelete = function(rule) {
+        self.onCustomRuleDelete = function(rule, index) {
             if (self.ruleIsDeleteable(rule)) {
+                self.customRuleStyleSheet.deleteRule(index())
                 self.customRules.remove(rule);
-                self._updateCustomRules();
+                //self._updateCustomRules();
             }
         };
 
@@ -339,24 +243,24 @@ $(function() {
             self.setupIcons();
         };
 
-        self._subscribeToDictValues = function(dict, key, subscribeFunc) {
+        self._subscribeToDictValues = function(dict, key, i, subscribeFunc) {
             var subFunc = subscribeFunc
                 ? subscribeFunc.bind(this, dict)
                 : self.onCustomRuleChange.bind(this, dict);
             Object.keys(dict).map(dictAttr => {
                 self.configSubscriptions[key].push(
-                    dict[dictAttr].subscribe(val => subFunc(val, dictAttr))
+                    dict[dictAttr].subscribe(val => subFunc(val,i, dictAttr))
                 );
             });
         };
         self.onSettingsShown = function() {
             //subscribe to changes
-            Object.keys(self.ownSettings).map((key, i) => {
+            Object.keys(self.ownSettings).map((key) => {
                 if (key == 'customRules') {
                     self.configSubscriptions[key] = [];
                     self.customRules().map((rule, i) => {
                         //subscribe to the attributes (selector, rule, value, enabled etc)
-                        self._subscribeToDictValues(rule, key);
+                        self._subscribeToDictValues(rule, key, i);
                     });
                 } else if (key == 'color') {
                     self.configSubscriptions[key] = [];
@@ -364,7 +268,7 @@ $(function() {
                     //Loop rules
                     self.ownSettings.color().map((rule, i) => {
                         //subscribe to the attributes (selector, rule, value, enabled etc)
-                        self._subscribeToDictValues(rule, key, subFunc);
+                        self._subscribeToDictValues(rule, key, i,subFunc);
                     });
                 } else if (key == 'tabs') {
                     const sub = (self.configSubscriptions[key] = []);
@@ -380,8 +284,6 @@ $(function() {
                 } else {
                     //Use the map for simple subscriptions
                     var onChangeFunc = self.configOnChangeMap[key]
-                        ? self.configOnChangeMap[key]
-                        : self.onChange.bind(this, key);
                     self.configSubscriptions[key] = self.ownSettings[
                         key
                     ].subscribe(onChangeFunc);
@@ -402,19 +304,18 @@ $(function() {
             });
         };
 
-        //optimize "flicker" before theme is loaded
-        self.enableBeforeLoaded();
-
         self.configOnChangeMap = {
             enabled: self.onEnabledChange,
             theme: self.onThemeChange,
             enableCustomization: self.onEnableCustomizationChange,
         };
-    }
 
-    OCTOPRINT_VIEWMODELS.push([
-        ThemeifyViewModel,
-        ['settingsViewModel'],
-        ['#settings_plugin_themeify'],
-    ]);
+        self.init();
+    }
+    
+    OCTOPRINT_VIEWMODELS.push({
+        construct: ThemeifyViewModel,
+        dependencies: ['settingsViewModel'],
+        elements: ['#settings_plugin_themeify'],
+    });
 });

@@ -56,7 +56,8 @@
 
         .nav-tabs>li>a:hover {
             background-color: lighten(@notquiteBlack, 10);
-            border: none;
+            border-bottom: 0px;
+            border-color: lighten(@notquiteBlack, 10);
         }
         
         h1, h2, h3, h4 {
@@ -221,7 +222,7 @@
             .nav {
                 >li.dropdown.open>.dropdown-toggle, >li.dropdown.active>.dropdown-toggle, >li.dropdown.open.active>.dropdown-toggle {
                     background: darken(@notquiteBlack, 1);
-                    border-bottom: 1px solid @notquiteWhite;
+                    border-bottom: 0px;
                     color: #fff;
             }
             > li > a:hover {

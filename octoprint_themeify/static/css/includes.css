@@ -2,3 +2,7 @@
   opacity: 0.4;
   pointer-events: none;
 }
+
+#settings_plugin_themeify table textarea {
+  width: 100%;
+}
