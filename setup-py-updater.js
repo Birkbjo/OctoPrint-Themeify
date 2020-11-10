@@ -6,5 +6,5 @@ module.exports.readVersion = function(contents) {
 };
 
 module.exports.writeVersion = function(contents, version) {
-  return newSetup;
+  return contents.replace(regex, version);
 };

@@ -7,6 +7,7 @@
         "build": "webpack --progress --mode production",
         "clean": "rm -r octoprint_themeify/static/dist",
         "clean-css": "rm octoprint_themeify/static/dist/themeify.min.css",
+        "release": "standard-version",
         "watch": "webpack --watch"
     },
     "devDependencies": {
@@ -18,6 +19,7 @@
         "less": "^3.12.2",
         "less-loader": "^7.0.2",
         "mini-css-extract-plugin": "^1.3.0",
+        "standard-version": "^9.0.0",
         "url-loader": "^4.1.1",
         "webpack": "5",
         "webpack-cli": "^4.2.0"
