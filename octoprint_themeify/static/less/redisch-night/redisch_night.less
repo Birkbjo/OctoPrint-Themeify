@@ -1,0 +1,592 @@
+@import "variables.less";
+
+@highlighter: lighten(@notquiteBlack,10);
+
+.redisch_night() {
+    body {
+        background-color: @background;
+        color: @quiteWhite;
+        font-weight: 400;
+    }
+
+    a {
+        color: darken(@quiteWhite,20);
+    }
+
+    a:hover {
+        color: @quiteWhite;
+        text-decoration: none;
+    }
+
+    .octoprint-container .tab-content {
+        border: none;
+    }
+
+    .accordion-group {
+        border: none;
+    }
+
+    .accordion {
+        background-color: @grey1;
+        -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+        box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+    }
+
+    .octoprint-container .accordion-heading .accordion-heading-button a {
+        color: inherit;
+    }
+
+    .nav-tabs {
+
+        border-bottom: 1px solid @red;
+
+        &>li>a {
+            color: @quiteWhite;
+            border: none;
+
+            &:hover {
+                background-color: lighten(@grey2, 10);
+                border: none;
+                border-radius: 1px;
+                border-bottom: 4px solid @red;
+            }
+
+            i {
+                color: @quiteWhite !important;
+            }
+        }
+
+        &>.active>a,
+        &>.active>a:hover {
+            background-color: @grey2;
+            color: #fff;
+            border: none;
+            border-bottom: 4px solid lighten(@red,5);
+        }
+    }
+
+    .nav-pills {
+
+        &>li>a {
+            background-color: @grey1;
+            border-radius: 16px;
+            padding-bottom: 8px;
+            padding-top: 8px;
+
+            &:hover {
+                background-color: @grey2;
+            }
+        }
+
+        &>.active>a, &>.active>a:hover {
+            background-color: @red;
+        }
+    }
+
+    h1, h2, h3, h4, {
+        color: @white;
+        border-bottom-color: @red;
+    }
+
+    a:focus {
+        box-shadow: 0px 0px 10px 0px @red;
+    }
+
+    .btn {
+        border-radius: 1px;
+        background-image: none;
+        border: 1px solid transparent;
+        box-shadow: none;
+        background-color: @grey3;
+        color: @white;
+        text-shadow: none;
+
+        &:hover {
+            color: darken(@white, 5 );
+            background-color: darken(@grey3, 5);
+            background-position: 0 0 !important;
+        }
+
+        &:focus {
+            background-color: darken(@grey3, 5);
+            outline-color: @quiteWhite;
+            outline-width: 2px;
+            color: @white;
+        }
+
+        &:active, .active {
+            background-color: darken(@grey3, 5);
+            border-color: @quiteWhite;
+            color: @white;
+        }
+
+        &.disabled, &[disabled] {
+            background-color: transparent !important;
+            background-image: repeating-linear-gradient(-60deg, @grey4, @grey4 0.25rem, transparent 0.25rem, transparent 0.5rem) !important;
+            color: darken(@notquiteWhite, 5);
+            opacity: .65;
+        }
+
+        &.btn-primary {
+
+            background-color: @red;
+            border: none;
+
+            &:hover {
+                background-color: darken(@red, 10);
+            }
+
+            &:active, &:focus {
+                background-color: darken(@red, 10);
+            }
+
+            &.disabled, &[disabled] {
+                background-color: darken(@red, 10);
+            }
+        }   
+
+        & .caret {
+            border-top-color: @white;
+            border-bottom-color: @white;
+        }
+    }
+
+
+    .btn-group.open {
+
+        & .btn.dropdown-toggle {
+            color: @quiteWhite;
+            background: @grey3;
+
+            &:active, &:focus {
+                background: darken(@grey3, 5);
+                color: @white;
+            }
+
+            &.btn-primary{
+                box-shadow: none;
+                background-color: darken(@red, 10);
+            }
+        }
+    }
+
+    select, textarea, input[type="search"],input[type="text"], input[type="number"], .input-append .add-on, textarea, input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+        background-color: @grey2;
+        border:none;
+        color: @quiteWhite;
+        text-shadow: none;
+        padding-bottom: 6px;
+        border-radius: 2px
+    }
+
+    textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.075), 0 0 8px rgba(255,255,255,0.5)
+    }
+    .input-append .add-on, .input-prepend .add-on {
+        padding-bottom: 6px;
+    }
+
+    /*upload archive field*/
+    .input-prepend .add-on.add-on-limited {
+        background-color: @grey2;
+        border: none;
+        text-shadow: none;
+    }
+
+    .slider .slider-selection {
+        background: @red;
+
+        &:hover, &:active {
+            background-color: darken(@red, 5);
+        }
+    }
+
+    .octoprint-container .accordion-heading [class*=" icon-"] {
+        color: @quiteWhite;
+
+        &.disabled {
+            color: darken(@quiteWhite,10);
+        }
+    }
+
+    /* Settings dialog-table icons */
+    td, th {
+        &[class^="settings_"], & i {
+            a {
+                color: @quiteWhite;
+
+                &:hover {
+                    color: @white;
+                }
+
+                &.disabled {
+                    color: darken(@quiteWhite,10);
+                }
+            }
+        }
+    }
+
+    .icon-sd-black-14 {
+        background-image: url(../../img/ic_sd_card_white_18dp_1x.png);
+        background-image: url(../../img/ic_sd_card_white_18px.svg);
+        background-position: 0 0px;
+        margin-top: 1px;
+        width: 15px;
+        height: 17px;
+        filter: hue-rotate(unit(hue(@quiteWhite),deg)) saturate(saturation(@quiteWhite)) brightness(lightness(@quiteWhite));
+        transform: rotateY(180deg);
+    }
+
+    .progress {
+        background: @grey3;
+
+        .bar {
+            background-color: darken(@red, 5);
+            background-image: none;
+        }
+    }
+
+    #navbar .navbar-inner {
+        background-color: @grey2;
+        border: none;
+        background-image: none;
+        border-radius: 2px;
+
+        .nav {
+            & > .dropdown.open>.dropdown-toggle,
+            & > .dropdown.active>.dropdown-toggle,
+            & > .dropdown.open.active>.dropdown-toggle {
+                background-image: none;
+                background-color: darken(@grey2, 1);
+                color: @white;
+                border-bottom: 2px solid @red;
+            }
+
+            & > li > a:hover {
+                background-color: @grey3;
+                background-image: none;
+                border-bottom: 2px solid @red;
+            }
+        }
+
+        & .brand, .nav > li > a {
+            color: @white;
+            border-bottom: 2px solid transparent;
+            border-radius: 0px;
+            text-shadow: none;
+
+            & .caret {
+                border-top-color: @white;
+                border-bottom-color: @white;
+            }
+        }
+
+        li > .dropdown-menu:after, li > .dropdown-menu:after {
+            display: none;
+        }
+    }
+
+    #navbar_login i {
+        margin-right: 4px;
+    }
+
+    .dropdown-menu {
+        background: @grey2;
+        border-radius: 2px;
+
+        li.active > a {
+            background-color: darken(@grey2, 10);
+            border-right: 2px solid @red;
+        }
+
+        li {
+            display: flex;
+
+            & > a {
+                width: 100%;
+                color: @quiteWhite;
+                background-image: none;
+
+                &:hover, &:focus {
+                    background-color: darken(@grey2, 5);
+                    border-right: 2px solid @red;
+                    outline: none;
+                }
+
+                i {
+                    color: @red;
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+
+    /*general table hover colour*/
+    #files .gcode_files .entry:hover,
+    .table-hover tbody tr:hover td,
+    .table-hover tbody tr:hover th {
+        background-color: @grey2;
+    }
+
+    .legend {
+        border-bottom-color: @red;
+
+        & > table {
+            color: @quiteWhite !important;
+        }
+    }
+
+    /* Now non-bordered :) */ 
+    .table-bordered, .table-striped {
+        border-color: transparent;
+        border: none;
+
+        th,td {
+            border-color: transparent;
+            border-left:none;
+            border-right: none;
+        }
+
+        tr:not(:last-child) th, tr:not(:last-child) td{
+            border-bottom: 1px solid @red;            
+        }
+    }
+
+    .table-striped tbody {
+        > tr:nth-child(odd) > td, th {
+            background-color: @grey2;
+        }
+    }
+
+    .modal {
+        background-color: @grey1;
+
+
+        .modal-body {
+            border: none;
+        }
+
+        .modal-footer, .modal-header {
+            background-color: @grey1;
+            border: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+    }
+
+    /*menu in modal etc*/
+    .nav-list > li > a {
+        text-shadow: none;
+
+        &:hover {
+            color: #white;
+            background: @grey2;
+        }
+    }
+
+    .nav-list {
+        .nav-header {
+            text-shadow: none;
+        }
+        >.active>a {
+            background-color: @grey2;
+            border-bottom: 2px solid @red;
+
+            &:hover {
+                background-color: @grey2;
+            }
+        }
+    }
+
+
+    .close {
+        color: #white;
+        text-shadow: none;
+    }
+
+    .help-inline, .help-block {
+        color: darken(@quiteWhite, 15);
+    }
+
+    code {
+        color: @red;
+        background-color: @grey2;
+        border: none;
+    }
+
+    .label, .badge {
+        background-color: @grey2;
+        color: @quiteWhite;
+        text-shadow: none;
+    }
+
+
+    .scrollable::-webkit-scrollbar, .pre-scrollable::-webkit-scrollbar,body::-webkit-scrollbar {
+        background-color: @background;
+    }
+
+    .scrollable::-webkit-scrollbar-thumb,.pre-scrollable::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb{
+        background-color: darken(@background,5);
+        border-radius: 25px;
+    }
+
+    .scrollable::-webkit-scrollbar-track,.pre-scrollable::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px fade(@grey1,50);
+    }
+
+    legend {
+        color: inherit;
+    }
+
+    .hero-unit {
+        background-color: @background;
+    }
+
+    .footer ul li a {
+        color: @grey;
+    }
+
+    .flot-text {
+        color: @quiteWhite !important;
+    }
+
+    #terminal-output {
+        background-color: @grey2;
+        color: @white;
+    }
+
+    .pagination-mini ul>li > a {
+        background-color: @grey1;
+        color: @quiteWhite;
+        border: 1px solid transparent;
+
+        &:hover {
+            color: #fff;
+            background: darken(@grey1, 10);
+        }
+
+        &:focus {
+            background: darken(@grey1, 20);
+            color: @white;
+        }
+    }
+
+    .nav {
+        .dropdown-toggle .caret {
+            border-top-color: @quiteWhite;
+            border-bottom-color: @quiteWhite;
+        }
+    }
+
+    input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly] {
+        background-color: darken(@grey1, 5);
+        color: darken(@quiteWhite, 10);
+    }
+
+    .modal-backdrop, .modal-backdrop.fade.in {
+        background: @grey2;
+    }
+
+    .alert {
+        border: none;
+        border-radius: 0;
+        background-color: @grey2 !important;
+        color: @quiteWhite;
+        text-shadow: none;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: inherit;
+        }
+
+        strong {
+            color: @red;
+            text-shadow: none;
+        }
+
+        &.alert-block, &.alert-info {
+            border-left: 4px solid @grey;
+        }
+
+        &.alert-danger, &.alert-error {
+            border-left: 8px solid @red;
+        }
+
+        &.alert-success, &.alert-success {
+            border-left: 4px solid @green;
+        }
+    }
+
+    .accordion-inner {
+        border-top-color: @red;
+    }
+
+    hr {
+        border-top-color: @red;
+        border-bottom-color: @red;
+    }
+
+    #files .entry.machinecode {
+        border-bottom-color: @red;
+    }
+
+    .popover {
+        background-color: @grey2;
+
+        .popover-title {
+            background-color: inherit;
+        }
+    }
+
+    .fa-spinner {
+        color: @red;
+    }
+
+    #page-container-loading {
+        background-color: @background;
+    }
+
+    /*Adjustments for UI Customiser*/
+
+    .UICWebCamClick {
+        opacity: 0.5;
+        background-color: fade(@black, 60);
+        border-radius: 4px;
+
+        i {
+            color: @white;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .UICTabIcon i {
+        color: @white !important;
+    }
+
+
+    /*Adjustments for Filemanager*/
+    #tab_plugin_filemanager {
+        .header {
+            background-color: @background;
+            border-bottom: 1px solid @red;
+
+            > div {
+                border-right: none;
+            }
+        }
+
+        .container-fluid > .row-fluid {
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .entry-hover > div {
+            border-bottom: 1px solid @red;
+        }
+    }
+}
