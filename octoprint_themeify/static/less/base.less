@@ -4,7 +4,7 @@
 @import "discoranged/discoranged.less";
 @import "dyl/dyl.less";
 @import "nighttime/nighttime.less";
-@import "redisch-night/redisch_night.less";
+@import "dark-night/dark_night.less";
 
 .themeify {
    &.discorded {
@@ -25,7 +25,16 @@
    &.nighttime {
        .nighttime();
    }
-   &.redisch_night {
-       .redisch_night();
+   &.dark_night {
+       .dark_night();
+   }
+   &.red_night {
+       .dark_night(#d32f2f);
+   }
+   &.green_night {
+       .dark_night(#43A047);
+   }
+   &.blue_night {
+       .dark_night(#039BE5);
    }
 }

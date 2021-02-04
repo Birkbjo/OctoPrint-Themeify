@@ -1,8 +1,6 @@
 @import "variables.less";
 
-@highlighter: lighten(@notquiteBlack,10);
-
-.redisch_night() {
+.dark_night(@accent:@grey) {
     body {
         background-color: @background;
         color: @quiteWhite;
@@ -39,7 +37,7 @@
 
     .nav-tabs {
 
-        border-bottom: 1px solid @red;
+        border-bottom: 1px solid @accent;
 
         &>li>a {
             color: @quiteWhite;
@@ -49,7 +47,7 @@
                 background-color: lighten(@grey2, 10);
                 border: none;
                 border-radius: 1px;
-                border-bottom: 4px solid @red;
+                border-bottom: 4px solid @accent;
             }
 
             i {
@@ -62,7 +60,7 @@
             background-color: @grey2;
             color: #fff;
             border: none;
-            border-bottom: 4px solid lighten(@red,5);
+            border-bottom: 4px solid lighten(@accent,5);
         }
     }
 
@@ -80,17 +78,17 @@
         }
 
         &>.active>a, &>.active>a:hover {
-            background-color: @red;
+            background-color: @accent;
         }
     }
 
     h1, h2, h3, h4, {
         color: @white;
-        border-bottom-color: @red;
+        border-bottom-color: @accent;
     }
 
     a:focus {
-        box-shadow: 0px 0px 10px 0px @red;
+        box-shadow: 0px 0px 10px 0px @accent;
     }
 
     .btn {
@@ -130,19 +128,19 @@
 
         &.btn-primary {
 
-            background-color: @red;
+            background-color: @accent;
             border: none;
 
             &:hover {
-                background-color: darken(@red, 10);
+                background-color: darken(@accent, 10);
             }
 
             &:active, &:focus {
-                background-color: darken(@red, 10);
+                background-color: darken(@accent, 10);
             }
 
             &.disabled, &[disabled] {
-                background-color: darken(@red, 10);
+                background-color: darken(@accent, 10);
             }
         }   
 
@@ -166,7 +164,7 @@
 
             &.btn-primary{
                 box-shadow: none;
-                background-color: darken(@red, 10);
+                background-color: darken(@accent, 10);
             }
         }
     }
@@ -195,10 +193,10 @@
     }
 
     .slider .slider-selection {
-        background: @red;
+        background: @accent;
 
         &:hover, &:active {
-            background-color: darken(@red, 5);
+            background-color: darken(@accent, 5);
         }
     }
 
@@ -242,7 +240,7 @@
         background: @grey3;
 
         .bar {
-            background-color: darken(@red, 5);
+            background-color: darken(@accent, 5);
             background-image: none;
         }
     }
@@ -260,13 +258,13 @@
                 background-image: none;
                 background-color: darken(@grey2, 1);
                 color: @white;
-                border-bottom: 2px solid @red;
+                border-bottom: 2px solid @accent;
             }
 
             & > li > a:hover {
                 background-color: @grey3;
                 background-image: none;
-                border-bottom: 2px solid @red;
+                border-bottom: 2px solid @accent;
             }
         }
 
@@ -297,7 +295,7 @@
 
         li.active > a {
             background-color: darken(@grey2, 10);
-            border-right: 2px solid @red;
+            border-right: 2px solid @accent;
         }
 
         li {
@@ -310,12 +308,12 @@
 
                 &:hover, &:focus {
                     background-color: darken(@grey2, 5);
-                    border-right: 2px solid @red;
+                    border-right: 2px solid @accent;
                     outline: none;
                 }
 
                 i {
-                    color: @red;
+                    color: @accent;
                     margin-right: 2px;
                 }
             }
@@ -330,7 +328,7 @@
     }
 
     .legend {
-        border-bottom-color: @red;
+        border-bottom-color: @accent;
 
         & > table {
             color: @quiteWhite !important;
@@ -349,7 +347,7 @@
         }
 
         tr:not(:last-child) th, tr:not(:last-child) td{
-            border-bottom: 1px solid @red;            
+            border-bottom: 1px solid @accent;            
         }
     }
 
@@ -392,7 +390,7 @@
         }
         >.active>a {
             background-color: @grey2;
-            border-bottom: 2px solid @red;
+            border-bottom: 2px solid @accent;
 
             &:hover {
                 background-color: @grey2;
@@ -411,7 +409,7 @@
     }
 
     code {
-        color: @red;
+        color: @accent;
         background-color: @grey2;
         border: none;
     }
@@ -501,7 +499,7 @@
         }
 
         strong {
-            color: @red;
+            color: @accent;
             text-shadow: none;
         }
 
@@ -513,22 +511,30 @@
             border-left: 8px solid @red;
         }
 
-        &.alert-success, &.alert-success {
+        &.alert-success {
             border-left: 4px solid @green;
         }
     }
 
     .accordion-inner {
-        border-top-color: @red;
+        border-top-color: @accent;
     }
 
     hr {
-        border-top-color: @red;
-        border-bottom-color: @red;
+        border-top-color: @accent;
+        border-bottom-color: @accent;
     }
 
     #files .entry.machinecode {
-        border-bottom-color: @red;
+        border-bottom-color: @accent;
+
+        .title.text-error {
+            color: @red;
+        }
+
+        .title.text-success {
+            color: @green;
+        }
     }
 
     .popover {
@@ -540,12 +546,14 @@
     }
 
     .fa-spinner {
-        color: @red;
+        color: @accent;
     }
 
     #page-container-loading {
         background-color: @background;
     }
+
+
 
     /*Adjustments for UI Customiser*/
 
@@ -572,7 +580,7 @@
     #tab_plugin_filemanager {
         .header {
             background-color: @background;
-            border-bottom: 1px solid @red;
+            border-bottom: 1px solid @accent;
 
             > div {
                 border-right: none;
@@ -586,7 +594,7 @@
         }
 
         .entry-hover > div {
-            border-bottom: 1px solid @red;
+            border-bottom: 1px solid @accent;
         }
     }
 
