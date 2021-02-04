@@ -1,6 +1,6 @@
 @import "variables.less";
 
-.dark_night(@accent:@grey) {
+.dark_night(@accent:#757575) {
     body {
         background-color: @background;
         color: @quiteWhite;
@@ -487,6 +487,8 @@
         background: @grey2;
     }
 
+
+
     .alert {
         border: none;
         border-radius: 0;
@@ -509,6 +511,11 @@
 
         &.alert-danger, &.alert-error {
             border-left: 8px solid @red;
+
+            &.ui-pnotify-container {
+                box-shadow: 0px 0px 8px 4px fade(@red, 50);
+                transition: box-shadow 0.2s ease-in-out;
+            }
         }
 
         &.alert-success {
@@ -547,13 +554,25 @@
 
     .fa-spinner {
         color: @accent;
+
+        &:before {
+            content: '\f1ce'
+        }
     }
 
     #page-container-loading {
         background-color: @background;
     }
 
+    #settings_plugin_pluginmanager_repositorydialog_empty {
+        background-image: none;
+    }
 
+    #settings_plugin_pluginmanager_pluginlist table td.settings_plugin_plugin_manager_plugins_actions {
+        & > a {
+            color: @white;
+        }
+    }
 
     /*Adjustments for UI Customiser*/
 
@@ -574,7 +593,6 @@
     .UICTabIcon i {
         color: @white !important;
     }
-
 
     /*Adjustments for Filemanager*/
     #tab_plugin_filemanager {
