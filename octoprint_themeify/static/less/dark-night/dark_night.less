@@ -238,6 +238,7 @@
 
     .progress {
         background: @grey3;
+        border-radius: 2px;
 
         .bar {
             background-color: darken(@accent, 5);
@@ -513,7 +514,7 @@
             border-left: 8px solid @red;
 
             &.ui-pnotify-container {
-                box-shadow: 0px 0px 8px 4px fade(@red, 50);
+                box-shadow: 0px 0px 8px 4px fade(@red, 70);
                 transition: box-shadow 0.2s ease-in-out;
             }
         }
@@ -521,6 +522,16 @@
         &.alert-success {
             border-left: 4px solid @green;
         }
+
+        &.ui-pnotify-container {
+            transition: box-shadow 0.2s ease-in-out;
+            box-shadow: 0px 0px 8px 4px fade(@quiteWhite, 30);
+
+            &.alert-danger, &.alert-error {
+                box-shadow: 0px 0px 8px 4px fade(@red, 70);
+            }
+        }
+
     }
 
     .accordion-inner {
