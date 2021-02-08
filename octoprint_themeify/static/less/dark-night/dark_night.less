@@ -607,6 +607,7 @@
 
     /*Adjustments for Filemanager*/
     #tab_plugin_filemanager {
+
         .header {
             background-color: @background;
             border-bottom: 1px solid @accent;
@@ -624,7 +625,18 @@
 
         .entry-hover > div {
             border-bottom: 1px solid @accent;
+            border-left: 4px solid transparent;
+
+            &.selected {
+                background-color: @grey4;
+                border-left-color: @accent;
+            }
+
+            &:hover, & div:hover {
+                background-color: @grey2;
+            }
         }
+        
     }
 
     /*Adjustments for PrintTimeGenius*/
