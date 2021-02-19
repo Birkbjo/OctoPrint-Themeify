@@ -122,7 +122,7 @@
         &.disabled, &[disabled] {
             background-color: transparent !important;
             background-image: repeating-linear-gradient(-60deg, @grey4, @grey4 0.25rem, transparent 0.25rem, transparent 0.5rem) !important;
-            color: darken(@notquiteWhite, 5);
+            color: darken(@quiteWhite, 5);
             opacity: .65;
         }
 
@@ -246,7 +246,7 @@
         }
     }
 
-    #navbar .navbar-inner {
+    #navbar .navbar-inner, .navbar .navbar-inner {
         background-color: @grey2;
         border: none;
         background-image: none;
@@ -283,6 +283,10 @@
 
         li > .dropdown-menu:after, li > .dropdown-menu:after {
             display: none;
+        }
+
+        .pi_support_state_pulsate {
+            color: @red;
         }
     }
 
