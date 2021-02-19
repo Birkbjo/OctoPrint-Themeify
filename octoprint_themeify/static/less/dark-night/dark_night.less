@@ -659,4 +659,16 @@
         transform: none;
         margin-left: 4px;
     }
+
+    /*Adjustments for PSU control*/
+
+    #psucontrol_indicator {
+        &.on i {
+            color: @green;
+        }
+
+        &.off i {
+            color: @grey;
+        }
+    }
 }
