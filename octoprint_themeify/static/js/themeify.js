@@ -174,23 +174,29 @@ $(function() {
             }
         };
 
+        self.getStyleRuleIndexByCssText = function(rules, value){
+            value = value.replace(/\s/g, '');
+            for (var i = 0; i < rules.length; i++)
+                if (rules[i]['cssText'].replace(/\s/g, '') == value)
+                    return i;
+        };
+
         self._applyRule = function(rule, builtIn = false) {
-            var elem = $(rule.selector());
-            var old = elem.css(rule.rule());
+            var sheet = window.document.styleSheets[0];
+            var ruleID = sheet.insertRule(rule.selector() + '{ ' + rule.rule() + ': ' + rule.value() + '; }', sheet.cssRules.length);
             if (builtIn) {
                 self.builtInElements.push({
-                    elem: elem,
-                    rule: rule.rule(),
-                    old,
+                    ruleID: ruleID,
+                    rule: rule,
+                    cssText: sheet.cssRules[ruleID].cssText
                 });
             } else {
                 self.customizedElements.push({
-                    elem: elem,
-                    rule: rule.rule(),
-                    old,
+                    ruleID: ruleID,
+                    rule: rule,
+                    cssText: sheet.cssRules[ruleID].cssText
                 });
             }
-            $(rule.selector()).css(rule.rule(), rule.value());
         };
 
         self.clone = function(obj) {
@@ -302,15 +308,21 @@ $(function() {
         };
 
         self._removeCustomStyles = function() {
-            self.customizedElements.map(elem => elem.elem.css(elem.rule, ''));
+            var sheet = window.document.styleSheets[0];
+            self.customizedElements.forEach(elem => sheet.deleteRule(self.getStyleRuleIndexByCssText(sheet.cssRules, elem.cssText)));
+            self.customizedElements = [];
         };
 
         self._removeBuiltInStyles = function() {
-            self.builtInElements.map(elem => elem.elem.css(elem.rule, ''));
+            var sheet = window.document.styleSheets[0];
+            self.builtInElements.forEach(elem => sheet.deleteRule(self.getStyleRuleIndexByCssText(sheet.cssRules, elem.cssText)));
+            self.builtInElements = [];
         };
 
         self._removeCustomStylesByRule = function(rule) {
-            $(rule.selector()).css(rule.rule(), '');
+            customizedElement = self.customizedElements.find(elem => elem.rule == rule);
+            var sheet = window.document.styleSheets[0];
+            sheet.deleteRule(self.getStyleRuleIndexByCssText(sheet.cssRules, customElement.cssText));
         };
 
         self.onRuleToggle = function(rule) {
